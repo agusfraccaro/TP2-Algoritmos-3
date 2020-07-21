@@ -1,0 +1,19 @@
+package edu.fiuba.algo3.modelo;
+
+public class Jugador {
+    private int puntaje = 0;
+    private String nombre;
+
+    public Jugador(String nombre){
+        this.nombre = nombre;
+    }
+
+    public void sumarPuntos(int puntos){
+        this.puntaje += puntos;
+    }
+
+    public int getPuntaje(){
+        return this.puntaje;
+    }
+
+}
