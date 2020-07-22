@@ -16,4 +16,7 @@ public class Jugador {
         return this.puntaje;
     }
 
+    public String getNombre(){
+        return nombre;
+    }
 }

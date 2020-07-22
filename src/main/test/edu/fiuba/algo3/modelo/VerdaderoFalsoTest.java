@@ -22,11 +22,14 @@ public class VerdaderoFalsoTest {
         opciones.add(correcta);
         opciones.add(new Incorrecta());
         Pregunta pregunta = new VerdaderoFalso(opciones);
+        ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
         Jugador jugador = new Jugador("Cami");
-        Respuesta respuesta = new Respuesta(jugador);
+        jugadores.add(jugador);
+        jugadores.add(new Jugador("Kevin"));
+        Ronda ronda = new Ronda(jugadores, pregunta);
 
-        respuesta.marcarOpcion(correcta);
-        pregunta.evaluarRespuestas(respuesta);
+        ronda.marcarOpcion(correcta);
+        ronda.evaluar();
 
         assertEquals(jugador.getPuntaje(), 1);
     }
@@ -38,11 +41,14 @@ public class VerdaderoFalsoTest {
         opciones.add(incorrecta);
         opciones.add(new Correcta());
         Pregunta pregunta = new VerdaderoFalso(opciones);
+        ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
         Jugador jugador = new Jugador("Cami");
-        Respuesta respuesta = new Respuesta(jugador);
+        jugadores.add(jugador);
+        jugadores.add(new Jugador("Kevin"));
+        Ronda ronda = new Ronda(jugadores, pregunta);
 
-        respuesta.marcarOpcion(incorrecta);
-        pregunta.evaluarRespuestas(respuesta);
+        ronda.marcarOpcion(incorrecta);
+        ronda.evaluar();
 
         assertEquals(jugador.getPuntaje(), 0);
     }
