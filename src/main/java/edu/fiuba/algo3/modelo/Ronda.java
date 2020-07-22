@@ -25,9 +25,6 @@ public class Ronda {
     public void siguienteJugador(){
         if(iterador.hasNext()){
             jugadorActual = iterador.next();
-        }else{
-            iterador = jugadores.iterator();
-            jugadorActual = iterador.next();
         }
         respuestaActual = new Respuesta();
     }
