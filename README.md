@@ -16,6 +16,10 @@ Corrector: **Martín Picco**
 
 [Informe OverLeaf](https://www.overleaf.com/6946127717bfmqhrfvrryh)
 
+### Link diagramas:
+
+[Diagramas online](https://app.diagrams.net/#G1hpMyQL8DPGZu_8Gn1cA6cx-ZGXHk0fAF)
+
 ### Pre-requisitos
 
 Listado de software/herramientas necesarias para el proyecto
