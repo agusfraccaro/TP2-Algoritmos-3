@@ -1,16 +1,30 @@
 package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Respuesta {
-    private ArrayList<Opcion> opcionesMarcadas = new ArrayList<Opcion>();
+    private List<Opcion> opcionesMarcadas;
+    private Jugador jugador;
+    private Multiplicador multiplicador;
 
-    public ArrayList getOpciones(){
+    public Respuesta(List<Opcion> opciones, Jugador jugadorActual, Multiplicador multiplicador) {
+        opcionesMarcadas = opciones;
+        jugador = jugadorActual;
+        this.multiplicador = multiplicador;
+    }
+
+    public List<Opcion> getOpciones(){
         return this.opcionesMarcadas;
     }
 
-    public void marcarOpcion(Opcion unaOpcion){
-        opcionesMarcadas.add(unaOpcion);
+    public Jugador getJugador() {return jugador; }
+
+    public int aplicarMultiplicador(int puntos) {
+        return multiplicador.multiplicar(puntos);
     }
 
+    public void sumarPuntos(int puntos) {
+        jugador.sumarPuntos(puntos);
+    }
 }

@@ -9,8 +9,8 @@ public class VerdaderoFalsoTest {
     public void preguntaVerdaderoFalsoSeCreaConRespuestaCorrectaTest(){
         ArrayList <Opcion> opciones = new ArrayList<Opcion>();
         opciones.add(new Correcta());
-        opciones.add(new Incorrecta());
-        Pregunta pregunta = new VerdaderoFalso(opciones);
+        opciones.add(new SinPenalidad());
+        Pregunta pregunta = new VerdaderoFalso(opciones,"una pregunta");
 
         assertEquals(pregunta.cantidadRespuestasCorrectas(), 1);
     }
@@ -20,15 +20,14 @@ public class VerdaderoFalsoTest {
         ArrayList <Opcion> opciones = new ArrayList<Opcion>();
         Opcion correcta = new Correcta();
         opciones.add(correcta);
-        opciones.add(new Incorrecta());
-        Pregunta pregunta = new VerdaderoFalso(opciones);
+        opciones.add(new SinPenalidad());
+        Pregunta pregunta = new VerdaderoFalso(opciones,"una pregunta");
         ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
         Jugador jugador = new Jugador("Cami");
         jugadores.add(jugador);
         jugadores.add(new Jugador("Kevin"));
         Ronda ronda = new Ronda(jugadores, pregunta);
 
-        ronda.marcarOpcion(correcta);
         ronda.evaluar();
 
         assertEquals(jugador.getPuntaje(), 1);
@@ -37,17 +36,16 @@ public class VerdaderoFalsoTest {
     @Test
     public void preguntaVerdaderoFalsoAsignaPuntosCorrectamenteSiEligeRespuestaIncorrectaTest(){
         ArrayList <Opcion> opciones = new ArrayList<Opcion>();
-        Opcion incorrecta = new Incorrecta();
+        Opcion incorrecta = new SinPenalidad();
         opciones.add(incorrecta);
         opciones.add(new Correcta());
-        Pregunta pregunta = new VerdaderoFalso(opciones);
+        Pregunta pregunta = new VerdaderoFalso(opciones,"una pregunta");
         ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
         Jugador jugador = new Jugador("Cami");
         jugadores.add(jugador);
         jugadores.add(new Jugador("Kevin"));
         Ronda ronda = new Ronda(jugadores, pregunta);
 
-        ronda.marcarOpcion(incorrecta);
         ronda.evaluar();
 
         assertEquals(jugador.getPuntaje(), 0);

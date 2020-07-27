@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-public class Incorrecta implements Opcion {
+public abstract class Incorrecta extends Opcion {
     @Override
-    public int puntuar() {
+    int puntuar() {
         return 0;
     }
 }

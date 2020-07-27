@@ -1,23 +1,17 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class VerdaderoFalso implements Pregunta {
+public class VerdaderoFalso extends Pregunta {
 
-    private ArrayList<Opcion> opciones;
-
-    public VerdaderoFalso(ArrayList<Opcion> opciones){
+    public VerdaderoFalso(List<Opcion> opciones, String texto){
+        super(texto);
         this.opciones = opciones;
     }
 
     @Override
-    public int evaluarRespuestas(Respuesta respuesta) {
-        int puntos = 0;
-        ArrayList<Opcion> listaOpciones = respuesta.getOpciones();
-        for(Opcion opcion: listaOpciones){
-            puntos = puntos + opcion.puntuar();
-        }
-        return puntos;
+    public void evaluarRespuestas(List<Respuesta> respuestas) {
+        puntuador.puntuar(respuestas);
     }
 
     @Override

@@ -7,40 +7,30 @@ import java.util.List;
 public class Ronda {
     private Jugador jugadorActual;
     private List<Respuesta> respuestas;
-    private ArrayList<Jugador> jugadores;
+    private List<Jugador> jugadores;
     private Pregunta pregunta;
     private Iterator<Jugador> iterador;
-    private Respuesta respuestaActual;
 
-    public Ronda (ArrayList<Jugador> jugadores, Pregunta pregunta){
+    public Ronda (List<Jugador> jugadores, Pregunta pregunta){
         this.jugadores = jugadores;
         this.pregunta = pregunta;
         iterador = jugadores.iterator();
         jugadorActual = iterador.next();
-        respuestaActual = new Respuesta();
-    }
-
-    public void marcarOpcion(Opcion opcion){
-        respuestaActual.marcarOpcion(opcion);
     }
 
     private void siguienteJugador(){
         if(iterador.hasNext()){
             jugadorActual = iterador.next();
         }
-        respuestaActual = new Respuesta();
-    }
-
-    public void guardarRespuesta() {
-        respuestas.add(respuestaActual);
     }
 
     public void evaluar(){
-        for (Respuesta respuesta : respuestas) {
-            int puntos = pregunta.evaluarRespuestas(respuesta);
-            //TODO Agregar puntuador
-            jugadorActual.sumarPuntos(puntos);
-        }
+        pregunta.evaluarRespuestas(respuestas);
+    }
+
+    public void enviarRespuesta(List<Opcion> opciones,Multiplicador multiplicador) {
+        Respuesta respuesta = new Respuesta(opciones,jugadorActual,multiplicador);
+        respuestas.add(respuesta);
     }
 
     public Jugador getJugadorActual(){
