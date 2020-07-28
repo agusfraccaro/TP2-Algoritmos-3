@@ -20,29 +20,16 @@ public class RondaTest {
         jugadores.add(jugador);
         jugadores.add(new Jugador("Kevin"));
 
+        List<Opcion> opcionesMarcadas = new ArrayList<Opcion>();
+        opcionesMarcadas.add(correcta);
+
         Ronda ronda = new Ronda(jugadores, pregunta);
-        //ronda.marcarOpcion(correcta);
+        ronda.enviarRespuesta(opcionesMarcadas, new Multiplicador(1));
         ronda.evaluar();
 
         assertEquals(jugador.getPuntaje(),1);
     }
     
-    @Test
-    public void rondaCambiaDeJugadorActualCorrectamente(){
-        ArrayList <Opcion> opciones = new ArrayList<Opcion>();
-        Opcion correcta = new Correcta();
-        opciones.add(correcta);
-        opciones.add(new SinPenalidad());
-        Pregunta pregunta = new VerdaderoFalso(opciones,"una pregunta");
-        ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
-        Jugador jugador1 = new Jugador("Cami");
-        Jugador jugador2 = new Jugador("Kevin");
-        jugadores.add(jugador1);
-        jugadores.add(jugador2);
 
-        Ronda ronda = new Ronda(jugadores, pregunta);
-
-        assertEquals((ronda.getJugadorActual()).getNombre(), jugador2.getNombre());
-    }
 }
 

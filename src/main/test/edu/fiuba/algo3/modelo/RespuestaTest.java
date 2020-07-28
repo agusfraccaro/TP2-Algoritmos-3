@@ -35,14 +35,30 @@ public class RespuestaTest {
         assertEquals(respuesta.getJugador().getNombre() , "unJugador");
     }
 
+
     @Test
-    public void respuestaSeCreaConUnMultiplicadorTest() {
-        assertEquals(2,1);
+    public void respuestaSumaPuntosCorrectamenteTest(){
+        List<Opcion> opciones = new ArrayList<Opcion>();
+        opciones.add(new Correcta());
+        opciones.add(new SinPenalidad());
+
+        Respuesta respuesta = new Respuesta(opciones, new Jugador("unJugador"), new Multiplicador(CANTIDAD_MULTIPLICAR));
+
+        respuesta.sumarPuntos(6);
+
+        assertEquals(respuesta.getJugador().getPuntaje() , 6);
     }
 
     @Test
-    public void respuestaSumaPuntosCorrectamenteTest()
-    {
-        assertEquals(2,1);
+    public void respuestaMultilplicaX2Correctamente(){
+        List<Opcion> opciones = new ArrayList<Opcion>();
+        opciones.add(new Correcta());
+        opciones.add(new SinPenalidad());
+
+        Respuesta respuesta = new Respuesta(opciones, new Jugador("unJugador"), new Multiplicador(2));
+
+        respuesta.sumarPuntos(respuesta.aplicarMultiplicador(8));
+
+        assertEquals(respuesta.getJugador().getPuntaje() , 16);
     }
 }

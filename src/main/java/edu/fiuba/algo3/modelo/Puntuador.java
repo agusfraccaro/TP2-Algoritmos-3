@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.List;
 
-public abstract class Puntuador {
+public class Puntuador {
     public void puntuar(List<Respuesta> respuestas) {
         for (Respuesta respuesta : respuestas) {
             int puntos = 0;

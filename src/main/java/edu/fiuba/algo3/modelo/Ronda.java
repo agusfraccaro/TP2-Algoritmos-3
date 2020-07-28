@@ -16,6 +16,7 @@ public class Ronda {
         this.pregunta = pregunta;
         iterador = jugadores.iterator();
         jugadorActual = iterador.next();
+        respuestas = new ArrayList<Respuesta>();
     }
 
     private void siguienteJugador(){

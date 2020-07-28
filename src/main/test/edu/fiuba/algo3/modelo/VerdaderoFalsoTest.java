@@ -1,7 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VerdaderoFalsoTest {
@@ -16,39 +20,49 @@ public class VerdaderoFalsoTest {
     }
 
     @Test
-    public void preguntaVerdaderoFalsoAsignaPuntosCorrectamenteSiEligeRespuestaCorrectaTest(){
-        ArrayList <Opcion> opciones = new ArrayList<Opcion>();
+    public void preguntaVerdaderoFalsoAsignaPuntosCorrectamenteSiAmbosJugadoresEligenRespuestaCorrectaTest(){
+        List <Opcion> opciones = new ArrayList<Opcion>();
         Opcion correcta = new Correcta();
         opciones.add(correcta);
         opciones.add(new SinPenalidad());
         Pregunta pregunta = new VerdaderoFalso(opciones,"una pregunta");
-        ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
-        Jugador jugador = new Jugador("Cami");
-        jugadores.add(jugador);
-        jugadores.add(new Jugador("Kevin"));
-        Ronda ronda = new Ronda(jugadores, pregunta);
+        Jugador jugador1 = new Jugador("Cami");
+        Jugador jugador2 = new Jugador("Kevin");
+        List <Opcion> opcionesMarcadas1 = new ArrayList<Opcion>();
+        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>();
+        opcionesMarcadas1.add(correcta);
+        opcionesMarcadas2.add(correcta);
+        List <Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(new Respuesta(opcionesMarcadas1, jugador1, new Multiplicador(1)));
+        respuestas.add(new Respuesta(opcionesMarcadas2, jugador2, new Multiplicador(1)));
 
-        ronda.evaluar();
+        pregunta.evaluarRespuestas(respuestas);
 
-        assertEquals(jugador.getPuntaje(), 1);
+        assertEquals(jugador1.getPuntaje(), 1);
+        assertEquals(jugador2.getPuntaje(), 1);
     }
 
     @Test
-    public void preguntaVerdaderoFalsoAsignaPuntosCorrectamenteSiEligeRespuestaIncorrectaTest(){
-        ArrayList <Opcion> opciones = new ArrayList<Opcion>();
+    public void preguntaVerdaderoFalsoAsignaPuntosCorrectamenteSiAmbosJugadoresEligenRespuestaIncorrectaTest(){
+        List <Opcion> opciones = new ArrayList<Opcion>();
         Opcion incorrecta = new SinPenalidad();
         opciones.add(incorrecta);
         opciones.add(new Correcta());
         Pregunta pregunta = new VerdaderoFalso(opciones,"una pregunta");
-        ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
-        Jugador jugador = new Jugador("Cami");
-        jugadores.add(jugador);
-        jugadores.add(new Jugador("Kevin"));
-        Ronda ronda = new Ronda(jugadores, pregunta);
+        Jugador jugador1 = new Jugador("Cami");
+        Jugador jugador2 = new Jugador("Kevin");
+        List <Opcion> opcionesMarcadas1 = new ArrayList<Opcion>();
+        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>();
+        opcionesMarcadas1.add(incorrecta);
+        opcionesMarcadas2.add(incorrecta);
+        List <Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(new Respuesta(opcionesMarcadas1, jugador1, new Multiplicador(1)));
+        respuestas.add(new Respuesta(opcionesMarcadas2, jugador2, new Multiplicador(1)));
 
-        ronda.evaluar();
+        pregunta.evaluarRespuestas(respuestas);
 
-        assertEquals(jugador.getPuntaje(), 0);
+        assertEquals(jugador1.getPuntaje(), 0);
+        assertEquals(jugador2.getPuntaje(), 0);
     }
 }
 

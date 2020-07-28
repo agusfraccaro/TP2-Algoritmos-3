@@ -9,6 +9,7 @@ public abstract class Pregunta {
 
     public Pregunta(String texto) {
         this.texto = texto;
+        puntuador = new Puntuador();
     }
 
     public abstract void evaluarRespuestas(List<Respuesta> respuestas);
