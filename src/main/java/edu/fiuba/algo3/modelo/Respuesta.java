@@ -27,4 +27,13 @@ public class Respuesta {
     public void sumarPuntos(int puntos) {
         jugador.sumarPuntos(puntos);
     }
+
+    public boolean esCorrecta() {
+        for(Opcion opcion: opcionesMarcadas){
+            if(!opcion.esCorrecta()){
+                return false;
+            }
+        }
+        return true;
+    }
 }

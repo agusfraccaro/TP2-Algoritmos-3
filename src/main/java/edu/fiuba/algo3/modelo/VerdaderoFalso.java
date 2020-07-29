@@ -4,14 +4,15 @@ import java.util.List;
 
 public class VerdaderoFalso extends Pregunta {
 
-    public VerdaderoFalso(List<Opcion> opciones, String texto){
-        super(texto);
-        this.opciones = opciones;
+    public VerdaderoFalso(List<Opcion> opciones, String texto) {
+        super(opciones, texto);
     }
 
     @Override
     public void evaluarRespuestas(List<Respuesta> respuestas) {
-        puntuador.puntuar(respuestas);
+        for(Respuesta respuesta: respuestas){
+            respuesta.sumarPuntos(puntuador.puntuar(respuesta));
+        }
     }
 
     @Override

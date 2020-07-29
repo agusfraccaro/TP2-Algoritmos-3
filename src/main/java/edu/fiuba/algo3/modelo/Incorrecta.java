@@ -5,4 +5,8 @@ public abstract class Incorrecta extends Opcion {
     int puntuar() {
         return 0;
     }
+
+    boolean esCorrecta(){
+        return false;
+    }
 }

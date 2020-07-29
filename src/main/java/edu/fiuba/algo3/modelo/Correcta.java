@@ -5,4 +5,9 @@ public class Correcta extends Opcion {
     public int puntuar() {
         return 1;
     }
+
+    @Override
+    boolean esCorrecta() {
+        return true;
+    }
 }
