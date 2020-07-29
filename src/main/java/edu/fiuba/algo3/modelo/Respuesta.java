@@ -28,7 +28,7 @@ public class Respuesta {
         jugador.sumarPuntos(puntos);
     }
 
-    public boolean esCorrecta() {
+    public boolean todasLasOpcionesMarcadasSonCorrectas() {
         for(Opcion opcion: opcionesMarcadas){
             if(!opcion.esCorrecta()){
                 return false;

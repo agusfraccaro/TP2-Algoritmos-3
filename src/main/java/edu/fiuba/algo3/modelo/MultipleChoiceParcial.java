@@ -10,7 +10,7 @@ public class MultipleChoiceParcial extends Pregunta {
     @Override
     public void evaluarRespuestas(List<Respuesta> respuestas) {
         for(Respuesta respuesta: respuestas){
-            if(respuesta.esCorrecta()){
+            if(respuesta.todasLasOpcionesMarcadasSonCorrectas()){
                 respuesta.sumarPuntos(puntuador.puntuar(respuesta));
             }
         }
