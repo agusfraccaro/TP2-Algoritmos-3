@@ -1,5 +1,7 @@
 # TP2 Algoritmos 3: Kahoot
 
+[![Build Status](https://travis-ci.com/agusfraccaro/TP2-Algoritmos-3.svg?token=YZxuxqzbr4V9axn1ex75&branch=master)](https://travis-ci.com/github/agusfraccaro/TP2-Algoritmos-3)
+
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
 ## Grupo 12
