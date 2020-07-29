@@ -14,13 +14,4 @@ public class VerdaderoFalso extends Pregunta {
             respuesta.sumarPuntos(puntuador.puntuar(respuesta));
         }
     }
-
-    @Override
-    public int cantidadRespuestasCorrectas() {
-        int puntos = 0;
-        for(Opcion opcion: this.opciones){
-            puntos = puntos + opcion.puntuar();
-        }
-        return puntos;
-    }
 }

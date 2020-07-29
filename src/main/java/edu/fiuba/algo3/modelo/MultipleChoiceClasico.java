@@ -12,7 +12,7 @@ public class MultipleChoiceClasico extends Pregunta {
     public void evaluarRespuestas(List<Respuesta> respuestas) {
         for(Respuesta respuesta: respuestas){
             int puntos = puntuador.puntuar(respuesta);
-            if(puntos == this.cantidadRespuestasCorrectas()){
+            if(puntos == this.cantidadRespuestasCorrectas() && respuesta.todasLasOpcionesMarcadasSonCorrectas()){
                 respuesta.sumarPuntos(1);
             }
         }

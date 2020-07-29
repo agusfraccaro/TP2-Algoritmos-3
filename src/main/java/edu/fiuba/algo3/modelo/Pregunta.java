@@ -16,10 +16,12 @@ public abstract class Pregunta {
     public abstract void evaluarRespuestas(List<Respuesta> respuestas);
 
     public int cantidadRespuestasCorrectas(){
-        int puntos = 0;
+        int cantidad = 0;
         for(Opcion opcion: this.opciones){
-            puntos = puntos + opcion.puntuar();
+            if(opcion.esCorrecta()){
+                cantidad ++;
+            }
         }
-        return puntos;
+        return cantidad;
     }
 }

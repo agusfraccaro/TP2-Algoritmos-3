@@ -20,7 +20,7 @@ public class VerdaderoFalsoTest {
     }
 
     @Test
-    public void preguntaVerdaderoFalsoAsignaPuntosCorrectamenteSiAmbosJugadoresEligenRespuestaCorrectaTest(){
+    public void preguntaVerdaderoFalsoAsignaUnPuntoSiEligenRespuestaCorrectaTest(){
         List <Opcion> opciones = new ArrayList<Opcion>();
         Opcion correcta = new Correcta();
         opciones.add(correcta);
@@ -43,7 +43,7 @@ public class VerdaderoFalsoTest {
     }
 
     @Test
-    public void preguntaVerdaderoFalsoAsignaPuntosCorrectamenteSiAmbosJugadoresEligenRespuestaIncorrectaTest(){
+    public void preguntaVerdaderoFalsoNoAsignaPuntosSiEligenRespuestaIncorrectaTest(){
         List <Opcion> opciones = new ArrayList<Opcion>();
         Opcion incorrecta = new SinPenalidad();
         opciones.add(incorrecta);
@@ -63,6 +63,31 @@ public class VerdaderoFalsoTest {
 
         assertEquals(jugador1.getPuntaje(), 0);
         assertEquals(jugador2.getPuntaje(), 0);
+    }
+
+    @Test
+    public void preguntaVerdaderoFalsoConPenalidadRestaPuntosSiSeEligeRespuestaIncorrectaTest(){
+        Opcion correcta = new Correcta();
+        Opcion incorrecta = new Penalidad();
+        List <Opcion> opciones = new ArrayList<Opcion>(){
+            {add(correcta); add(incorrecta);}
+        };
+        Pregunta pregunta = new VerdaderoFalso(opciones, "una pregunta");
+        Jugador jugador1 = new Jugador("Cami");
+        Jugador jugador2 = new Jugador("Kevin");
+        List <Opcion> opcionesMarcadas1 = new ArrayList<Opcion>();
+        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>();
+        opcionesMarcadas1.add(incorrecta);
+        opcionesMarcadas2.add(incorrecta);
+        List <Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(new Respuesta(opcionesMarcadas1, jugador1, new Multiplicador(1)));
+        respuestas.add(new Respuesta(opcionesMarcadas2, jugador2, new Multiplicador(1)));
+
+        pregunta.evaluarRespuestas(respuestas);
+
+        assertEquals(jugador1.getPuntaje(), -1);
+        assertEquals(jugador2.getPuntaje(), -1);
+
     }
 }
 
