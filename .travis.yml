@@ -1,0 +1,18 @@
+language: java
+jdk:
+  - openjdk11
+
+script:
+  - mvn clean test
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+notifications:
+  email:
+    recipients:
+      - afraccaro@fi.uba.ar
+      - aschmidt@fi.uba.ar
+      - ccaserta@fi.uba.ar
+      - sczop@fi.uba.ar
+      - kgadacz@fi.uba.ar
+    on_failure: always
