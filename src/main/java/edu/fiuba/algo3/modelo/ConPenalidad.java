@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-public class Penalidad extends Incorrecta{
+public class ConPenalidad extends Incorrecta{
     @Override
     public int puntuar() {
         return -1;

@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,7 +67,7 @@ public class VerdaderoFalsoTest {
     @Test
     public void preguntaVerdaderoFalsoConPenalidadRestaPuntosSiSeEligeRespuestaIncorrectaTest(){
         Opcion correcta = new Correcta();
-        Opcion incorrecta = new Penalidad();
+        Opcion incorrecta = new ConPenalidad();
         List <Opcion> opciones = new ArrayList<Opcion>(){
             {add(correcta); add(incorrecta);}
         };
