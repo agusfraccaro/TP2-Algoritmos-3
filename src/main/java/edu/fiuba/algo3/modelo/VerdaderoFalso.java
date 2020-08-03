@@ -14,4 +14,5 @@ public class VerdaderoFalso extends Pregunta {
             respuesta.sumarPuntos(puntuador.puntuar(respuesta));
         }
     }
+
 }

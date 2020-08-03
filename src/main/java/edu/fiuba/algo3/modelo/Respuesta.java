@@ -7,6 +7,7 @@ public class Respuesta {
     private List<Opcion> opcionesMarcadas;
     private Jugador jugador;
     private Multiplicador multiplicador;
+    private int puntos = 0;
 
     public Respuesta(List<Opcion> opciones, Jugador jugadorActual) {
         this(opciones, jugadorActual, new Multiplicador(1));
@@ -28,7 +29,12 @@ public class Respuesta {
     }
 
     public void sumarPuntos(int puntos) {
-        jugador.sumarPuntos(puntos);
+        this.puntos += puntos;
+        //jugador.sumarPuntos(puntos);
+    }
+
+    public void aplicarPuntos() {
+        jugador.sumarPuntos(this.puntos);
     }
 
     public boolean todasLasOpcionesMarcadasSonCorrectas() {
