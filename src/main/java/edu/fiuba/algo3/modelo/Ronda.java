@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class giRonda {
+public class Ronda {
     private Jugador jugadorActual;
     private List<Respuesta> respuestas;
     private List<Jugador> jugadores;
