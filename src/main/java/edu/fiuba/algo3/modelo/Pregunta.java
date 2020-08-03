@@ -19,7 +19,7 @@ public abstract class Pregunta {
         int cantidad = 0;
         for(Opcion opcion: this.opciones){
             if(opcion.esCorrecta()){
-                cantidad ++;
+                cantidad++;
             }
         }
         return cantidad;

@@ -17,4 +17,13 @@ public class JugadorTest {
         jugador.sumarPuntos(5);
         assertEquals(jugador.getPuntaje(), 5);
     }
+
+    @Test
+    public void jugadorDevuelveCorrectamenteSuNombreTest(){
+        Jugador jugador = new Jugador("Kevin");
+        String nombre = jugador.getNombre();
+        assertEquals(nombre, "Kevin");
+    }
+
+
 }

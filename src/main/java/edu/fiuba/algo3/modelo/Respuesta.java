@@ -8,6 +8,9 @@ public class Respuesta {
     private Jugador jugador;
     private Multiplicador multiplicador;
 
+    public Respuesta(List<Opcion> opciones, Jugador jugadorActual) {
+        this(opciones, jugadorActual, new Multiplicador(1));
+    }
     public Respuesta(List<Opcion> opciones, Jugador jugadorActual, Multiplicador multiplicador) {
         opcionesMarcadas = opciones;
         jugador = jugadorActual;
