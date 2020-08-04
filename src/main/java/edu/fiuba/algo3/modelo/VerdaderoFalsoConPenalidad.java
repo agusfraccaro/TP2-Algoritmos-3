@@ -1,7 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-public class GroupChoice extends Pregunta {
+public class VerdaderoFalsoConPenalidad extends Pregunta {
 
+    //TODO Poner constructor
     @Override
     public int puntuar(Respuesta respuesta) {}
 

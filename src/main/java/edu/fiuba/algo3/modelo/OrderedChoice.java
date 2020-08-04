@@ -8,6 +8,7 @@ public class OrderedChoice extends Pregunta {
         super(opciones, texto);
     }
 
+    /*
     @Override
     public void evaluarRespuestas(List<Respuesta> respuestas) {
         for(Respuesta respuesta : respuestas) {
@@ -22,6 +23,11 @@ public class OrderedChoice extends Pregunta {
             }
             respuesta.sumarPuntos(puntos);
         }
-    }
+    }*/
 
+    @Override
+    public int puntuar(Respuesta respuesta) {}
+
+    @Override
+    public void activarExclusividad(int factorExclusividad) {}
 }

@@ -1,12 +1,26 @@
 package edu.fiuba.algo3.modelo;
 
-public class Puntuador {
-    public int puntuar(Respuesta respuesta) {
-        int puntos = 0;
-        for (Opcion opcion : respuesta.getOpciones()) {
-            puntos += opcion.puntuar();
+import java.util.List;
+
+public abstract class Puntuador {
+
+    public abstract void puntuar(List<Respuesta> respuestas, Pregunta pregunta);
+
+    public void corregirPreguntas(List<Respuesta> respuestas, Pregunta pregunta) {
+        for (Respuesta respuesta : respuestas) {
+            respuesta.sumarPuntos(pregunta.puntuar(respuesta));
         }
-        return puntos;
     }
 
+    public void aplicarMultiplicadores(List<Respuesta> respuestas) {
+        for (Respuesta respuesta : respuestas) {
+            respuesta.aplicarMultiplicador();
+        }
+    }
+
+    public void aplicarPuntajes(List<Respuesta> respuestas) {
+        for (Respuesta respuesta : respuestas) {
+            respuesta.aplicarPuntos();
+        }
+    }
 }

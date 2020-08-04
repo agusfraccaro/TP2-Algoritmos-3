@@ -7,6 +7,7 @@ public class MultipleChoiceParcial extends Pregunta {
         super(opciones, texto);
     }
 
+    /*
     @Override
     public void evaluarRespuestas(List<Respuesta> respuestas) {
         for(Respuesta respuesta: respuestas){
@@ -14,5 +15,11 @@ public class MultipleChoiceParcial extends Pregunta {
                 respuesta.sumarPuntos(puntuador.puntuar(respuesta));
             }
         }
-    }
+    }*/
+
+    @Override
+    public int puntuar(Respuesta respuesta) {}
+
+    @Override
+    public void activarExclusividad(int factorExclusividad) {}
 }

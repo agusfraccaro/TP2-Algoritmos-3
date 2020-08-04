@@ -10,10 +10,14 @@ public abstract class Pregunta {
     public Pregunta(List<Opcion> opciones, String texto) {
         this.texto = texto;
         this.opciones = opciones;
-        puntuador = new Puntuador();
+        puntuador = new PuntuadorClasico(); //FIXME cada tipo de pregunta usa su propio puntuador
     }
 
-    public abstract void evaluarRespuestas(List<Respuesta> respuestas);
+    public void evaluarRespuestas(List<Respuesta> respuestas) {
+        puntuador.puntuar(respuestas, this);
+    }
+
+    public abstract int puntuar(Respuesta respuesta);
 
     public int cantidadRespuestasCorrectas(){
         int cantidad = 0;
@@ -24,4 +28,6 @@ public abstract class Pregunta {
         }
         return cantidad;
     }
+
+    public abstract void activarExclusividad(int factorExclusividad); //TODO Delegar a cada subclase si tira error o delega al puntuador
 }

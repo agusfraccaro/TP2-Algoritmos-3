@@ -6,13 +6,13 @@ import java.util.List;
 public class Respuesta {
     private List<Opcion> opcionesMarcadas;
     private Jugador jugador;
-    private Multiplicador multiplicador;
+    private int multiplicador;
     private int puntos = 0;
 
     public Respuesta(List<Opcion> opciones, Jugador jugadorActual) {
-        this(opciones, jugadorActual, new Multiplicador(1));
+        this(opciones, jugadorActual, 1);
     }
-    public Respuesta(List<Opcion> opciones, Jugador jugadorActual, Multiplicador multiplicador) {
+    public Respuesta(List<Opcion> opciones, Jugador jugadorActual, int multiplicador) {
         opcionesMarcadas = opciones;
         jugador = jugadorActual;
         this.multiplicador = multiplicador;
@@ -24,8 +24,12 @@ public class Respuesta {
 
     public Jugador getJugador() {return jugador; }
 
-    public int aplicarMultiplicador(int puntos) {
-        return multiplicador.multiplicar(puntos);
+    public void aplicarMultiplicador() {
+        this.puntos *= this.multiplicador;
+    }
+
+    public void aplicarExclusividad(int factor) {
+        this.puntos *= factor;
     }
 
     public void sumarPuntos(int puntos) {
@@ -35,6 +39,10 @@ public class Respuesta {
 
     public void aplicarPuntos() {
         jugador.sumarPuntos(this.puntos);
+    }
+
+    public boolean esCorrecta() {
+        return this.puntos == 1;
     }
 
     public boolean todasLasOpcionesMarcadasSonCorrectas() {
