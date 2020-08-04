@@ -10,17 +10,14 @@ public class MultipleChoiceClasico extends Pregunta {
 
     @Override
     public int puntuar(Respuesta respuesta) {
-        //TODO Refactorizar a POO
-        int cantCorrectas = 0;
-        for (Opcion opcion : respuesta.getOpciones()) {
-            if (!opcion.esCorrecta()) { return 0; }
-            cantCorrectas += 1;
+        int puntos = 0;
+        for(Opcion opcion: respuesta.getOpciones()){
+            puntos += opcion.puntuar();
         }
-        if (cantCorrectas == this.cantidadRespuestasCorrectas()) {
+        if(puntos == this.cantidadRespuestasCorrectas() && respuesta.todasLasOpcionesMarcadasSonCorrectas()){
             return 1;
-        } else {
-            return 0;
         }
+        return 0;
     }
 
     @Override
