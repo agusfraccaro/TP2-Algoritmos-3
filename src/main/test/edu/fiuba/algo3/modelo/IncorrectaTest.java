@@ -9,14 +9,14 @@ public class IncorrectaTest {
     public void incorrectaSinPenalidadDevuelveCeroAlPuntuarTest(){
         Incorrecta opcion = new SinPenalidad();
         int puntos = opcion.puntuar();
-        assertEquals(puntos, 0);
+        assertEquals(0, puntos);
     }
 
     @Test
     public void incorrectaConPenalidadDevuelveUnoNegativoAlPuntuarTest(){
         Incorrecta opcion = new ConPenalidad();
         int puntos = opcion.puntuar();
-        assertEquals(puntos, -1);
+        assertEquals(-1, puntos);
     }
 
     @Test

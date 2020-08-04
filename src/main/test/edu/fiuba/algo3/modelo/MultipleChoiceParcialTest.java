@@ -21,7 +21,7 @@ public class MultipleChoiceParcialTest {
         opciones.add(new SinPenalidad());
         Pregunta pregunta = new MultipleChoiceParcial(opciones, "una pregunta");
 
-        assertEquals(pregunta.cantidadRespuestasCorrectas(), 3);
+        assertEquals(3, pregunta.cantidadRespuestasCorrectas());
     }
 
     @Test
@@ -52,8 +52,8 @@ public class MultipleChoiceParcialTest {
 
         pregunta.evaluarRespuestas(respuestas);
 
-        assertEquals(jugador1.getPuntaje(), 2);
-        assertEquals(jugador2.getPuntaje(), 1);
+        assertEquals(2, jugador1.getPuntaje());
+        assertEquals(1, jugador2.getPuntaje());
     }
 
     @Test
@@ -84,7 +84,7 @@ public class MultipleChoiceParcialTest {
 
         pregunta.evaluarRespuestas(respuestas);
 
-        assertEquals(jugador1.getPuntaje(), 0);
-        assertEquals(jugador2.getPuntaje(), 0);
+        assertEquals(0, jugador1.getPuntaje());
+        assertEquals(0, jugador2.getPuntaje());
     }
 }

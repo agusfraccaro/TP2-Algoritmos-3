@@ -8,21 +8,21 @@ public class JugadorTest {
     @Test
     public void jugadorSeCreaConCeroPuntosTest(){
         Jugador jugador = new Jugador("Agus");
-        assertEquals(jugador.getPuntaje(), 0);
+        assertEquals(0, jugador.getPuntaje());
     }
 
     @Test
     public void jugadorSumaCorrectamenteCincoPuntosTest(){
         Jugador jugador = new Jugador("Santi");
         jugador.sumarPuntos(5);
-        assertEquals(jugador.getPuntaje(), 5);
+        assertEquals(5, jugador.getPuntaje());
     }
 
     @Test
     public void jugadorDevuelveCorrectamenteSuNombreTest(){
         Jugador jugador = new Jugador("Kevin");
         String nombre = jugador.getNombre();
-        assertEquals(nombre, "Kevin");
+        assertEquals("Kevin", nombre);
     }
 
 

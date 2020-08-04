@@ -27,7 +27,7 @@ public class RondaTest {
         ronda.enviarRespuesta(opcionesMarcadas, new Multiplicador(1));
         ronda.evaluar();
 
-        assertEquals(jugador.getPuntaje(),1);
+        assertEquals(1, jugador.getPuntaje());
     }
     
 

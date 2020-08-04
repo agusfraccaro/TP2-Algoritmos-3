@@ -9,14 +9,10 @@ public class MultipleChoiceParcial extends Pregunta {
 
     @Override
     public int puntuar(Respuesta respuesta) {
-        int puntos = 0;
-        for (Opcion opcion : opciones) {
-            if (!opcion.esCorrecta()) {
-                return 0;
-            }
-            puntos += opcion.puntuar();
+        if (respuesta.todasLasOpcionesMarcadasSonCorrectas()) {
+            return respuesta.getOpciones().size();
         }
-        return puntos;
+        return 0;
     }
 
     @Override

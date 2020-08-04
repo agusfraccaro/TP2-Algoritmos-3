@@ -16,7 +16,7 @@ public class MultipleChoiceClasicoTest {
 
         Pregunta pregunta = new MultipleChoiceParcial(opciones, "una pregunta");
 
-        assertEquals(pregunta.cantidadRespuestasCorrectas(), 2);
+        assertEquals(2, pregunta.cantidadRespuestasCorrectas());
     }
 
     @Test
@@ -45,8 +45,8 @@ public class MultipleChoiceClasicoTest {
 
         pregunta.evaluarRespuestas(respuestas);
 
-        assertEquals(jugador1.getPuntaje(), 1);
-        assertEquals(jugador2.getPuntaje(), 1);
+        assertEquals(1, jugador1.getPuntaje());
+        assertEquals(1, jugador2.getPuntaje());
     }
 
     @Test
@@ -75,8 +75,8 @@ public class MultipleChoiceClasicoTest {
 
         pregunta.evaluarRespuestas(respuestas);
 
-        assertEquals(jugador1.getPuntaje(), 0);
-        assertEquals(jugador2.getPuntaje(), 0);
+        assertEquals(0, jugador1.getPuntaje());
+        assertEquals(0, jugador2.getPuntaje());
     }
 
     @Test
@@ -107,8 +107,8 @@ public class MultipleChoiceClasicoTest {
 
         pregunta.evaluarRespuestas(respuestas);
 
-        assertEquals(jugador1.getPuntaje(), 0);
-        assertEquals(jugador2.getPuntaje(), 0);
+        assertEquals(0, jugador1.getPuntaje());
+        assertEquals(0, jugador2.getPuntaje());
 
     }
 

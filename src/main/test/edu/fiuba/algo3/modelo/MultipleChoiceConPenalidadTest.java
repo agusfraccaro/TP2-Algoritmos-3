@@ -16,7 +16,7 @@ public class MultipleChoiceConPenalidadTest {
         opciones.add(correcta2);
         opciones.add(correcta3);
         Pregunta pregunta = new MultipleChoiceParcial(opciones, "Pregunta Test");
-        assertEquals(pregunta.cantidadRespuestasCorrectas(), 3);
+        assertEquals(3, pregunta.cantidadRespuestasCorrectas());
     }
 
     @Test public void preguntaMultipleChoiceConPenalidadSeCreaConOpcionesIncorrectasTest() {
@@ -28,7 +28,7 @@ public class MultipleChoiceConPenalidadTest {
         opciones.add(incorrecta2);
         opciones.add(incorrecta3);
         Pregunta pregunta = new MultipleChoiceConPenalidad(opciones, "Pregunta Test");
-        assertEquals(pregunta.cantidadRespuestasCorrectas(), 0);
+        assertEquals(0, pregunta.cantidadRespuestasCorrectas());
     }
 
     @Test
@@ -45,7 +45,7 @@ public class MultipleChoiceConPenalidadTest {
         opciones.add(correcta1);
         opciones.add(correcta2);
         Pregunta pregunta = new MultipleChoiceConPenalidad(opciones, "Pregunta Test");
-        assertEquals(pregunta.cantidadRespuestasCorrectas(), 2);
+        assertEquals(2, pregunta.cantidadRespuestasCorrectas());
     }
 
     @Test
@@ -69,7 +69,7 @@ public class MultipleChoiceConPenalidadTest {
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(new Respuesta(opcionesMarcadas, jugador, new Multiplicador(1)));
         pregunta.evaluarRespuestas(respuestas);
-        assertEquals(jugador.getPuntaje(), 2);
+        assertEquals(2, jugador.getPuntaje());
     }
 
     @Test
@@ -93,7 +93,7 @@ public class MultipleChoiceConPenalidadTest {
         List<Respuesta> respuestas = new ArrayList<>();
         respuestas.add(new Respuesta(opcionesMarcadas, jugador, new Multiplicador(1)));
         pregunta.evaluarRespuestas(respuestas);
-        assertEquals(jugador.getPuntaje(), -2);
+        assertEquals(-2, jugador.getPuntaje());
     }
 }
 

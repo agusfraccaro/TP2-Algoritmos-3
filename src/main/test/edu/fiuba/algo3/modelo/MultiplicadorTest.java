@@ -11,6 +11,6 @@ public class MultiplicadorTest {
         Multiplicador mult = new Multiplicador(2);
         int producto = mult.multiplicar(69);
 
-        assertEquals(producto, 138);
+        assertEquals(138, producto);
     }
 }

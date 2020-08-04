@@ -9,7 +9,7 @@ public class CorrectaTest {
     public void correctaDevuelveUnPuntoTest(){
         Opcion correcta = new Correcta();
 
-        assertEquals(correcta.puntuar(), 1);
+        assertEquals(1, correcta.puntuar());
     }
 
     @Test
