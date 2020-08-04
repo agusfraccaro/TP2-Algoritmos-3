@@ -8,26 +8,18 @@ public class OrderedChoice extends Pregunta {
         super(opciones, texto);
     }
 
-    /*
     @Override
-    public void evaluarRespuestas(List<Respuesta> respuestas) {
-        for(Respuesta respuesta : respuestas) {
-            int puntos = 0;
-            List<Opcion> opcionesMarcadas = respuesta.getOpciones();
-            boolean estaEnOrden = true;
-            for(int i = 0; i < opcionesMarcadas.size(); i++){
-                if (!opcionesMarcadas.get(i).equalsTo(this.opciones.get(i))){estaEnOrden = false;};
-            }
-            if (estaEnOrden) {
-                puntos = 1;
-            }
-            respuesta.sumarPuntos(puntos);
+    public int puntuar(Respuesta respuesta) {
+        List<Opcion> opcionesMarcadas = respuesta.getOpciones();
+        for(int i = 0; i < opcionesMarcadas.size(); i++){
+            if (!opcionesMarcadas.get(i).equalsTo(this.opciones.get(i))) {return 0;};
         }
-    }*/
+        if (opcionesMarcadas.size() != this.opciones.size()) {return 0;}
+        return 1;
+    }
 
     @Override
-    public int puntuar(Respuesta respuesta) {}
-
-    @Override
-    public void activarExclusividad(int factorExclusividad) {}
+    public void activarExclusividad(int factorExclusividad) {
+        this.puntuador = new PuntuadorExclusivo(factorExclusividad);
+    }
 }

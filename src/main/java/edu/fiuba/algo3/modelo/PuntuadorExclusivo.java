@@ -14,7 +14,6 @@ public class PuntuadorExclusivo extends Puntuador {
     public void puntuar(List<Respuesta> respuestas, Pregunta pregunta) {
         corregirPreguntas(respuestas, pregunta);
         aplicarExclusividad(respuestas);
-        aplicarMultiplicadores(respuestas);
         aplicarPuntajes(respuestas);
     }
 

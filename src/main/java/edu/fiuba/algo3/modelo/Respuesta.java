@@ -6,13 +6,13 @@ import java.util.List;
 public class Respuesta {
     private List<Opcion> opcionesMarcadas;
     private Jugador jugador;
-    private int multiplicador;
+    private Multiplicador multiplicador;
     private int puntos = 0;
 
     public Respuesta(List<Opcion> opciones, Jugador jugadorActual) {
-        this(opciones, jugadorActual, 1);
+        this(opciones, jugadorActual, new Multiplicador(1));
     }
-    public Respuesta(List<Opcion> opciones, Jugador jugadorActual, int multiplicador) {
+    public Respuesta(List<Opcion> opciones, Jugador jugadorActual, Multiplicador multiplicador) {
         opcionesMarcadas = opciones;
         jugador = jugadorActual;
         this.multiplicador = multiplicador;
@@ -25,16 +25,18 @@ public class Respuesta {
     public Jugador getJugador() {return jugador; }
 
     public void aplicarMultiplicador() {
-        this.puntos *= this.multiplicador;
+        this.multiplicador.multiplicar(this.puntos);
     }
 
     public void aplicarExclusividad(int factor) {
         this.puntos *= factor;
     }
 
+    //Tal vez hay forma de unir aplicarMultiplicador y Exclusividad en 1 metodo
+    //public void multiplicarPuntos(int factor) { this.puntos *= factor; }
+
     public void sumarPuntos(int puntos) {
         this.puntos += puntos;
-        //jugador.sumarPuntos(puntos);
     }
 
     public void aplicarPuntos() {

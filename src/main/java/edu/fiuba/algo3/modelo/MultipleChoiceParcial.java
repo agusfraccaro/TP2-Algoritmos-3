@@ -7,19 +7,20 @@ public class MultipleChoiceParcial extends Pregunta {
         super(opciones, texto);
     }
 
-    /*
     @Override
-    public void evaluarRespuestas(List<Respuesta> respuestas) {
-        for(Respuesta respuesta: respuestas){
-            if(respuesta.todasLasOpcionesMarcadasSonCorrectas()){
-                respuesta.sumarPuntos(puntuador.puntuar(respuesta));
+    public int puntuar(Respuesta respuesta) {
+        int puntos = 0;
+        for (Opcion opcion : opciones) {
+            if (!opcion.esCorrecta()) {
+                return 0;
             }
+            puntos += opcion.puntuar();
         }
-    }*/
+        return puntos;
+    }
 
     @Override
-    public int puntuar(Respuesta respuesta) {}
-
-    @Override
-    public void activarExclusividad(int factorExclusividad) {}
+    public void activarExclusividad(int factorExclusividad) {
+        this.puntuador = new PuntuadorExclusivo(factorExclusividad);
+    }
 }
