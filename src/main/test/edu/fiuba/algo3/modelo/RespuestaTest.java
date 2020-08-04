@@ -42,6 +42,7 @@ public class RespuestaTest {
         Respuesta respuesta = new Respuesta(opciones, new Jugador("unJugador"), new Multiplicador(CANTIDAD_MULTIPLICAR));
 
         respuesta.sumarPuntos(6);
+        respuesta.aplicarPuntos();
 
         assertEquals(respuesta.getJugador().getPuntaje() , 6);
     }
