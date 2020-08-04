@@ -47,30 +47,6 @@ public class RespuestaTest {
     }
 
     @Test
-    public void respuestaMultiplicaX1PorDefaultTest(){
-        List<Opcion> opciones = new ArrayList<>();
-        opciones.add(new Correcta());
-        opciones.add(new SinPenalidad());
-        Respuesta respuesta = new Respuesta(opciones, new Jugador("Carlitos Mi Tio"));
-
-        int puntos = respuesta.aplicarMultiplicador(5);
-
-        assertEquals(puntos, 5);
-    }
-
-    @Test
-    public void respuestaMultilplicaX2CorrectamenteTest(){
-        List<Opcion> opciones = new ArrayList<Opcion>();
-        opciones.add(new Correcta());
-        opciones.add(new SinPenalidad());
-        Respuesta respuesta = new Respuesta(opciones, new Jugador("unJugador"), new Multiplicador(2));
-
-        int puntos = respuesta.aplicarMultiplicador(8);
-
-        assertEquals(puntos , 16);
-    }
-
-    @Test
     public void respuestaDevuelveTrueSiTodasLasOpcionesSonCorrectas(){
         List<Opcion> opciones = new ArrayList<>();
         opciones.add(new Correcta());

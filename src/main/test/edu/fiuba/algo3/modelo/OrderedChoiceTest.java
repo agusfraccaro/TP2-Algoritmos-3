@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OrderedChoiceTest {
 
-    @Test
+    /*@Test
     public void preguntaOrderedChoicePuntuaCorrectamenteSiJugadoresOrdenanBien(){
         OpcionA opcion1 = new OpcionA();
         OpcionA opcion2 = new OpcionA();
@@ -53,5 +53,5 @@ public class OrderedChoiceTest {
         orderedChoice.evaluarRespuestas(respuestas);
 
         assertEquals(jugador1.getPuntaje(), 0);
-    }
+    }*/
 }
