@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.List;
 
-//FIXME Pensar la logica
 public class GroupChoice extends Pregunta {
 
     public GroupChoice(List<Opcion> opciones, String texto) {
@@ -12,7 +11,10 @@ public class GroupChoice extends Pregunta {
 
     @Override
     public int puntuar(Respuesta respuesta) {
-        //List<Opcion> opcionesMarcadas = respuesta.getOpciones();
+
+        if((respuesta.getOpciones()).containsAll(this.opciones)){
+            return 1;
+        }
         return 0;
     }
 

@@ -9,13 +9,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MultipleChoiceClasicoTest {
     @Test
-    public void preguntaMultipleChoiceClasicoSeCreaConOpcionesCorrectasTest(){
-        List <Opcion> opciones = new ArrayList<>() {
-            {
-                add(new Correcta("A"));
-                add(new Correcta("B"));
-                add(new SinPenalidad("C"));
-            }
+    public void preguntaMultipleChoiceClásicoSeCreaConOpcionesCorrectasTest(){
+        Opcion correcta1 = new Opcion("opcion1", new Correcta());
+        Opcion correcta2 = new Opcion("opcion2", new Correcta());
+        Opcion incorrecta = new Opcion("opcion3", new SinPenalidad());
+
+        List <Opcion> opciones = new ArrayList<Opcion>() {
+            {add(correcta1); add(correcta2); add(incorrecta);};
         };
 
         Pregunta pregunta = new MultipleChoiceParcial(opciones, "una pregunta");
@@ -25,16 +25,12 @@ public class MultipleChoiceClasicoTest {
 
     @Test
     public void preguntaMultipleChoiceClasicoPuntuaAJugadoresCorrectamenteSiEligenOpcionesCorrectas(){
-        Opcion correcta1 = new Correcta("A");
-        Opcion correcta2 = new Correcta("B");
-        Opcion correcta3 = new Correcta("C");
-        List <Opcion> opciones = new ArrayList<>() {
-            {
-                add(correcta1);
-                add(correcta2);
-                add(correcta3);
-                add(new SinPenalidad("D"));
-            }
+        Opcion correcta1 = new Opcion("opcion1", new Correcta());
+        Opcion correcta2 = new Opcion("opcion2", new Correcta());
+        Opcion correcta3 = new Opcion("opcion3", new Correcta());
+
+        List <Opcion> opciones = new ArrayList<Opcion>() {
+            {add(correcta1); add(correcta2); add(correcta3); add(new Opcion("opcion4", new SinPenalidad()));}
         };
 
         Pregunta pregunta = new MultipleChoiceClasico(opciones, "una pregunta");
@@ -68,16 +64,12 @@ public class MultipleChoiceClasicoTest {
 
     @Test
     public void preguntaMultipleChoiceClasicoNoSumaNingunPuntoSiJugadoresNoEligenTodasLasOpcionesCorrectasTest(){
-        Opcion correcta1 = new Correcta("A");
-        Opcion correcta2 = new Correcta("B");
-        Opcion correcta3 = new Correcta("C");
-        List<Opcion> opciones = new ArrayList<>() {
-            {
-                add(correcta1);
-                add(correcta2);
-                add(correcta3);
-                add(new SinPenalidad("D"));
-            }
+        Opcion correcta1 = new Opcion("opcion1", new Correcta());
+        Opcion correcta2 = new Opcion("opcion2", new Correcta());
+        Opcion correcta3 = new Opcion("opcion3", new Correcta());
+
+        List <Opcion> opciones = new ArrayList<Opcion>() {
+            {add(correcta1); add(correcta2); add(correcta3); add(new Opcion("opcion4", new SinPenalidad()));}
         };
 
         Pregunta pregunta = new MultipleChoiceClasico(opciones, "una pregunta");
@@ -108,19 +100,14 @@ public class MultipleChoiceClasicoTest {
 
     @Test
     public void preguntaMultipleChoiceClasicoNoSumaPuntosSiEligenTodasLasOpcionesCorrectasYAlgunaIncorrectaTest() {
-        Opcion correcta1 = new Correcta("A");
-        Opcion correcta2 = new Correcta("B");
-        Opcion correcta3 = new Correcta("C");
-        Opcion incorrecta1 = new SinPenalidad("D");
-        Opcion incorrecta2 = new SinPenalidad("E");
-        List<Opcion> opciones = new ArrayList<>() {
-            {
-                add(correcta1);
-                add(correcta2);
-                add(correcta3);
-                add(incorrecta1);
-                add(incorrecta2);
-            }
+        Opcion correcta1 = new Opcion("opcion1", new Correcta());
+        Opcion correcta2 = new Opcion("opcion2", new Correcta());
+        Opcion correcta3 = new Opcion("opcion3", new Correcta());
+        Opcion incorrecta1 = new Opcion("opcion4", new SinPenalidad());
+        Opcion incorrecta2 = new Opcion("opcion5", new SinPenalidad());
+
+        List<Opcion> opciones = new ArrayList<Opcion>() {
+            {add(correcta1); add(correcta2); add(correcta3); add(incorrecta1); add(incorrecta2);}
         };
 
         Pregunta pregunta = new MultipleChoiceClasico(opciones, "una pregunta");

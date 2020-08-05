@@ -10,10 +10,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class RondaTest {
     @Test
     public void rondaEvaluaCorrectamenteRespuestasDeUnJugador(){
-        List <Opcion> opciones = new ArrayList<>();
-        Opcion correcta = new Correcta("A");
+
+        List <Opcion> opciones = new ArrayList<Opcion>();
+        Opcion correcta = new Opcion("opcion1", new Correcta());
         opciones.add(correcta);
-        opciones.add(new SinPenalidad("B"));
+        opciones.add(new Opcion("opcion1", new SinPenalidad()));
+
         Pregunta pregunta = new VerdaderoFalso(opciones,"una pregunta");
         List<Jugador> jugadores = new ArrayList<>();
         Jugador jugador = new Jugador("Cami");

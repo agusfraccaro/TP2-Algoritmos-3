@@ -9,49 +9,128 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OrderedChoiceTest {
 
-    /*@Test
-    public void preguntaOrderedChoicePuntuaCorrectamenteSiJugadoresOrdenanBien(){
-        OpcionA opcion1 = new OpcionA();
-        OpcionA opcion2 = new OpcionA();
-        OpcionA opcion3 = new OpcionA();
-        List<Opcion> opciones = new ArrayList<>(){
+    @Test
+    public void preguntaOrderedChoiceAsignaUnPuntoSiAmbosJugadoresOrdenanCorrectamenteLasOpcionesTest(){
+        Opcion opcion1 = new Opcion("opcion1");
+        Opcion opcion2 = new Opcion("opcion2");
+        Opcion opcion3 = new Opcion("opcion3");
+
+        List <Opcion> opciones = new ArrayList<Opcion>(){
             {add(opcion1); add(opcion2); add(opcion3);};
         };
 
-        Pregunta orderedChoice = new OrderedChoice(opciones, "De que color es el caballo blanco de San Martin");
+        Pregunta pregunta = new OrderedChoice(opciones, "una pregunta");
 
-        Jugador jugador1 = new Jugador("Camila");
-        List<Opcion> opcionesMarcadas1 = new ArrayList<Opcion>() {
+        Jugador jugador1 = new Jugador("Agus");
+        Jugador jugador2 = new Jugador("Cami");
+        List <Opcion> opcionesMarcadas1 = new ArrayList<Opcion>(){
+            {add(opcion1); add(opcion2); add(opcion3);}
+        };
+        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>(){
             {add(opcion1); add(opcion2); add(opcion3);}
         };
 
-        List<Respuesta> respuestas = new ArrayList<>();
+        List <Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(new Respuesta(opcionesMarcadas1, jugador1));
-        orderedChoice.evaluarRespuestas(respuestas);
+        respuestas.add(new Respuesta(opcionesMarcadas2, jugador2));
 
-        assertEquals(jugador1.getPuntaje(), 1);
+        pregunta.evaluarRespuestas(respuestas);
+
+        assertEquals(1, jugador1.getPuntaje());
+        assertEquals(1, jugador2.getPuntaje());
     }
 
     @Test
-    public void preguntaOrderedChoicePuntuaCorrectamenteSiJugadoresOrdenanMal(){
-        OpcionA opcion1 = new OpcionA();
-        OpcionA opcion2 = new OpcionA();
-        OpcionA opcion3 = new OpcionA();
-        List<Opcion> opciones = new ArrayList<>(){
+    public void preguntaOrderedChoiceNoAsignaPuntosAlJugadorQueNoOrdeneCorrectamenteTest(){
+        Opcion opcion1 = new Opcion("opcion1");
+        Opcion opcion2 = new Opcion("opcion2");
+        Opcion opcion3 = new Opcion("opcion3");
+
+        List <Opcion> opciones = new ArrayList<Opcion>(){
             {add(opcion1); add(opcion2); add(opcion3);};
         };
 
-        Pregunta orderedChoice = new OrderedChoice(opciones, "De que color es el caballo negro de San Martin");
+        Pregunta pregunta = new OrderedChoice(opciones, "una pregunta");
 
-        Jugador jugador1 = new Jugador("AgusF");
-        List<Opcion> opcionesMarcadas1 = new ArrayList<Opcion>() {
-            {add(opcion1); add(opcion3); add(opcion2);}
+        Jugador jugador1 = new Jugador("Agus");
+        Jugador jugador2 = new Jugador("Cami");
+        List <Opcion> opcionesMarcadas1 = new ArrayList<Opcion>(){
+            {add(opcion3); add(opcion1); add(opcion2);}
+        };
+        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>(){
+            {add(opcion1); add(opcion2); add(opcion3);}
         };
 
-        List<Respuesta> respuestas = new ArrayList<>();
+        List <Respuesta> respuestas = new ArrayList<Respuesta>();
         respuestas.add(new Respuesta(opcionesMarcadas1, jugador1));
-        orderedChoice.evaluarRespuestas(respuestas);
+        respuestas.add(new Respuesta(opcionesMarcadas2, jugador2));
 
-        assertEquals(jugador1.getPuntaje(), 0);
-    }*/
+        pregunta.evaluarRespuestas(respuestas);
+
+        assertEquals(0, jugador1.getPuntaje());
+        assertEquals(1, jugador2.getPuntaje());
+    }
+
+    @Test
+    public void preguntaOrderedChoiceNoAsignaPuntosANingunJugadorSiOrdenanMalLasOpcionesTest(){
+        Opcion opcion1 = new Opcion("opcion1");
+        Opcion opcion2 = new Opcion("opcion2");
+        Opcion opcion3 = new Opcion("opcion3");
+
+        List <Opcion> opciones = new ArrayList<Opcion>(){
+            {add(opcion1); add(opcion2); add(opcion3);};
+        };
+
+        Pregunta pregunta = new OrderedChoice(opciones, "una pregunta");
+
+        Jugador jugador1 = new Jugador("Agus");
+        Jugador jugador2 = new Jugador("Cami");
+        List <Opcion> opcionesMarcadas1 = new ArrayList<Opcion>(){
+            {add(opcion3); add(opcion1); add(opcion2);}
+        };
+        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>(){
+            {add(opcion2); add(opcion3); add(opcion1);}
+        };
+
+        List <Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(new Respuesta(opcionesMarcadas1, jugador1));
+        respuestas.add(new Respuesta(opcionesMarcadas2, jugador2));
+
+        pregunta.evaluarRespuestas(respuestas);
+
+        assertEquals(0, jugador1.getPuntaje());
+        assertEquals(0, jugador2.getPuntaje());
+    }
+
+    @Test
+    public void preguntaOrderedChoiceNoAsignaPuntosAlJugadorQueDejaOpcionesSinOrdenarTest(){
+        Opcion opcion1 = new Opcion("opcion1");
+        Opcion opcion2 = new Opcion("opcion2");
+        Opcion opcion3 = new Opcion("opcion3");
+
+        List <Opcion> opciones = new ArrayList<Opcion>(){
+            {add(opcion1); add(opcion2); add(opcion3);};
+        };
+
+        Pregunta pregunta = new OrderedChoice(opciones, "una pregunta");
+
+        Jugador jugador1 = new Jugador("Agus");
+        Jugador jugador2 = new Jugador("Cami");
+        List <Opcion> opcionesMarcadas1 = new ArrayList<Opcion>(){
+            {add(opcion1); add(opcion2);}
+        };
+        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>(){
+            {add(opcion3); add(opcion2);}
+        };
+
+        List <Respuesta> respuestas = new ArrayList<Respuesta>();
+        respuestas.add(new Respuesta(opcionesMarcadas1, jugador1));
+        respuestas.add(new Respuesta(opcionesMarcadas2, jugador2));
+
+        pregunta.evaluarRespuestas(respuestas);
+
+        assertEquals(0, jugador1.getPuntaje());
+        assertEquals(0, jugador2.getPuntaje());
+    }
+
 }

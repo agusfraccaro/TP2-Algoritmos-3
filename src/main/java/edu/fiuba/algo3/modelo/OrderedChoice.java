@@ -11,12 +11,10 @@ public class OrderedChoice extends Pregunta {
 
     @Override
     public int puntuar(Respuesta respuesta) {
-        List<Opcion> opcionesMarcadas = respuesta.getOpciones();
-        for(int i = 0; i < opcionesMarcadas.size(); i++){
-            if (!opcionesMarcadas.get(i).equalsTo(this.opciones.get(i))) {return 0;};
+        if(opciones.equals(respuesta.getOpciones())){
+            return 1;
         }
-        if (opcionesMarcadas.size() != this.opciones.size()) {return 0;}
-        return 1;
+        return 0;
     }
 
     @Override
