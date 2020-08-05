@@ -6,8 +6,10 @@ import java.util.List;
 
 public class Ronda {
     private Jugador jugadorActual;
-    private List<Respuesta> respuestas;
+    private List<Respuesta> respuestas = new ArrayList<>();
     private List<Jugador> jugadores;
+    private int[] extras = new int[2];
+    private int index_counter = 0;
     private Pregunta pregunta;
     private Iterator<Jugador> iterador;
 
@@ -16,10 +18,9 @@ public class Ronda {
         this.pregunta = pregunta;
         iterador = jugadores.iterator();
         jugadorActual = iterador.next();
-        respuestas = new ArrayList<Respuesta>();
     }
 
-    private void siguienteJugador(){
+    public void siguienteJugador(){
         if(iterador.hasNext()){
             jugadorActual = iterador.next();
         }
@@ -29,9 +30,11 @@ public class Ronda {
         pregunta.evaluarRespuestas(respuestas);
     }
 
-    public void enviarRespuesta(List<Opcion> opciones,Multiplicador multiplicador) {
-        Respuesta respuesta = new Respuesta(opciones,jugadorActual,multiplicador);
+    public void enviarRespuesta(List<Opcion> opciones, int extra) {
+        Respuesta respuesta = new Respuesta(opciones,jugadorActual);
         respuestas.add(respuesta);
+        extras[index_counter] = extra;
+        index_counter++;
     }
 
     public Jugador getJugadorActual(){

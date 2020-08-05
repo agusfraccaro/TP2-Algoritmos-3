@@ -7,14 +7,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CorrectaTest {
     @Test
     public void correctaDevuelveUnPuntoTest(){
-        Opcion correcta = new Correcta();
+        Opcion correcta = new Correcta("A");
 
         assertEquals(1, correcta.puntuar());
     }
 
     @Test
     public void correctaDevuelveTrueAlPreguntarleSiEsCorrecta(){
-        Opcion correcta = new Correcta();
+        Opcion correcta = new Correcta("A");
         boolean esCorrecta = correcta.esCorrecta();
         assertTrue(esCorrecta);
     }

@@ -10,7 +10,6 @@ public abstract class Pregunta {
     public Pregunta(List<Opcion> opciones, String texto) {
         this.texto = texto;
         this.opciones = opciones;
-        puntuador = new PuntuadorClasico();
     }
 
     public void evaluarRespuestas(List<Respuesta> respuestas) {
@@ -29,5 +28,5 @@ public abstract class Pregunta {
         return cantidad;
     }
 
-    public abstract void activarExclusividad(int factorExclusividad) throws PreguntaSinExclusividadException; //TODO Delegar a cada subclase si tira error o delega al puntuador
+    public abstract void activarBonus(int[] numeros);
 }

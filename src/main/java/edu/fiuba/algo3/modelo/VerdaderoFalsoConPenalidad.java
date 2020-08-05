@@ -14,7 +14,7 @@ public class VerdaderoFalsoConPenalidad extends Pregunta {
     }
 
     @Override
-    public void activarExclusividad(int factorExclusividad) throws PreguntaSinExclusividadException {
-        throw new PreguntaSinExclusividadException();
+    public void activarBonus(int[] numeros) {
+        this.puntuador = new Puntuador(new Multiplicador(numeros));
     }
 }

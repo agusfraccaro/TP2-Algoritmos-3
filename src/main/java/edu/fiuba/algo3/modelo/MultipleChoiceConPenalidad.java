@@ -6,6 +6,7 @@ public class MultipleChoiceConPenalidad extends Pregunta{
 
     public MultipleChoiceConPenalidad(List<Opcion> opciones, String texto) {
         super(opciones, texto);
+        this.puntuador = new Puntuador(new Multiplicador(new int[]{1,1}));
     }
 
     @Override
@@ -18,7 +19,7 @@ public class MultipleChoiceConPenalidad extends Pregunta{
     }
 
     @Override
-    public void activarExclusividad(int factorExclusividad) throws PreguntaSinExclusividadException {
-        throw new PreguntaSinExclusividadException();
+    public void activarBonus(int[] numeros) {
+        this.puntuador = new Puntuador(new Multiplicador(numeros));
     }
 }

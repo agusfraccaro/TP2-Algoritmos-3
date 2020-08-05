@@ -2,32 +2,30 @@ package edu.fiuba.algo3.modelo;
 
 import org.junit.jupiter.api.Test;
 
-import java.nio.charset.CoderResult;
 import java.util.List;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RespuestaTest {
-    static int CANTIDAD_MULTIPLICAR = 1;
 
     @Test
     public void respuestaSeCreaConDosOpcionesTest(){
-        List<Opcion> opciones = new ArrayList<Opcion>();
-        opciones.add(new Correcta());
-        opciones.add(new SinPenalidad());
+        List<Opcion> opciones = new ArrayList<>();
+        opciones.add(new Correcta("A"));
+        opciones.add(new SinPenalidad("B"));
 
-        Respuesta respuesta = new Respuesta(opciones, new Jugador("unJugador"), new Multiplicador(CANTIDAD_MULTIPLICAR));
+        Respuesta respuesta = new Respuesta(opciones, new Jugador("unJugador"));
 
         assertEquals((respuesta.getOpciones()).size(), 2);
     }
     @Test
     public void respuestaSeCreaConUnJugadorTest() {
-        List<Opcion> opciones = new ArrayList<Opcion>();
-        opciones.add(new Correcta());
-        opciones.add(new SinPenalidad());
+        List<Opcion> opciones = new ArrayList<>();
+        opciones.add(new Correcta("A"));
+        opciones.add(new SinPenalidad("B"));
 
-        Respuesta respuesta = new Respuesta(opciones, new Jugador("unJugador"), new Multiplicador(CANTIDAD_MULTIPLICAR));
+        Respuesta respuesta = new Respuesta(opciones, new Jugador("unJugador"));
 
 
         assertEquals(respuesta.getJugador().getNombre() , "unJugador");
@@ -35,11 +33,11 @@ public class RespuestaTest {
 
     @Test
     public void respuestaSumaPuntosCorrectamenteTest(){
-        List<Opcion> opciones = new ArrayList<Opcion>();
-        opciones.add(new Correcta());
-        opciones.add(new SinPenalidad());
+        List<Opcion> opciones = new ArrayList<>();
+        opciones.add(new Correcta("A"));
+        opciones.add(new SinPenalidad("B"));
 
-        Respuesta respuesta = new Respuesta(opciones, new Jugador("unJugador"), new Multiplicador(CANTIDAD_MULTIPLICAR));
+        Respuesta respuesta = new Respuesta(opciones, new Jugador("unJugador"));
 
         respuesta.sumarPuntos(6);
         respuesta.aplicarPuntos();
@@ -50,9 +48,9 @@ public class RespuestaTest {
     @Test
     public void respuestaDevuelveTrueSiTodasLasOpcionesSonCorrectas(){
         List<Opcion> opciones = new ArrayList<>();
-        opciones.add(new Correcta());
-        opciones.add(new Correcta());
-        opciones.add(new Correcta());
+        opciones.add(new Correcta("A"));
+        opciones.add(new Correcta("B"));
+        opciones.add(new Correcta("C"));
         Respuesta respuesta = new Respuesta(opciones, new Jugador("Batman"));
 
         assertTrue(respuesta.todasLasOpcionesMarcadasSonCorrectas());
@@ -61,9 +59,9 @@ public class RespuestaTest {
     @Test
     public void respuestaDevuelveFalseSiNingunaOpcionEsCorrecta(){
         List<Opcion> opciones = new ArrayList<>();
-        opciones.add(new SinPenalidad());
-        opciones.add(new ConPenalidad());
-        opciones.add(new ConPenalidad());
+        opciones.add(new SinPenalidad("A"));
+        opciones.add(new ConPenalidad("B"));
+        opciones.add(new ConPenalidad("C"));
         Respuesta respuesta = new Respuesta(opciones, new Jugador("Donald Trump"));
 
         assertFalse(respuesta.todasLasOpcionesMarcadasSonCorrectas());
@@ -72,9 +70,9 @@ public class RespuestaTest {
     @Test
     public void respuestaDevuelveFalseSiAlgunaOpcionEsIncorrecta(){
         List<Opcion> opciones = new ArrayList<>();
-        opciones.add(new Correcta());
-        opciones.add(new SinPenalidad());
-        opciones.add(new ConPenalidad());
+        opciones.add(new Correcta("A"));
+        opciones.add(new SinPenalidad("B"));
+        opciones.add(new ConPenalidad("C"));
         Respuesta respuesta = new Respuesta(opciones, new Jugador("Ricardo Fort"));
 
         assertFalse(respuesta.todasLasOpcionesMarcadasSonCorrectas());

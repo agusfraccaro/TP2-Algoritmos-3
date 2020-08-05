@@ -5,7 +5,10 @@ public abstract class Opcion {
     abstract int puntuar();
     abstract boolean esCorrecta();
 
-    //TODO Agregar constructor con texto.
+    public Opcion(String texto) {
+        this.texto = texto;
+    }
+
     public boolean equalsTo(Opcion opcion){
         return this.getTexto().equals(opcion.getTexto());
     }
@@ -13,5 +16,4 @@ public abstract class Opcion {
     public String getTexto(){
         return this.texto;
     }
-
 }

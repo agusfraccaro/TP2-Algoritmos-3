@@ -24,8 +24,8 @@ public class Kahoot {
         jugadores.add(jugador);
     }
 
-    public void enviarRespuesta(List<Opcion> opciones,Multiplicador multiplicador) {
-        ronda.enviarRespuesta(opciones,multiplicador);
+    public void enviarRespuesta(List<Opcion> opciones, int extra) {
+        ronda.enviarRespuesta(opciones, extra);
     }
 
 }
