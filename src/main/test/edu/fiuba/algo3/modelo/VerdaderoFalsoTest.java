@@ -63,31 +63,6 @@ public class VerdaderoFalsoTest {
         assertEquals(0, jugador1.getPuntaje());
         assertEquals(0, jugador2.getPuntaje());
     }
-
-    @Test
-    public void preguntaVerdaderoFalsoConPenalidadRestaPuntosSiSeEligeRespuestaIncorrectaTest(){
-        Opcion correcta = new Correcta();
-        Opcion incorrecta = new ConPenalidad();
-        List <Opcion> opciones = new ArrayList<Opcion>(){
-            {add(correcta); add(incorrecta);}
-        };
-        Pregunta pregunta = new VerdaderoFalso(opciones, "una pregunta");
-        Jugador jugador1 = new Jugador("Cami");
-        Jugador jugador2 = new Jugador("Kevin");
-        List <Opcion> opcionesMarcadas1 = new ArrayList<Opcion>();
-        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>();
-        opcionesMarcadas1.add(incorrecta);
-        opcionesMarcadas2.add(incorrecta);
-        List <Respuesta> respuestas = new ArrayList<Respuesta>();
-        respuestas.add(new Respuesta(opcionesMarcadas1, jugador1, new Multiplicador(1)));
-        respuestas.add(new Respuesta(opcionesMarcadas2, jugador2, new Multiplicador(1)));
-
-        pregunta.evaluarRespuestas(respuestas);
-
-        assertEquals(-1, jugador1.getPuntaje());
-        assertEquals(-1, jugador2.getPuntaje());
-
-    }
 }
 
 
