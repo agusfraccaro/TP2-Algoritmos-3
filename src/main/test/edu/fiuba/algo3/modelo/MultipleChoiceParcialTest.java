@@ -11,14 +11,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MultipleChoiceParcialTest {
     @Test
     public void preguntaMultipleChoiceParcialSeCreaConOpcionesCorrectasTest(){
-        List <Opcion> opciones = new ArrayList<Opcion>();
-        Opcion correcta1 = new Correcta();
-        Opcion correcta2 = new Correcta();
-        Opcion correcta3 = new Correcta();
-        opciones.add(correcta1);
-        opciones.add(correcta2);
-        opciones.add(correcta3);
-        opciones.add(new SinPenalidad());
+        Opcion correcta1 = new Opcion("opcion1", new Correcta());
+        Opcion correcta2 = new Opcion("opcion2", new Correcta());
+        Opcion correcta3 = new Opcion("opcion3", new Correcta());
+        List <Opcion> opciones = new ArrayList<Opcion>(){
+            {add(correcta1); add(correcta2); add(correcta3); add(new Opcion("opcion4", new SinPenalidad()));};
+        };
         Pregunta pregunta = new MultipleChoiceParcial(opciones, "una pregunta");
 
         assertEquals(3, pregunta.cantidadRespuestasCorrectas());
@@ -26,24 +24,22 @@ public class MultipleChoiceParcialTest {
 
     @Test
     public void preguntaMultipleChoiceParcialPuntuaAJugadoresCorrectamenteSiNingunoDeLosJugadoresEligeOpcionIncorrecta(){
-        List <Opcion> opciones = new ArrayList<Opcion>();
-        Opcion correcta1 = new Correcta();
-        Opcion correcta2 = new Correcta();
-        Opcion correcta3 = new Correcta();
-        Opcion incorrecta = new SinPenalidad();
-        opciones.add(correcta1);
-        opciones.add(correcta2);
-        opciones.add(correcta3);
-        opciones.add(incorrecta);
+        Opcion correcta1 = new Opcion("opcion1", new Correcta());
+        Opcion correcta2 = new Opcion("opcion2", new Correcta());
+        Opcion correcta3 = new Opcion("opcion3", new Correcta());
+        Opcion incorrecta = new Opcion("opcion4", new SinPenalidad());
+        List <Opcion> opciones = new ArrayList<Opcion>(){
+            {add(correcta1); add(correcta2); add(correcta3); add(incorrecta);};
+        };
 
         Pregunta pregunta = new MultipleChoiceParcial(opciones, "una pregunta");
 
         Jugador jugador1 = new Jugador("Agus");
         Jugador jugador2 = new Jugador("Santi");
         List <Opcion> opcionesMarcadas1 = new ArrayList<Opcion>();
-        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>();
         opcionesMarcadas1.add(correcta1);
         opcionesMarcadas1.add(correcta2);
+        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>();
         opcionesMarcadas2.add(correcta3);
 
         List <Respuesta> respuestas = new ArrayList<Respuesta>();
@@ -58,22 +54,21 @@ public class MultipleChoiceParcialTest {
 
     @Test
     public void preguntaMultipleChoiceParcialPuntuaAJugadoresCorrectamenteSiAmbosEligenAlMenosUnaOpcionIncorrecta(){
-        List <Opcion> opciones = new ArrayList<Opcion>();
-        Opcion correcta1 = new Correcta();
-        Opcion correcta2 = new Correcta();
-        Opcion incorrecta = new SinPenalidad();
-        opciones.add(correcta1);
-        opciones.add(correcta2);
-        opciones.add(incorrecta);
+        Opcion correcta1 = new Opcion("opcion1", new Correcta());
+        Opcion correcta2 = new Opcion("opcion2", new Correcta());
+        Opcion incorrecta = new Opcion("opcion4", new SinPenalidad());
+        List <Opcion> opciones = new ArrayList<Opcion>(){
+            {add(correcta1); add(correcta2); add(incorrecta);};
+        };
 
         Pregunta pregunta = new MultipleChoiceParcial(opciones, "una pregunta");
 
         Jugador jugador1 = new Jugador("Agus");
         Jugador jugador2 = new Jugador("Santi");
         List <Opcion> opcionesMarcadas1 = new ArrayList<Opcion>();
-        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>();
         opcionesMarcadas1.add(correcta1);
         opcionesMarcadas1.add(incorrecta);
+        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>();
         opcionesMarcadas2.add(incorrecta);
         opcionesMarcadas2.add(correcta2);
         opcionesMarcadas2.add(correcta1);

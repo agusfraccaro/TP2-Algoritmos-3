@@ -10,12 +10,14 @@ public class GroupChoice extends Pregunta {
 
     @Override
     public int puntuar(Respuesta respuesta) {
-        if(this.opciones.containsAll(respuesta.getOpciones())){
+        if((respuesta.getOpciones()).containsAll(this.opciones)){
             return 1;
         }
         return 0;
     }
 
-//    @Override
-//    public void activarExclusividad(int factorExclusividad) {}
+    @Override
+    public void activarExclusividad(int factorExclusividad) {
+        this.puntuador = new PuntuadorExclusivo(factorExclusividad);
+    }
 }

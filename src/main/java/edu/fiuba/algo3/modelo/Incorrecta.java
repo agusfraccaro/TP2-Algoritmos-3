@@ -2,10 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 public abstract class Incorrecta implements EstadoOpcion {
     @Override
-    public int puntuar() {
-        return 0;
-    }
-
+    public abstract int puntuar();
     public boolean esCorrecta(){
         return false;
     }

@@ -14,8 +14,8 @@ public class RespuestaTest {
     @Test
     public void respuestaSeCreaConDosOpcionesTest(){
         List<Opcion> opciones = new ArrayList<Opcion>();
-        opciones.add(new Correcta());
-        opciones.add(new SinPenalidad());
+        opciones.add(new Opcion("opcion1", new Correcta()));
+        opciones.add(new Opcion("opcion2", new SinPenalidad()));
 
         Respuesta respuesta = new Respuesta(opciones, new Jugador("unJugador"), new Multiplicador(CANTIDAD_MULTIPLICAR));
 
@@ -24,8 +24,8 @@ public class RespuestaTest {
     @Test
     public void respuestaSeCreaConUnJugadorTest() {
         List<Opcion> opciones = new ArrayList<Opcion>();
-        opciones.add(new Correcta());
-        opciones.add(new SinPenalidad());
+        opciones.add(new Opcion("opcion1", new Correcta()));
+        opciones.add(new Opcion("opcion2", new SinPenalidad()));
 
         Respuesta respuesta = new Respuesta(opciones, new Jugador("unJugador"), new Multiplicador(CANTIDAD_MULTIPLICAR));
 
@@ -36,8 +36,8 @@ public class RespuestaTest {
     @Test
     public void respuestaSumaPuntosCorrectamenteTest(){
         List<Opcion> opciones = new ArrayList<Opcion>();
-        opciones.add(new Correcta());
-        opciones.add(new SinPenalidad());
+        opciones.add(new Opcion("opcion1", new Correcta()));
+        opciones.add(new Opcion("opcion2", new SinPenalidad()));
 
         Respuesta respuesta = new Respuesta(opciones, new Jugador("unJugador"), new Multiplicador(CANTIDAD_MULTIPLICAR));
 
@@ -50,9 +50,9 @@ public class RespuestaTest {
     @Test
     public void respuestaDevuelveTrueSiTodasLasOpcionesSonCorrectas(){
         List<Opcion> opciones = new ArrayList<>();
-        opciones.add(new Correcta());
-        opciones.add(new Correcta());
-        opciones.add(new Correcta());
+        opciones.add(new Opcion("opcion1", new Correcta()));
+        opciones.add(new Opcion("opcion2", new Correcta()));
+        opciones.add(new Opcion("opcion3", new Correcta()));
         Respuesta respuesta = new Respuesta(opciones, new Jugador("Batman"));
 
         assertTrue(respuesta.todasLasOpcionesMarcadasSonCorrectas());
@@ -61,9 +61,9 @@ public class RespuestaTest {
     @Test
     public void respuestaDevuelveFalseSiNingunaOpcionEsCorrecta(){
         List<Opcion> opciones = new ArrayList<>();
-        opciones.add(new SinPenalidad());
-        opciones.add(new ConPenalidad());
-        opciones.add(new ConPenalidad());
+        opciones.add(new Opcion("opcion1", new SinPenalidad()));
+        opciones.add(new Opcion("opcion2", new ConPenalidad()));
+        opciones.add(new Opcion("opcion3", new ConPenalidad()));
         Respuesta respuesta = new Respuesta(opciones, new Jugador("Donald Trump"));
 
         assertFalse(respuesta.todasLasOpcionesMarcadasSonCorrectas());
@@ -72,9 +72,9 @@ public class RespuestaTest {
     @Test
     public void respuestaDevuelveFalseSiAlgunaOpcionEsIncorrecta(){
         List<Opcion> opciones = new ArrayList<>();
-        opciones.add(new Correcta());
-        opciones.add(new SinPenalidad());
-        opciones.add(new ConPenalidad());
+        opciones.add(new Opcion("opcion1", new Correcta()));
+        opciones.add(new Opcion("opcion2", new SinPenalidad()));
+        opciones.add(new Opcion("opcion3", new ConPenalidad()));
         Respuesta respuesta = new Respuesta(opciones, new Jugador("Ricardo Fort"));
 
         assertFalse(respuesta.todasLasOpcionesMarcadasSonCorrectas());

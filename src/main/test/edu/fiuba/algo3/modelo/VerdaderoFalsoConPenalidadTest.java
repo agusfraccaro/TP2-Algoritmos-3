@@ -8,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class VerdaderoFalsoConPenalidadTest {
     @Test
     public void preguntaVerdaderoFalsoConPenalidadSumaPuntosAAmbosJugadoresQueEligeRespuestaCorrectaTest(){
-        Opcion correcta = new Correcta();
-        Opcion incorrecta = new ConPenalidad();
+        Opcion correcta = new Opcion("opcion1", new Correcta());
+        Opcion incorrecta = new Opcion("opcion2", new ConPenalidad());
         List <Opcion> opciones = new ArrayList<Opcion>(){
             {add(correcta); add(incorrecta);}
         };
@@ -33,8 +33,8 @@ public class VerdaderoFalsoConPenalidadTest {
 
     @Test
     public void preguntaVerdaderoFalsoConPenalidadRestaPuntosAJugador1QueEligeRespuestaIncorrectaYSumaPuntoAJugador2QueEligeRespuestaCorrectaTest(){
-        Opcion correcta = new Correcta();
-        Opcion incorrecta = new ConPenalidad();
+        Opcion correcta = new Opcion("opcion1", new Correcta());
+        Opcion incorrecta = new Opcion("opcion2", new ConPenalidad());
         List <Opcion> opciones = new ArrayList<Opcion>(){
             {add(correcta); add(incorrecta);}
         };
@@ -58,8 +58,8 @@ public class VerdaderoFalsoConPenalidadTest {
 
     @Test
     public void preguntaVerdaderoFalsoConPenalidadRestaPuntosSiSeEligeRespuestaIncorrectaTest(){
-        Opcion correcta = new Correcta();
-        Opcion incorrecta = new ConPenalidad();
+        Opcion correcta = new Opcion("opcion1", new Correcta());
+        Opcion incorrecta = new Opcion("opcion2", new ConPenalidad());
         List <Opcion> opciones = new ArrayList<Opcion>(){
             {add(correcta); add(incorrecta);}
         };

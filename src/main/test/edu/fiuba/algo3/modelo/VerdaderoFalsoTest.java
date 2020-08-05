@@ -11,8 +11,8 @@ public class VerdaderoFalsoTest {
     @Test
     public void preguntaVerdaderoFalsoSeCreaConRespuestaCorrectaTest(){
         ArrayList <Opcion> opciones = new ArrayList<Opcion>();
-        opciones.add(new Correcta());
-        opciones.add(new SinPenalidad());
+        opciones.add(new Opcion("opcion1", new Correcta()));
+        opciones.add(new Opcion("opcion2", new SinPenalidad()));
         Pregunta pregunta = new VerdaderoFalso(opciones,"una pregunta");
 
         assertEquals(1, pregunta.cantidadRespuestasCorrectas());
@@ -21,9 +21,9 @@ public class VerdaderoFalsoTest {
     @Test
     public void preguntaVerdaderoFalsoAsignaUnPuntoSiEligenRespuestaCorrectaTest(){
         List <Opcion> opciones = new ArrayList<Opcion>();
-        Opcion correcta = new Correcta();
+        Opcion correcta = new Opcion("opcion1", new Correcta());
         opciones.add(correcta);
-        opciones.add(new SinPenalidad());
+        opciones.add(new Opcion("opcion2", new SinPenalidad()));
         Pregunta pregunta = new VerdaderoFalso(opciones,"una pregunta");
         Jugador jugador1 = new Jugador("Cami");
         Jugador jugador2 = new Jugador("Kevin");
@@ -44,9 +44,9 @@ public class VerdaderoFalsoTest {
     @Test
     public void preguntaVerdaderoFalsoNoAsignaPuntosSiEligenRespuestaIncorrectaTest(){
         List <Opcion> opciones = new ArrayList<Opcion>();
-        Opcion incorrecta = new SinPenalidad();
+        Opcion incorrecta = new Opcion("opcion1", new SinPenalidad());
         opciones.add(incorrecta);
-        opciones.add(new Correcta());
+        opciones.add(new Opcion("opcion2", new Correcta()));
         Pregunta pregunta = new VerdaderoFalso(opciones,"una pregunta");
         Jugador jugador1 = new Jugador("Cami");
         Jugador jugador2 = new Jugador("Kevin");
