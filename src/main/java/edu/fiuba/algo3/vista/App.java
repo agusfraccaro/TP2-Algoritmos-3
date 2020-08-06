@@ -52,6 +52,19 @@ public class App extends Application {
         grid.add(lblPregunta, 0, 4);
 
 
+        RadioButton rbOpcion1 = new RadioButton("opcion 1");
+        RadioButton rbOpcion2 = new RadioButton("opcion 2");
+
+        ToggleGroup group = new ToggleGroup();
+        rbOpcion1.setToggleGroup(group);
+        rbOpcion2.setToggleGroup(group);
+
+        grid.add(rbOpcion1, 0, 5);
+        grid.add(rbOpcion2, 1, 5);
+
+        Button btnEvaluar = new Button("Evaluar respuestas");
+        grid.add(btnEvaluar, 1, 6);
+
         return new Scene(grid, 350, 250);
     }
 
