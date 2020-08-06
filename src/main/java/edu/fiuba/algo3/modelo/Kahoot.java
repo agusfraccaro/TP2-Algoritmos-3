@@ -30,6 +30,10 @@ public class Kahoot {
         iteradorPreguntas = preguntas.iterator();
     }
 
+    public void iniciarRonda() {
+        ronda = new Ronda (jugadores, preguntaActual);
+    }
+
     public void registrarPregunta(Pregunta pregunta) {
         preguntas.add(pregunta);
     }
@@ -38,6 +42,10 @@ public class Kahoot {
     public void registrarJugador(String nombre) {
         Jugador jugador = new Jugador(nombre);
         this.jugadores.add(jugador);
+    }
+
+    public String getJugadorActual() {
+        return ronda.getJugadorActual().getNombre();
     }
 
     public List<Jugador> getJugadores() {

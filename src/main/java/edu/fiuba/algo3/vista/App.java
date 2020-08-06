@@ -48,11 +48,8 @@ public class App extends Application {
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 2, 1);
 
-        Label lblJugador1 = new Label("Nombre jugador 1: " + kahoot.getJugadores().get(0).getNombre());
-        grid.add(lblJugador1, 0, 2);
-
-        Label lblJugador2 = new Label("Nombre jugador 2: " + kahoot.getJugadores().get(1).getNombre());
-        grid.add(lblJugador2, 0, 3);
+        Label lblJugadorActual = new Label("Turno de: " + kahoot.getJugadorActual());
+        grid.add(lblJugadorActual, 0, 2);
 
         Label lblPregunta = new Label( kahoot.getSiguientePregunta().getTexto());
         grid.add(lblPregunta, 0, 4);
@@ -67,6 +64,9 @@ public class App extends Application {
 
         grid.add(rbOpcion1, 0, 5);
         grid.add(rbOpcion2, 1, 5);
+
+        Button btnResponder = new Button("Responder");
+        btnResponder.setOnAction(eventoEnviarRespuesta(stage));
 
         Button btnEvaluar = new Button("Evaluar respuestas");
         btnEvaluar.setOnAction(eventoEvaluarRespuesta(stage));
@@ -108,6 +108,13 @@ public class App extends Application {
         return new Scene(grid, 350, 250);
     }
 
+    private EventHandler<ActionEvent>  eventoEnviarRespuesta(Stage stage) {
+        return e -> {
+            //aca deberia avanzar al proximo jugador
+            stage.setScene(getGame(stage));
+        };
+    }
+
     private EventHandler<ActionEvent>  eventoEvaluarRespuesta(Stage stage) {
         return e -> {
             //Aca se evalua la respuesta del jugador
@@ -132,6 +139,7 @@ public class App extends Application {
             if (jugador1.getText().length() > 0 && jugador2.getText().length() > 0){
                 registrarJugadores(jugador1,jugador2);
                 registrarPreguntas();
+                kahoot.iniciarRonda();
                 stage.setScene(getGame(stage));
             }
             else {
