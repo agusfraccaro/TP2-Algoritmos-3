@@ -6,6 +6,7 @@ public class VerdaderoFalsoConPenalidad extends Pregunta {
 
     public VerdaderoFalsoConPenalidad(List<Opcion> opciones, String texto) {
         super(opciones, texto);
+        this.puntuador = new Puntuador(new Multiplicador(new int[]{1,1}));
     }
 
     @Override
