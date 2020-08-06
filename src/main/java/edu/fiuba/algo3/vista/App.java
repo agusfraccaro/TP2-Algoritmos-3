@@ -28,10 +28,15 @@ public class App extends Application {
         return new VerdaderoFalso(opciones,"Texto de la primer pregunta");
     }
 
-    private Scene getGame(Stage stage) {
-        kahoot.registrarPregunta(getPreguntaVerdaderoFalso());
-        kahoot.cargarPreguntas();
+    private VerdaderoFalso getPreguntaVerdaderoFalsoConPenalidad() {
+        ArrayList<Opcion> opciones = new ArrayList<Opcion>();
+        opciones.add(new Opcion("Opcion correcta", new Correcta()));
+        opciones.add(new Opcion("Opcion Incorrecta", new ConPenalidad()));
 
+        return new VerdaderoFalso(opciones,"Texto de la segunda pregunta y esta es con penalidad");
+    }
+
+    private Scene getGame(Stage stage) {
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
@@ -106,15 +111,27 @@ public class App extends Application {
     private EventHandler<ActionEvent>  eventoEvaluarRespuesta(Stage stage) {
         return e -> {
             //Aca se evalua la respuesta del jugador
+            //Suponiendo que fue bien paso a la nueva pregunta
+            stage.setScene(getGame(stage));
         };
+    }
+    private void registrarJugadores(TextField jugador1,TextField jugador2) {
+        kahoot.registrarJugador(jugador1.getText());
+        kahoot.registrarJugador(jugador2.getText());
+    }
+
+    private void registrarPreguntas() {
+        kahoot.registrarPregunta(getPreguntaVerdaderoFalso());
+        kahoot.registrarPregunta(getPreguntaVerdaderoFalsoConPenalidad());
+        //Se pueden agregar mas preguntas
+        kahoot.cargarPreguntas();
     }
 
     private EventHandler<ActionEvent> eventoRegistrarJugador(Stage stage, TextField jugador1, TextField jugador2) {
         return e -> {
             if (jugador1.getText().length() > 0 && jugador2.getText().length() > 0){
-                kahoot.registrarJugador(jugador1.getText());
-                kahoot.registrarJugador(jugador2.getText());
-
+                registrarJugadores(jugador1,jugador2);
+                registrarPreguntas();
                 stage.setScene(getGame(stage));
             }
             else {

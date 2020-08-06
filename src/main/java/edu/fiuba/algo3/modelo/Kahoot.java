@@ -28,7 +28,6 @@ public class Kahoot {
     public void cargarPreguntas() {
         //Aca se leen las preguntas dsd XML
         iteradorPreguntas = preguntas.iterator();
-        preguntaActual = iteradorPreguntas.next();
     }
 
     public void registrarPregunta(Pregunta pregunta) {
