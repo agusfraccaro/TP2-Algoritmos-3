@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Kahoot {
@@ -8,6 +9,8 @@ public class Kahoot {
     private List<Pregunta> preguntas;
 
     public Kahoot() {
+        jugadores = new ArrayList<Jugador>();
+        preguntas = new ArrayList<Pregunta>();
     }
 
     public void cargarPreguntas() {
@@ -21,7 +24,15 @@ public class Kahoot {
 
     public void registrarJugador(String nombre) {
         Jugador jugador = new Jugador(nombre);
-        jugadores.add(jugador);
+        this.jugadores.add(jugador);
+    }
+
+    public List<Jugador> getJugadores() {
+        return this.jugadores;
+    }
+
+    public List<Pregunta> getPreguntas() {
+        return preguntas;
     }
 
     public void enviarRespuesta(List<Opcion> opciones, int extra) {

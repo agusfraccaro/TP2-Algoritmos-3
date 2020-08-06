@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.modelo.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,9 +14,23 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
 
+import java.util.ArrayList;
+
 public class App extends Application {
 
-    private Scene getGame(Stage stage,String nombreJugador1, String nombreJugador2) {
+    Kahoot kahoot = new Kahoot();
+
+    private VerdaderoFalso getPreguntaVerdaderoFalso() {
+        ArrayList<Opcion> opciones = new ArrayList<Opcion>();
+        opciones.add(new Opcion("Opcion correcta", new Correcta()));
+        opciones.add(new Opcion("Opcion Incorrecta", new SinPenalidad()));
+
+        return new VerdaderoFalso(opciones,"Texto de la primer pregunta");
+    }
+
+    private Scene getGame(Stage stage) {
+        kahoot.registrarPregunta(getPreguntaVerdaderoFalso());
+
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
@@ -27,11 +42,15 @@ public class App extends Application {
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 2, 1);
 
-        Label lblJugador1 = new Label("Nombre jugador 1: " + nombreJugador1);
+        Label lblJugador1 = new Label("Nombre jugador 1: " + kahoot.getJugadores().get(0).getNombre());
         grid.add(lblJugador1, 0, 2);
 
-        Label lblJugador2 = new Label("Nombre jugador 2: " + nombreJugador2);
+        Label lblJugador2 = new Label("Nombre jugador 2: " + kahoot.getJugadores().get(1).getNombre());
         grid.add(lblJugador2, 0, 3);
+
+        Label lblPregunta = new Label( kahoot.getPreguntas().get(0).getTexto());
+        grid.add(lblPregunta, 0, 4);
+
 
         return new Scene(grid, 350, 250);
     }
@@ -71,8 +90,12 @@ public class App extends Application {
 
     private EventHandler<ActionEvent> eventoRegistrarJugador(Stage stage, TextField jugador1, TextField jugador2) {
         return e -> {
-            if (jugador1.getText().length() > 0 && jugador2.getText().length() > 0)
-                stage.setScene(getGame(stage, jugador1.getText(), jugador2.getText()));
+            if (jugador1.getText().length() > 0 && jugador2.getText().length() > 0){
+                kahoot.registrarJugador(jugador1.getText());
+                kahoot.registrarJugador(jugador2.getText());
+
+                stage.setScene(getGame(stage));
+            }
             else {
                 Alert alert = new Alert(Alert.AlertType.NONE,
                         "Debe ingresar los nombres de ambos jugadores",ButtonType.OK);

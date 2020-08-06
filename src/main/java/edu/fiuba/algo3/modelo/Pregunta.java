@@ -11,6 +11,9 @@ public abstract class Pregunta {
         this.texto = texto;
         this.opciones = opciones;
     }
+    public String getTexto() {
+        return texto;
+    }
 
     public void evaluarRespuestas(List<Respuesta> respuestas) {
         puntuador.puntuar(respuestas, this);
