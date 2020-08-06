@@ -70,11 +70,13 @@ public class App extends Application {
     }
 
     private EventHandler<ActionEvent> eventoRegistrarJugador(Stage stage, TextField jugador1, TextField jugador2) {
-        return new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e)
-            {
-                if (jugador1.getText().length() > 0 && jugador2.getText().length() > 0)
-                    stage.setScene(getGame(stage,jugador1.getText(),jugador2.getText()));
+        return e -> {
+            if (jugador1.getText().length() > 0 && jugador2.getText().length() > 0)
+                stage.setScene(getGame(stage, jugador1.getText(), jugador2.getText()));
+            else {
+                Alert alert = new Alert(Alert.AlertType.NONE,
+                        "Debe ingresar los nombres de ambos jugadores",ButtonType.OK);
+                alert.show();
             }
         };
     }
