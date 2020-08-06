@@ -30,6 +30,7 @@ public class App extends Application {
 
     private Scene getGame(Stage stage) {
         kahoot.registrarPregunta(getPreguntaVerdaderoFalso());
+        kahoot.cargarPreguntas();
 
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -48,10 +49,10 @@ public class App extends Application {
         Label lblJugador2 = new Label("Nombre jugador 2: " + kahoot.getJugadores().get(1).getNombre());
         grid.add(lblJugador2, 0, 3);
 
-        Label lblPregunta = new Label( kahoot.getPreguntas().get(0).getTexto());
+        Label lblPregunta = new Label( kahoot.getSiguientePregunta().getTexto());
         grid.add(lblPregunta, 0, 4);
 
-
+        //Aca se puede hacer con un for que itere sobre las opciones de la pregunta y se cree dinamicamente segun eso
         RadioButton rbOpcion1 = new RadioButton("opcion 1");
         RadioButton rbOpcion2 = new RadioButton("opcion 2");
 
@@ -63,6 +64,7 @@ public class App extends Application {
         grid.add(rbOpcion2, 1, 5);
 
         Button btnEvaluar = new Button("Evaluar respuestas");
+        btnEvaluar.setOnAction(eventoEvaluarRespuesta(stage));
         grid.add(btnEvaluar, 1, 6);
 
         return new Scene(grid, 350, 250);
@@ -99,6 +101,12 @@ public class App extends Application {
         grid.add(btnRegistrar, 1, 4);
 
         return new Scene(grid, 350, 250);
+    }
+
+    private EventHandler<ActionEvent>  eventoEvaluarRespuesta(Stage stage) {
+        return e -> {
+            //Aca se evalua la respuesta del jugador
+        };
     }
 
     private EventHandler<ActionEvent> eventoRegistrarJugador(Stage stage, TextField jugador1, TextField jugador2) {
