@@ -13,7 +13,12 @@ import javafx.scene.layout.GridPane;
 
 public class App extends Application {
 
-    private GridPane getLogin() {
+    private Scene getGame(Stage stage) {
+        GridPane grid = new GridPane();
+        return new Scene(grid, 350, 250);
+    }
+
+    private Scene getLogin(Stage stage) {
         GridPane grid = new GridPane();
 
         grid.setAlignment(Pos.CENTER);
@@ -37,20 +42,22 @@ public class App extends Application {
         TextField txtJugador2 = new TextField();
         grid.add(txtJugador2, 1, 3);
 
-        Button btnIngresar = new Button("Registrar");
-        grid.add(btnIngresar, 1, 4);
+        Button btnRegistrar = new Button("Registrar");
 
-        return grid;
+        btnRegistrar.setOnAction(e -> stage.setScene(getGame(stage)));
+
+        grid.add(btnRegistrar, 1, 4);
+
+        return new Scene(grid, 350, 250);
     }
 
     @Override
     public void start(Stage stage) {
         stage.setTitle("Kahoot");
 
-        GridPane grid = getLogin();
+        Scene login = getLogin(stage);
 
-        Scene scene = new Scene(grid, 350, 250);
-        stage.setScene(scene);
+        stage.setScene(login);
 
         stage.show();
     }
