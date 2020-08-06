@@ -16,7 +16,7 @@ public class Kahoot {
         preguntas = new ArrayList<Pregunta>();
     }
 
-    public Pregunta getSiguientePregunta(){
+    private Pregunta getSiguientePregunta(){
         if(iteradorPreguntas.hasNext()){
             preguntaActual = iteradorPreguntas.next();
         }
@@ -24,6 +24,9 @@ public class Kahoot {
         return preguntaActual;
     }
 
+    public Pregunta getPreguntaActual() {
+        return preguntaActual;
+    }
 
     public void cargarPreguntas() {
         //Aca se leen las preguntas dsd XML
@@ -31,7 +34,7 @@ public class Kahoot {
     }
 
     public void iniciarRonda() {
-        ronda = new Ronda (jugadores, preguntaActual);
+        ronda = new Ronda (jugadores, getSiguientePregunta());
     }
 
     public void registrarPregunta(Pregunta pregunta) {

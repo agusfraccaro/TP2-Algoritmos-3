@@ -51,7 +51,7 @@ public class App extends Application {
         Label lblJugadorActual = new Label("Turno de: " + kahoot.getJugadorActual());
         grid.add(lblJugadorActual, 0, 2);
 
-        Label lblPregunta = new Label( kahoot.getSiguientePregunta().getTexto());
+        Label lblPregunta = new Label( kahoot.getPreguntaActual().getTexto());
         grid.add(lblPregunta, 0, 4);
 
         //Aca se puede hacer con un for que itere sobre las opciones de la pregunta y se cree dinamicamente segun eso
@@ -67,10 +67,11 @@ public class App extends Application {
 
         Button btnResponder = new Button("Responder");
         btnResponder.setOnAction(eventoEnviarRespuesta(stage));
+        grid.add(btnResponder,1,6);
 
         Button btnEvaluar = new Button("Evaluar respuestas");
         btnEvaluar.setOnAction(eventoEvaluarRespuesta(stage));
-        grid.add(btnEvaluar, 1, 6);
+        grid.add(btnEvaluar, 1, 7);
 
         return new Scene(grid, 350, 250);
     }
@@ -119,6 +120,7 @@ public class App extends Application {
         return e -> {
             //Aca se evalua la respuesta del jugador
             //Suponiendo que fue bien paso a la nueva pregunta
+            kahoot.iniciarRonda();
             stage.setScene(getGame(stage));
         };
     }
