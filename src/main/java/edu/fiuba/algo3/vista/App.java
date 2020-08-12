@@ -1,6 +1,11 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.kahoot.Kahoot;
+import edu.fiuba.algo3.modelo.opcion.ConPenalidad;
+import edu.fiuba.algo3.modelo.opcion.Correcta;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.SinPenalidad;
+import edu.fiuba.algo3.modelo.preguntas.VerdaderoFalso;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

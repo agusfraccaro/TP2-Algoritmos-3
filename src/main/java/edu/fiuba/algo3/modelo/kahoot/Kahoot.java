@@ -1,4 +1,9 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.kahoot;
+
+import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.ronda.Ronda;
 
 import java.util.ArrayList;
 import java.util.Iterator;

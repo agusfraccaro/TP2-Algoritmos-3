@@ -1,4 +1,8 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.preguntas;
+
+import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.puntuador.Puntuador;
+import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
 import java.util.List;
 

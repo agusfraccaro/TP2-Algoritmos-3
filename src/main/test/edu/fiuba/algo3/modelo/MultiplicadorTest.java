@@ -1,5 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.puntuador.Multiplicador;
+import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

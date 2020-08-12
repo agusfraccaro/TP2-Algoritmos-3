@@ -1,8 +1,10 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.preguntas.puntuador;
+
+import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
 import java.util.List;
 
-public class Exclusividad implements Bonus{
+public class Exclusividad implements Bonus {
     private final int factorExclusividad;
 
     public Exclusividad(int[] numeros) {

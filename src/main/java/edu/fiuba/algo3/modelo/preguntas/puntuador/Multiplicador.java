@@ -1,8 +1,10 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.preguntas.puntuador;
+
+import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
 import java.util.List;
 
-public class Multiplicador implements Bonus{
+public class Multiplicador implements Bonus {
     private final int[] factores;
 
     public Multiplicador(int[] factores){

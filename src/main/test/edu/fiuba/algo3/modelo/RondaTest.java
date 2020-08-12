@@ -1,5 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.opcion.Correcta;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.opcion.SinPenalidad;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.VerdaderoFalso;
+import edu.fiuba.algo3.modelo.ronda.Ronda;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

@@ -1,6 +1,8 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.respuesta;
 
-import java.util.ArrayList;
+import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.opcion.Opcion;
+
 import java.util.List;
 
 public class Respuesta {
