@@ -5,6 +5,9 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.ronda.Ronda;
 
+import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
