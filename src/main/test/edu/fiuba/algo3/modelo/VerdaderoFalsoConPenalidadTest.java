@@ -87,6 +87,42 @@ public class VerdaderoFalsoConPenalidadTest {
         assertEquals(-1, jugador2.getPuntaje());
 
     }
+
+    @Test
+    public void preguntaVerdaderoFalsoConPenalidadPuntuaCorrectamenteSiSeEligeRespuestaCorrectaTest(){
+        Opcion correcta = new Opcion("opcion1", new Correcta());
+        Opcion incorrecta = new Opcion("opcion2", new ConPenalidad());
+        List <Opcion> opciones = new ArrayList<Opcion>(){
+            {add(correcta); add(incorrecta);}
+        };
+        Pregunta pregunta = new VerdaderoFalsoConPenalidad(opciones, "una pregunta");
+
+        List <Opcion> opcionesMarcadas = new ArrayList<>() {
+            {add(correcta);}
+        };
+
+        Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("cami"));
+
+        assertEquals(1, pregunta.puntuar(respuesta));
+    }
+
+    @Test
+    public void preguntaVerdaderoFalsoConPenalidadPuntuaCorrectamenteSiSeEligeRespuestaInorrectaTest(){
+        Opcion correcta = new Opcion("opcion1", new Correcta());
+        Opcion incorrecta = new Opcion("opcion2", new ConPenalidad());
+        List <Opcion> opciones = new ArrayList<Opcion>(){
+            {add(correcta); add(incorrecta);}
+        };
+        Pregunta pregunta = new VerdaderoFalsoConPenalidad(opciones, "una pregunta");
+
+        List <Opcion> opcionesMarcadas = new ArrayList<>() {
+            {add(incorrecta);}
+        };
+
+        Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("cami"));
+
+        assertEquals(-1, pregunta.puntuar(respuesta));
+    }
 }
 
 

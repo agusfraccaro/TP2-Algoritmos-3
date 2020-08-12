@@ -1,11 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
+import edu.fiuba.algo3.modelo.opcion.ConPenalidad;
 import edu.fiuba.algo3.modelo.opcion.Correcta;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.SinPenalidad;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.VerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.VerdaderoFalsoConPenalidad;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import org.junit.jupiter.api.Test;
 
@@ -73,6 +75,42 @@ public class VerdaderoFalsoTest {
 
         assertEquals(0, jugador1.getPuntaje());
         assertEquals(0, jugador2.getPuntaje());
+    }
+
+    @Test
+    public void preguntaVerdaderoFalsoPuntuaCorrectamenteSiSeEligeRespuestaCorrectaTest(){
+        Opcion correcta = new Opcion("opcion1", new Correcta());
+        Opcion incorrecta = new Opcion("opcion2", new SinPenalidad());
+        List <Opcion> opciones = new ArrayList<Opcion>(){
+            {add(correcta); add(incorrecta);}
+        };
+        Pregunta pregunta = new VerdaderoFalso(opciones, "una pregunta");
+
+        List <Opcion> opcionesMarcadas = new ArrayList<>() {
+            {add(correcta);}
+        };
+
+        Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("santi"));
+
+        assertEquals(1, pregunta.puntuar(respuesta));
+    }
+
+    @Test
+    public void preguntaVerdaderoFalsoPuntuaCorrectamenteSiSeEligeRespuestaInorrectaTest(){
+        Opcion correcta = new Opcion("opcion1", new Correcta());
+        Opcion incorrecta = new Opcion("opcion2", new SinPenalidad());
+        List <Opcion> opciones = new ArrayList<Opcion>(){
+            {add(correcta); add(incorrecta);}
+        };
+        Pregunta pregunta = new VerdaderoFalso(opciones, "una pregunta");
+
+        List <Opcion> opcionesMarcadas = new ArrayList<>() {
+            {add(incorrecta);}
+        };
+
+        Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("santi"));
+
+        assertEquals(0, pregunta.puntuar(respuesta));
     }
 }
 

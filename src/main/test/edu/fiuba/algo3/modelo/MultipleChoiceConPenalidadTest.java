@@ -28,7 +28,8 @@ public class MultipleChoiceConPenalidadTest {
         assertEquals(3, pregunta.cantidadRespuestasCorrectas());
     }
 
-    @Test public void preguntaMultipleChoiceConPenalidadSeCreaConOpcionesIncorrectasTest() {
+    @Test
+    public void preguntaMultipleChoiceConPenalidadSeCreaConOpcionesIncorrectasTest() {
         Opcion incorrecta1 = new Opcion("opcion1", new ConPenalidad());
         Opcion incorrecta2 = new Opcion("opcion2", new ConPenalidad());
         Opcion incorrecta3 = new Opcion("opcion3", new ConPenalidad());
@@ -57,7 +58,7 @@ public class MultipleChoiceConPenalidadTest {
     }
 
     @Test
-    public void preguntaMultipleChoiceConPenalidadPuntuaCorrectamenteAJugadorQueNoSeEquivocaTest() {
+    public void preguntaMultipleChoiceConPenalidadEvaluaCorrectamenteAJugadorQueNoSeEquivocaTest() {
         Opcion incorrecta1 = new Opcion("opcion1", new ConPenalidad());
         Opcion incorrecta2 = new Opcion("opcion2", new ConPenalidad());
         Opcion incorrecta3 = new Opcion("opcion3", new ConPenalidad());
@@ -81,7 +82,7 @@ public class MultipleChoiceConPenalidadTest {
     }
 
     @Test
-    public void preguntaMultipleChoiceConPenalidadPuntuaCorrectamenteAJugadorQueSeEquivocaTest() {
+    public void preguntaMultipleChoiceConPenalidadEvaluaCorrectamenteAJugadorQueSeEquivocaTest() {
         Opcion incorrecta1 = new Opcion("opcion1", new ConPenalidad());
         Opcion incorrecta2 = new Opcion("opcion2", new ConPenalidad());
         Opcion incorrecta3 = new Opcion("opcion3", new ConPenalidad());
@@ -103,6 +104,50 @@ public class MultipleChoiceConPenalidadTest {
         pregunta.evaluarRespuestas(respuestas);
 
         assertEquals(-2, jugador.getPuntaje());
+    }
+
+    @Test
+    public void preguntaMultipleChoiceConPenalidadPuntuaCorrectamenteAJugadorQueNoSeEquivocaTest(){
+        Opcion incorrecta1 = new Opcion("opcion1", new ConPenalidad());
+        Opcion incorrecta2 = new Opcion("opcion2", new ConPenalidad());
+        Opcion incorrecta3 = new Opcion("opcion3", new ConPenalidad());
+        Opcion correcta1 = new Opcion("opcion4", new Correcta());
+        Opcion correcta2 = new Opcion("opcion5", new Correcta());
+        List<Opcion> opciones = new ArrayList<>(){
+            {add(incorrecta1); add(incorrecta2); add(incorrecta3); add(correcta1); add(correcta2);}
+        };
+
+        Pregunta pregunta = new MultipleChoiceConPenalidad(opciones, "Pregunta Test");
+
+        List<Opcion> opcionesMarcadas = new ArrayList<>(){
+            {add(correcta1); add(correcta2);}
+        };
+
+        Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("cami"));
+
+        assertEquals(2, pregunta.puntuar(respuesta));
+    }
+
+    @Test
+    public void preguntaMultipleChoiceConPenalidadPuntuaCorrectamenteAJugadorQueSeEquivocaTest(){
+        Opcion incorrecta1 = new Opcion("opcion1", new ConPenalidad());
+        Opcion incorrecta2 = new Opcion("opcion2", new ConPenalidad());
+        Opcion incorrecta3 = new Opcion("opcion3", new ConPenalidad());
+        Opcion correcta1 = new Opcion("opcion4", new Correcta());
+        Opcion correcta2 = new Opcion("opcion5", new Correcta());
+        List<Opcion> opciones = new ArrayList<>(){
+            {add(incorrecta1); add(incorrecta2); add(incorrecta3); add(correcta1); add(correcta2);}
+        };
+
+        Pregunta pregunta = new MultipleChoiceConPenalidad(opciones, "Pregunta Test");
+
+        List<Opcion> opcionesMarcadas = new ArrayList<>(){
+            {add(incorrecta2); add(correcta2); add(incorrecta3);}
+        };
+
+        Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("cami"));
+
+        assertEquals(-1, pregunta.puntuar(respuesta));
     }
 }
 

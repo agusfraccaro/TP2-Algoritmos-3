@@ -16,6 +16,10 @@ public class Puntuador {
         this.bonus = bonus;
     }
 
+    public Bonus getBonus(){
+        return this.bonus;
+    }
+
     public void puntuar(List<Respuesta> respuestas, Pregunta pregunta) {
         corregirPreguntas(respuestas, pregunta);
         aplicarBonus(respuestas);

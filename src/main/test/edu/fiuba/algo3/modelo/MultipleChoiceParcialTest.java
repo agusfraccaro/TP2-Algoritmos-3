@@ -30,7 +30,7 @@ public class MultipleChoiceParcialTest {
     }
 
     @Test
-    public void preguntaMultipleChoiceParcialPuntuaAJugadoresCorrectamenteSiNingunoDeLosJugadoresEligeOpcionIncorrecta(){
+    public void preguntaMultipleChoiceParcialEvaluaAJugadoresCorrectamenteSiNingunoDeLosJugadoresEligeOpcionIncorrectaTest(){
         Opcion correcta1 = new Opcion("opcion1", new Correcta());
         Opcion correcta2 = new Opcion("opcion2", new Correcta());
         Opcion correcta3 = new Opcion("opcion3", new Correcta());
@@ -60,7 +60,7 @@ public class MultipleChoiceParcialTest {
     }
 
     @Test
-    public void preguntaMultipleChoiceParcialPuntuaAJugadoresCorrectamenteSiAmbosEligenAlMenosUnaOpcionIncorrecta(){
+    public void preguntaMultipleChoiceParcialEvaluaAJugadoresCorrectamenteSiAmbosEligenAlMenosUnaOpcionIncorrectaTest(){
         Opcion correcta1 = new Opcion("opcion1", new Correcta());
         Opcion correcta2 = new Opcion("opcion2", new Correcta());
         Opcion incorrecta = new Opcion("opcion4", new SinPenalidad());
@@ -89,5 +89,47 @@ public class MultipleChoiceParcialTest {
 
         assertEquals(0, jugador1.getPuntaje());
         assertEquals(0, jugador2.getPuntaje());
+    }
+
+    @Test
+    public void preguntaMultipleChoiceParcialPuntuaAJugadorCorrectamenteSiNoEligeOpcionIncorrectaTest(){
+        Opcion correcta1 = new Opcion("opcion1", new Correcta());
+        Opcion correcta2 = new Opcion("opcion2", new Correcta());
+        Opcion correcta3 = new Opcion("opcion3", new Correcta());
+        Opcion incorrecta = new Opcion("opcion4", new SinPenalidad());
+        List <Opcion> opciones = new ArrayList<Opcion>(){
+            {add(correcta1); add(correcta2); add(correcta3); add(incorrecta);};
+        };
+
+        Pregunta pregunta = new MultipleChoiceParcial(opciones, "una pregunta");
+
+        List <Opcion> opcionesMarcadas = new ArrayList<Opcion>(){
+            {add(correcta1); add(correcta2); add(correcta3);}
+        };
+
+        Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("cami"));
+
+        assertEquals(3, pregunta.puntuar(respuesta));
+    }
+
+    @Test
+    public void preguntaMultipleChoiceParcialPuntuaAJugadorCorrectamenteSiSeEligeAlMenosUnaOpcionIncorrectaTest(){
+        Opcion correcta1 = new Opcion("opcion1", new Correcta());
+        Opcion correcta2 = new Opcion("opcion2", new Correcta());
+        Opcion correcta3 = new Opcion("opcion3", new Correcta());
+        Opcion incorrecta = new Opcion("opcion4", new SinPenalidad());
+        List <Opcion> opciones = new ArrayList<Opcion>(){
+            {add(correcta1); add(correcta2); add(correcta3); add(incorrecta);};
+        };
+
+        Pregunta pregunta = new MultipleChoiceParcial(opciones, "una pregunta");
+
+        List <Opcion> opcionesMarcadas = new ArrayList<Opcion>(){
+            {add(correcta1); add(incorrecta); add(correcta3);}
+        };
+
+        Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("cami"));
+
+        assertEquals(0, pregunta.puntuar(respuesta));
     }
 }

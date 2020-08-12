@@ -138,4 +138,48 @@ public class OrderedChoiceTest {
         assertEquals(0, jugador2.getPuntaje());
     }
 
+    @Test
+    public void preguntaOrderedChoicePuntuaCorrectamenteUnaRespuestaBienOrdenadaTest(){
+        Opcion opcion1 = new Opcion("opcion1");
+        Opcion opcion2 = new Opcion("opcion2");
+        Opcion opcion3 = new Opcion("opcion3");
+
+        List <Opcion> opciones = new ArrayList<Opcion>(){
+            {add(opcion1); add(opcion2); add(opcion3);};
+        };
+
+        Pregunta pregunta = new OrderedChoice(opciones, "una pregunta");
+
+        List <Opcion> opcionesMarcadas = new ArrayList<Opcion>(){
+            {add(opcion1); add(opcion2); add(opcion3);}
+        };
+
+        Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("santi"));
+
+        assertEquals(1, pregunta.puntuar(respuesta));
+    }
+
+    @Test
+    public void preguntaOrderedChoicePuntuaCorrectamenteUnaRespuestaMalOrdenadaTest(){
+        Opcion opcion1 = new Opcion("opcion1");
+        Opcion opcion2 = new Opcion("opcion2");
+        Opcion opcion3 = new Opcion("opcion3");
+
+        List <Opcion> opciones = new ArrayList<Opcion>(){
+            {add(opcion1); add(opcion2); add(opcion3);};
+        };
+
+        Pregunta pregunta = new OrderedChoice(opciones, "una pregunta");
+
+        List <Opcion> opcionesMarcadas = new ArrayList<Opcion>(){
+            {add(opcion3); add(opcion2); add(opcion1);}
+        };
+
+        Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("kevin"));
+
+        assertEquals(0, pregunta.puntuar(respuesta));
+    }
+
+
+
 }

@@ -32,7 +32,7 @@ public class MultipleChoiceClasicoTest {
     }
 
     @Test
-    public void preguntaMultipleChoiceClasicoPuntuaAJugadoresCorrectamenteSiEligenOpcionesCorrectas(){
+    public void preguntaMultipleChoiceClasicoEvaluaAJugadoresCorrectamenteSiEligenOpcionesCorrectas(){
         Opcion correcta1 = new Opcion("opcion1", new Correcta());
         Opcion correcta2 = new Opcion("opcion2", new Correcta());
         Opcion correcta3 = new Opcion("opcion3", new Correcta());
@@ -150,4 +150,67 @@ public class MultipleChoiceClasicoTest {
         assertEquals(0, jugador2.getPuntaje());
     }
 
+    @Test
+    public void preguntaMultipleChoiceClasicoPuntuaCorrectamenteSiSeEligenOpcionesCorrectasTest(){
+        Opcion correcta1 = new Opcion("opcion1", new Correcta());
+        Opcion correcta2 = new Opcion("opcion2", new Correcta());
+        Opcion correcta3 = new Opcion("opcion3", new Correcta());
+
+        List <Opcion> opciones = new ArrayList<Opcion>() {
+            {add(correcta1); add(correcta2); add(correcta3); add(new Opcion("opcion4", new SinPenalidad()));}
+        };
+
+        Pregunta pregunta = new MultipleChoiceClasico(opciones, "una pregunta");
+
+        List <Opcion> opcionesMarcadas = new ArrayList<>() {
+            {add(correcta1); add(correcta2); add(correcta3);}
+        };
+
+        Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("kevin"));
+
+        assertEquals(1, pregunta.puntuar(respuesta));
+    }
+
+    @Test
+    public void preguntaMultipleChoiceClasicoPuntuaCorrectamenteSiNoSeEligenTodasLasOpcionesCorrectasTest(){
+        Opcion correcta1 = new Opcion("opcion1", new Correcta());
+        Opcion correcta2 = new Opcion("opcion2", new Correcta());
+        Opcion correcta3 = new Opcion("opcion3", new Correcta());
+
+        List <Opcion> opciones = new ArrayList<Opcion>() {
+            {add(correcta1); add(correcta2); add(correcta3); add(new Opcion("opcion4", new SinPenalidad()));}
+        };
+
+        Pregunta pregunta = new MultipleChoiceClasico(opciones, "una pregunta");
+
+        List <Opcion> opcionesMarcadas = new ArrayList<>() {
+            {add(correcta1); add(correcta3);}
+        };
+
+        Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("agus"));
+
+        assertEquals(0, pregunta.puntuar(respuesta));
+    }
+
+    @Test
+    public void preguntaMultipleChoiceClasicoPuntuaCorrectamenteSiHayAlgunaOpcionIncorrectaTest(){
+        Opcion correcta1 = new Opcion("opcion1", new Correcta());
+        Opcion correcta2 = new Opcion("opcion2", new Correcta());
+        Opcion correcta3 = new Opcion("opcion3", new Correcta());
+        Opcion incorrecta = new Opcion("opcion4", new SinPenalidad());
+
+        List <Opcion> opciones = new ArrayList<Opcion>() {
+            {add(correcta1); add(correcta2); add(correcta3); add(new Opcion("opcion4", new SinPenalidad()));}
+        };
+
+        Pregunta pregunta = new MultipleChoiceClasico(opciones, "una pregunta");
+
+        List <Opcion> opcionesMarcadas = new ArrayList<>() {
+            {add(correcta1); add(correcta2); add(correcta3); add(incorrecta);}
+        };
+
+        Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("agus"));
+
+        assertEquals(0, pregunta.puntuar(respuesta));
+    }
 }
