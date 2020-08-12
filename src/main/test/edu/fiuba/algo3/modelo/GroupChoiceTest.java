@@ -123,6 +123,47 @@ public class GroupChoiceTest {
         assertEquals(0, jugador2.getPuntaje());
     }
 
+    @Test
+    public void preguntaGroupChoicePuntuaCorrectamenteUnaRespuestaBienAgrupadaTest(){
+        Opcion opcion1 = new Opcion("opcion1", "Grupo1");
+        Opcion opcion2 = new Opcion("opcion2", "Grupo2");
+        Opcion opcion3 = new Opcion("opcion3", "Grupo2");
 
+        List<Opcion> opciones = new ArrayList<Opcion>(){
+            {add(opcion1); add(opcion2); add(opcion3);};
+        };
 
+        Pregunta pregunta = new GroupChoice(opciones, "una pregunta");
+
+        List <Opcion> opcionesMarcadas = new ArrayList<Opcion>(){
+            {add(new Opcion("opcion1", "Grupo1")); add(new Opcion("opcion2", "Grupo2"));
+                add(new Opcion("opcion3", "Grupo2"));}
+        };
+
+        Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("agus"));
+
+        assertEquals(1, pregunta.puntuar(respuesta));
+    }
+
+    @Test
+    public void preguntaGroupChoicePuntuaCorrectamenteUnaRespuestaMalAgrupadaTest(){
+        Opcion opcion1 = new Opcion("opcion1", "Grupo1");
+        Opcion opcion2 = new Opcion("opcion2", "Grupo2");
+        Opcion opcion3 = new Opcion("opcion3", "Grupo2");
+
+        List<Opcion> opciones = new ArrayList<Opcion>(){
+            {add(opcion1); add(opcion2); add(opcion3);};
+        };
+
+        Pregunta pregunta = new GroupChoice(opciones, "una pregunta");
+
+        List <Opcion> opcionesMarcadas = new ArrayList<Opcion>(){
+            {add(new Opcion("opcion1", "Grupo1")); add(new Opcion("opcion2", "Grupo2"));
+                add(new Opcion("opcion3", "Grupo1"));}
+        };
+
+        Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("agus"));
+
+        assertEquals(0, pregunta.puntuar(respuesta));
+    }
 }

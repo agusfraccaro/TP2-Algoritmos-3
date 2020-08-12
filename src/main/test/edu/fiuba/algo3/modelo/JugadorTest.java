@@ -25,6 +25,4 @@ public class JugadorTest {
         String nombre = jugador.getNombre();
         assertEquals("Kevin", nombre);
     }
-
-
 }

@@ -29,7 +29,6 @@ public class ExclusividadTest {
         assertEquals(respuesta2.getPuntos(), 7);
     }
 
-
     @Test
     public void ExclusividadMultiplicaCorrectamenteCuandoJugadorActivaYPierde(){
         Exclusividad excl = new Exclusividad(new ArrayList<Integer>(){{add(2);add(1);}});
