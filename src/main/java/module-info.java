@@ -1,4 +1,4 @@
-module tp2 {
+module tp {
     requires javafx.controls;
     exports edu.fiuba.algo3.vista;
 }

@@ -5,10 +5,6 @@ import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 
-import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -17,8 +13,7 @@ public class Ronda {
     private Jugador jugadorActual;
     private List<Respuesta> respuestas = new ArrayList<>();
     private List<Jugador> jugadores;
-    private int[] extras = new int[2];
-    private int index_counter = 0;
+    private List<Integer> extras = new ArrayList<>();
     private Pregunta pregunta;
     private Iterator<Jugador> iterador;
 
@@ -42,8 +37,7 @@ public class Ronda {
     public void enviarRespuesta(List<Opcion> opciones, int extra) {
         Respuesta respuesta = new Respuesta(opciones,jugadorActual);
         respuestas.add(respuesta);
-        extras[index_counter] = extra;
-        index_counter++;
+        extras.add(extra);
     }
 
     public Jugador getJugadorActual(){

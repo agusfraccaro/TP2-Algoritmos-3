@@ -19,5 +19,4 @@ public class CorrectaTest {
         boolean esCorrecta = correcta.esCorrecta();
         assertTrue(esCorrecta);
     }
-
 }

@@ -15,7 +15,7 @@ public class ExclusividadTest {
 
     @Test
     public void ExclusividadNoHaceNadaSiSeInicializaConUnoUno(){
-        Exclusividad excl = new Exclusividad(new int[]{1,1});
+        Exclusividad excl = new Exclusividad(new ArrayList<Integer>(){{add(1);add(1);}});
         List<Opcion> opciones = new ArrayList<>();
         List<Respuesta> respuestas = new ArrayList<>();
         Respuesta respuesta1 = new Respuesta(opciones, new Jugador("Flash"));
@@ -32,7 +32,7 @@ public class ExclusividadTest {
 
     @Test
     public void ExclusividadMultiplicaCorrectamenteCuandoJugadorActivaYPierde(){
-        Exclusividad excl = new Exclusividad(new int[]{2,1});
+        Exclusividad excl = new Exclusividad(new ArrayList<Integer>(){{add(2);add(1);}});
         List<Opcion> opciones = new ArrayList<>();
         List<Respuesta> respuestas = new ArrayList<>();
         Respuesta respuesta1 = new Respuesta(opciones, new Jugador("Flash"));
@@ -48,7 +48,7 @@ public class ExclusividadTest {
 
     @Test
     public void ExclusividadMultiplicaCorrectamenteCuandoJugadorActivaYGana(){
-        Exclusividad excl = new Exclusividad(new int[]{1,2});
+        Exclusividad excl = new Exclusividad(new ArrayList<Integer>(){{add(1);add(2);}});
         List<Opcion> opciones = new ArrayList<>();
         List<Respuesta> respuestas = new ArrayList<>();
         Respuesta respuesta1 = new Respuesta(opciones, new Jugador("Flash"));
@@ -64,7 +64,7 @@ public class ExclusividadTest {
 
     @Test
     public void ExclusividadMultiplicaCorrectamenteCuandoAmbosJugadoresActivan(){
-        Exclusividad excl = new Exclusividad(new int[]{2,2});
+        Exclusividad excl = new Exclusividad(new ArrayList<Integer>(){{add(2);add(2);}});
         List<Opcion> opciones = new ArrayList<>();
         List<Respuesta> respuestas = new ArrayList<>();
         Respuesta respuesta1 = new Respuesta(opciones, new Jugador("Flash"));

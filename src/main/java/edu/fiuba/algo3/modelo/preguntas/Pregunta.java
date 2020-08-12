@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.puntuador.Puntuador;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Pregunta {
@@ -35,5 +36,5 @@ public abstract class Pregunta {
         return cantidad;
     }
 
-    public abstract void activarBonus(int[] numeros);
+    public abstract void activarBonus(ArrayList<Integer> numeros);
 }

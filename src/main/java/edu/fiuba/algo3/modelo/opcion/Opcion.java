@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo.opcion;
 
+import edu.fiuba.algo3.modelo.excepciones.EstadoNuloNoEsIncorrectoNiCorrectoExcepcion;
+import edu.fiuba.algo3.modelo.excepciones.EstadoNuloNoPuntuaExcepcion;
+
 public class Opcion {
     private String texto;
     private EstadoOpcion estado;
@@ -23,11 +26,21 @@ public class Opcion {
     }
 
     public int puntuar(){
-        return this.estado.puntuar();
+        int puntos = 0;
+        try{
+            puntos = this.estado.puntuar();
+        } catch (EstadoNuloNoPuntuaExcepcion estadoNuloNoPuntuaExcepcion){}
+
+        return puntos;
     }
 
     public boolean esCorrecta(){
-        return this.estado.esCorrecta();
+        boolean estado = false;
+        try{
+            estado = this.estado.esCorrecta();
+        }catch (EstadoNuloNoEsIncorrectoNiCorrectoExcepcion estadoNuloNoEsIncorrectoNiCorrectoExcepcion){}
+
+        return estado;
     }
 
     public String getTexto(){

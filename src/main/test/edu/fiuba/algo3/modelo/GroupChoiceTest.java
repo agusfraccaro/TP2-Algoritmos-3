@@ -123,4 +123,6 @@ public class GroupChoiceTest {
         assertEquals(0, jugador2.getPuntaje());
     }
 
+
+
 }

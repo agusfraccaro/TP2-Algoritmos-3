@@ -2,13 +2,14 @@ package edu.fiuba.algo3.modelo.preguntas.puntuador;
 
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Exclusividad implements Bonus {
     private final int factorExclusividad;
 
-    public Exclusividad(int[] numeros) {
-        this.factorExclusividad = numeros[0] * numeros[1];
+    public Exclusividad(ArrayList<Integer> numeros) {
+        this.factorExclusividad = numeros.get(0) * numeros.get(1);
     }
 
     @Override
