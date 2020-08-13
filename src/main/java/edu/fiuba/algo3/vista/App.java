@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
 import edu.fiuba.algo3.modelo.opcion.ConPenalidad;
 import edu.fiuba.algo3.modelo.opcion.Correcta;
@@ -57,7 +58,7 @@ public class App extends Application {
 
         Text scenetitle = new Text("Bienvenido al juego");
 
-        Label main_clock_lb = new Label();
+        /*Label main_clock_lb = new Label();
 
         Thread timerThread = new Thread(() -> {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -72,13 +73,18 @@ public class App extends Application {
                     main_clock_lb.setText(time);
                 });
             }
-        });   timerThread.start();//start the thread and its ok
+        });   timerThread.start();//start the thread and its ok*/
 
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 2, 1);
-        grid.add(main_clock_lb,0,0,3,2);
+        //grid.add(main_clock_lb,0,0,3,2);
 
         Label lblJugadorActual = new Label("Turno de: " + kahoot.getJugadorActual());
+        //arreglar, solo se ve el puntaje del 1er jugador
+        List jugadores = kahoot.getJugadores();
+        Jugador jug = (Jugador) jugadores.get(0);
+        Label puntaje = new Label("Puntos: " + jug.getPuntaje());
+        grid.add(puntaje, 0, 3);
         grid.add(lblJugadorActual, 0, 2);
 
         Label lblPregunta = new Label( kahoot.getPreguntaActual().getTexto());
@@ -134,7 +140,7 @@ public class App extends Application {
         return new Scene(grid, 350, 250);
     }
 
-    private EventHandler<ActionEvent>  eventoEnviarRespuesta(Stage stage) {
+    private EventHandler<ActionEvent> eventoEnviarRespuesta(Stage stage) {
         return e -> {
             List<Opcion> respuesta = new ArrayList<Opcion>();
             respuesta.add(kahoot.getPreguntaActual().getOpciones().get(0));

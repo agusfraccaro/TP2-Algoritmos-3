@@ -25,12 +25,10 @@ public class Ronda {
     }
 
     private void siguienteJugador(){
-        if(iterador.hasNext()){
-            jugadorActual = iterador.next();
-        }
+        jugadorActual = iterador.next();
     }
 
-    public void evaluar(){
+    private void evaluar(){
         pregunta.evaluarRespuestas(respuestas);
     }
 
@@ -38,7 +36,12 @@ public class Ronda {
         Respuesta respuesta = new Respuesta(opciones,jugadorActual);
         respuestas.add(respuesta);
         extras.add(extra);
-        siguienteJugador();
+        if(iterador.hasNext()){
+            siguienteJugador();
+        }else{
+            evaluar();
+        }
+
     }
 
     public Jugador getJugadorActual(){
