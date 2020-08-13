@@ -37,4 +37,8 @@ public abstract class Pregunta {
     }
 
     public abstract void activarBonus(ArrayList<Integer> numeros);
+
+    public List<Opcion> getOpciones() {
+        return opciones;
+    }
 }

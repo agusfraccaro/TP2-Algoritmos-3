@@ -24,7 +24,7 @@ public class Ronda {
         jugadorActual = iterador.next();
     }
 
-    public void siguienteJugador(){
+    private void siguienteJugador(){
         if(iterador.hasNext()){
             jugadorActual = iterador.next();
         }
@@ -38,6 +38,7 @@ public class Ronda {
         Respuesta respuesta = new Respuesta(opciones,jugadorActual);
         respuestas.add(respuesta);
         extras.add(extra);
+        siguienteJugador();
     }
 
     public Jugador getJugadorActual(){

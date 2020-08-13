@@ -34,7 +34,6 @@ public class RondaTest {
 
         Ronda ronda = new Ronda(jugadores, pregunta);
         ronda.enviarRespuesta(opcionesMarcadas, 1);
-        ronda.siguienteJugador();
         ronda.enviarRespuesta(opcionesMarcadas, 1);
         ronda.evaluar();
 

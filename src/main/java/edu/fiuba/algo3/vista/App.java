@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.SinPenalidad;
 import edu.fiuba.algo3.modelo.preguntas.VerdaderoFalso;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -18,12 +19,18 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
+import javafx.scene.control.CheckBox;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class App extends Application {
 
     Kahoot kahoot = new Kahoot();
+    List<CheckBox> radioButtons = new ArrayList<CheckBox>();
+    int cantidadRespuestas = 0;
 
     private VerdaderoFalso getPreguntaVerdaderoFalso() {
         ArrayList<Opcion> opciones = new ArrayList<Opcion>();
@@ -38,7 +45,7 @@ public class App extends Application {
         opciones.add(new Opcion("Opcion correcta", new Correcta()));
         opciones.add(new Opcion("Opcion Incorrecta", new ConPenalidad()));
 
-        return new VerdaderoFalso(opciones,"Texto de la segunda pregunta y esta es con penalidad");
+        return new VerdaderoFalso(opciones, "Texto de la segunda pregunta y esta es con penalidad");
     }
 
     private Scene getGame(Stage stage) {
@@ -50,8 +57,26 @@ public class App extends Application {
 
         Text scenetitle = new Text("Bienvenido al juego");
 
+        Label main_clock_lb = new Label();
+
+        Thread timerThread = new Thread(() -> {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            while (true) {
+                try {
+                    Thread.sleep(1000); //1 second
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                final String time = simpleDateFormat.format(new Date());
+                Platform.runLater(() -> {
+                    main_clock_lb.setText(time);
+                });
+            }
+        });   timerThread.start();//start the thread and its ok
+
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 2, 1);
+        grid.add(main_clock_lb,0,0,3,2);
 
         Label lblJugadorActual = new Label("Turno de: " + kahoot.getJugadorActual());
         grid.add(lblJugadorActual, 0, 2);
@@ -59,24 +84,19 @@ public class App extends Application {
         Label lblPregunta = new Label( kahoot.getPreguntaActual().getTexto());
         grid.add(lblPregunta, 0, 4);
 
-        //Aca se puede hacer con un for que itere sobre las opciones de la pregunta y se cree dinamicamente segun eso
-        RadioButton rbOpcion1 = new RadioButton("opcion 1");
-        RadioButton rbOpcion2 = new RadioButton("opcion 2");
+        int i = 0;
+        for (Opcion opcion : kahoot.getPreguntaActual().getOpciones()) {
+            CheckBox rbOpcion = new CheckBox(opcion.getTexto());
 
-        ToggleGroup group = new ToggleGroup();
-        rbOpcion1.setToggleGroup(group);
-        rbOpcion2.setToggleGroup(group);
-
-        grid.add(rbOpcion1, 0, 5);
-        grid.add(rbOpcion2, 1, 5);
+            radioButtons.add(rbOpcion);
+            grid.add(rbOpcion, 0, 5+i);
+            i++;
+        }
 
         Button btnResponder = new Button("Responder");
         btnResponder.setOnAction(eventoEnviarRespuesta(stage));
-        grid.add(btnResponder,1,6);
+        grid.add(btnResponder,1,6+i);
 
-        Button btnEvaluar = new Button("Evaluar respuestas");
-        btnEvaluar.setOnAction(eventoEvaluarRespuesta(stage));
-        grid.add(btnEvaluar, 1, 7);
 
         return new Scene(grid, 350, 250);
     }
@@ -116,28 +136,33 @@ public class App extends Application {
 
     private EventHandler<ActionEvent>  eventoEnviarRespuesta(Stage stage) {
         return e -> {
-            //aca deberia avanzar al proximo jugador
+            List<Opcion> respuesta = new ArrayList<Opcion>();
+            respuesta.add(kahoot.getPreguntaActual().getOpciones().get(0));
+            for(CheckBox radioButton : radioButtons) {
+                //if (radioButton.isSelected())
+                    //respuesta.add();
+            }
+            kahoot.enviarRespuesta(respuesta,1);
+            cantidadRespuestas++;
+
+            if (cantidadRespuestas == 2){
+                kahoot.iniciarRonda();
+                cantidadRespuestas = 0;
+            }
             stage.setScene(getGame(stage));
         };
     }
 
-    private EventHandler<ActionEvent>  eventoEvaluarRespuesta(Stage stage) {
-        return e -> {
-            //Aca se evalua la respuesta del jugador
-            //Suponiendo que fue bien paso a la nueva pregunta
-            kahoot.iniciarRonda();
-            stage.setScene(getGame(stage));
-        };
-    }
     private void registrarJugadores(TextField jugador1,TextField jugador2) {
         kahoot.registrarJugador(jugador1.getText());
         kahoot.registrarJugador(jugador2.getText());
     }
 
     private void registrarPreguntas() {
+        //Mover a JSON/XML
         kahoot.registrarPregunta(getPreguntaVerdaderoFalso());
         kahoot.registrarPregunta(getPreguntaVerdaderoFalsoConPenalidad());
-        //Se pueden agregar mas preguntas
+
         kahoot.cargarPreguntas();
     }
 
