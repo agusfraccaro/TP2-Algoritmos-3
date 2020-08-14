@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -32,25 +33,34 @@ public class VistaInicioJuego {
 
         grid.setId("pane");
         grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(30, 30, 30, 30));
+        grid.setHgap(15);
+        grid.setVgap(15);
+        grid.setPadding(new Insets(20, 20, 20, 20));
 
-        Text scenetitle = new Text("Bienvenido al juego");
-
-        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        Text scenetitle = new Text("INFO JUGADORES");
+        Font fontTitulo = Font.loadFont("file:src/main/resources/fonts/Skranji-Bold.ttf", 38);
+        scenetitle.setFont(fontTitulo);
+        scenetitle.setFill(Color.WHITE);
         grid.add(scenetitle, 0, 0, 2, 1);
+
+        Font fontGeneral = Font.loadFont("file:src/main/resources/fonts/Skranji-Regular.ttf", 20);
 
         List<Jugador> jugadores = kahoot.getJugadores();
         Label jugador1 = new Label("Nombre jugador 1: " + (jugadores.get(0)).getNombre());
+        jugador1.setFont(fontGeneral);
+        jugador1.setTextFill(Color.WHITE);
+
         Label jugador2 = new Label("Nombre jugador 2: " + (jugadores.get(1)).getNombre());
+        jugador2.setFont(fontGeneral);
+        jugador2.setTextFill(Color.WHITE);
 
-        grid.add(jugador1, 0, 2);
-        grid.add(jugador2, 0, 4);
+        grid.add(jugador1, 0, 3);
+        grid.add(jugador2, 0, 5);
 
-        Button btnInicio = new Button("Iniciar juego");
+        Button btnInicio = new Button("Iniciar juego!");
+        btnInicio.setFont(fontGeneral);
         btnInicio.setOnAction(new ControladorIniciarJuego(kahoot, stage));
-        grid.add(btnInicio, 0, 6);
+        grid.add(btnInicio, 1, 7);
 
         Scene escena = new Scene(grid, 550, 450);
 
