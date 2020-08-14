@@ -15,10 +15,6 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
         stage.setTitle("Kahoot");
-        //Media media = new Media((App.class.getResource("/music/musica_kahoot.mp3")).toExternalForm());
-        //MediaPlayer mediaPlayer = new MediaPlayer(media);
-        //mediaPlayer.play();
-        //mediaPlayer.setOnReady(() -> mediaPlayer.play());
 
         Media media = new Media((App.class.getResource("/music/musica_kahoot.mp3")).toExternalForm());
         AudioClip reproductor = new AudioClip(media.getSource());

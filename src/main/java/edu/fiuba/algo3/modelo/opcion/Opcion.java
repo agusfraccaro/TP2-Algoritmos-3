@@ -12,17 +12,21 @@ public class Opcion {
     public Opcion(String texto, EstadoOpcion estado){
         this.texto = texto;
         this.estado = estado;
+        this.grupo = null;
     }
 
     //para las GroupChoice
     public Opcion(String texto, String grupo){
         this.texto = texto;
         this.grupo = grupo;
+        this.estado = new EstadoNulo();
     }
 
     //para las OrderedChoice
     public Opcion(String texto){
         this.texto = texto;
+        this.estado = new EstadoNulo();
+        this.grupo = null;
     }
 
     public int puntuar(){

@@ -1,7 +1,10 @@
 package edu.fiuba.algo3.controlador;
 
+import edu.fiuba.algo3.modelo.excepciones.NoHaySiguientePreguntaExcepcion;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.vista.ContenedorOpcion;
+import edu.fiuba.algo3.vista.VistaFinDelJuego;
 import edu.fiuba.algo3.vista.VistaPreguntas;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,27 +19,35 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
     private VistaPreguntas vista;
     private int cantidadRespuestas;
     private Stage stage;
+    private List<ContenedorOpcion> botones;
 
-    public ControladorEnviarRespuesta(Kahoot kahoot, VistaPreguntas vista, Stage stage, int cantidadRespuestas){
+    public ControladorEnviarRespuesta(Kahoot kahoot, VistaPreguntas vista, Stage stage, int cantidadRespuestas, List<ContenedorOpcion> botones){
         this.kahoot = kahoot;
         this.cantidadRespuestas = cantidadRespuestas;
         this.vista = vista;
         this.stage = stage;
+        this.botones = botones;
     }
     @Override
     public void handle(ActionEvent actionEvent) {
         List<Opcion> respuesta = new ArrayList<Opcion>();
-        respuesta.add(kahoot.getPreguntaActual().getOpciones().get(0));
-        //for(CheckBox radioButton : radioButtons) {
-            //if (radioButton.isSelected())
-            //respuesta.add();
-        //}
+        Opcion opcionSeleccionada;
+        for(ContenedorOpcion boton : botones) {
+            opcionSeleccionada = boton.getOpcionSeleccionada(); //devuelve la Opcion si esta fue seleccionada; sino, null
+            if(opcionSeleccionada != null){
+                respuesta.add(opcionSeleccionada);
+            }
+        }
         kahoot.enviarRespuesta(respuesta,1);
 
-        if (cantidadRespuestas == 2) {
-            kahoot.iniciarRonda();
-            cantidadRespuestas = 0;
+        try {
+            if (cantidadRespuestas == 2) {
+                kahoot.iniciarRonda();
+                cantidadRespuestas = 0;
+            }
+            vista.mostrarPregunta();
+        }catch (NoHaySiguientePreguntaExcepcion noHaySiguientePreguntaExcepcion) {
+                new VistaFinDelJuego(kahoot, stage).mostrarResultado();
         }
-        vista.mostrarPregunta();
     }
 }

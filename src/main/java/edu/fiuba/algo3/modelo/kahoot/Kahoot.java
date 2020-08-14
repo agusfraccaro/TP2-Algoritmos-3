@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.kahoot;
 
+import edu.fiuba.algo3.modelo.excepciones.NoHaySiguientePreguntaExcepcion;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
@@ -21,12 +22,12 @@ public class Kahoot {
         preguntas = new ArrayList<Pregunta>();
     }
 
-    private Pregunta getSiguientePregunta(){
+    private Pregunta getSiguientePregunta() throws NoHaySiguientePreguntaExcepcion {
         if(iteradorPreguntas.hasNext()){
             preguntaActual = iteradorPreguntas.next();
+            return preguntaActual;
         }
-
-        return preguntaActual;
+        throw new NoHaySiguientePreguntaExcepcion();
     }
 
     public Pregunta getPreguntaActual() {
@@ -38,8 +39,12 @@ public class Kahoot {
         iteradorPreguntas = preguntas.iterator();
     }
 
-    public void iniciarRonda() {
-        ronda = new Ronda (jugadores, getSiguientePregunta());
+    public void iniciarRonda() throws NoHaySiguientePreguntaExcepcion {
+        try{
+            ronda = new Ronda (jugadores, getSiguientePregunta());
+        }catch (NoHaySiguientePreguntaExcepcion excepcion){
+            throw excepcion;
+        }
     }
 
     public void registrarPregunta(Pregunta pregunta) {
@@ -52,8 +57,8 @@ public class Kahoot {
         this.jugadores.add(jugador);
     }
 
-    public String getJugadorActual() {
-        return ronda.getJugadorActual().getNombre();
+    public Jugador getJugadorActual() {
+        return ronda.getJugadorActual();
     }
 
     public List<Jugador> getJugadores() {
@@ -64,4 +69,10 @@ public class Kahoot {
         ronda.enviarRespuesta(opciones, extra);
     }
 
+    public Jugador getGanador(){
+        if(jugadores.get(0).getPuntaje() > jugadores.get(1).getPuntaje()){
+            return jugadores.get(0);
+        }
+        return jugadores.get(1);
+    }
 }

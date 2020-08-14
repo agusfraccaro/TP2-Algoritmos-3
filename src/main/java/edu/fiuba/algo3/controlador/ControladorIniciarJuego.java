@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.controlador;
 
+import edu.fiuba.algo3.modelo.excepciones.NoHaySiguientePreguntaExcepcion;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
 import edu.fiuba.algo3.modelo.opcion.ConPenalidad;
 import edu.fiuba.algo3.modelo.opcion.Correcta;
@@ -50,7 +51,10 @@ public class ControladorIniciarJuego implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         registrarPreguntas();
-        kahoot.iniciarRonda();
+        try {
+            kahoot.iniciarRonda();
+        } catch (NoHaySiguientePreguntaExcepcion noHaySiguientePreguntaExcepcion) {
+        }
         (new VistaPreguntas(kahoot, stage)).mostrarPregunta();
     }
 }
