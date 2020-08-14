@@ -14,6 +14,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.List;
 
 public class VistaInicioJuego {
@@ -29,6 +30,7 @@ public class VistaInicioJuego {
     public void mostrarInicio(){
         GridPane grid = new GridPane();
 
+        grid.setId("pane");
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
         grid.setVgap(10);
@@ -50,6 +52,11 @@ public class VistaInicioJuego {
         btnInicio.setOnAction(new ControladorIniciarJuego(kahoot, stage));
         grid.add(btnInicio, 0, 6);
 
-        stage.setScene(new Scene(grid, 550, 450));
+        Scene escena = new Scene(grid, 550, 450);
+
+        File arch = new File("src/main/resources/styles/style.css");
+
+        escena.getStylesheets().add("file:///" + arch.getAbsolutePath().replace("\\", "/")  );
+        stage.setScene(escena);
     }
 }

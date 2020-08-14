@@ -14,6 +14,8 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 public class VistaRegistroJugadores {
     private Kahoot kahoot;
     private Stage stage;
@@ -26,12 +28,13 @@ public class VistaRegistroJugadores {
     public void mostrarRegistro(){
         GridPane grid = new GridPane();
 
+        grid.setId("pane");
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(30, 30, 30, 30));
 
-        Text scenetitle = new Text("Bienvenido a Kahoot");
+        Text scenetitle = new Text("Bienvenidos a Kahoot");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 2, 1);
 
@@ -52,9 +55,11 @@ public class VistaRegistroJugadores {
         btnRegistrar.setOnAction(new ControladorRegistrarJugadores(kahoot, stage, txtJugador1, txtJugador2));
 
         grid.add(btnRegistrar, 1, 4);
-        grid.setId("pane");
+
         Scene escena = new Scene(grid, 550, 450);
-        escena.getStylesheets().addAll(this.getClass().getResource("/styles/style.css").toExternalForm());
+
+        File arch = new File("src/main/resources/styles/style.css");
+        escena.getStylesheets().add("file:///" + arch.getAbsolutePath().replace("\\", "/")  );
 
         stage.setScene(escena);
 

@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
 
 import javafx.application.Application;
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.image.Image;
 import javafx.scene.media.MediaPlayer;
@@ -16,10 +17,15 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
         stage.setTitle("Kahoot");
-        Media media = new Media((App.class.getResource("/music/musica_kahoot.mp3")).toExternalForm());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.play();
+        //Media media = new Media((App.class.getResource("/music/musica_kahoot.mp3")).toExternalForm());
+        //MediaPlayer mediaPlayer = new MediaPlayer(media);
+        //mediaPlayer.play();
         //mediaPlayer.setOnReady(() -> mediaPlayer.play());
+
+        Media media = new Media((App.class.getResource("/music/musica_kahoot.mp3")).toExternalForm());
+        AudioClip reproductor = new AudioClip(media.getSource());
+        reproductor.setCycleCount(AudioClip.INDEFINITE);
+        reproductor.play(0.2);
 
         stage.getIcons().add(new Image((App.class.getResource("/images/icono.png")).toExternalForm()));
 
