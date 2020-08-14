@@ -1,7 +1,27 @@
+@font-face{
+    font-family: "digital-7";
+    src: url("../fonts/digital-7.ttf");
+}
+
 #pane{
-    -fx-background-image: url("../images/fondo.jpg");
+    -fx-background-image: url("../images/fondo2.jpg");
     -fx-background-repeat: stretch;
     -fx-background-size: cover;
     -fx-background-position: center;
     -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+
+.button:hover{
+    -fx-background-color: #0B7A97;
+}
+
+#tiempo{
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-font-family: "digital-7";
+    -fx-font-size: 30px;
+    -fx-border-radius: 5px;
+    -fx-border-color: white;
+    -fx-background-radius: 5px;
+    -fx-label-padding: 8px;
 }
