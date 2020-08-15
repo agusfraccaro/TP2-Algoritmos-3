@@ -5,11 +5,11 @@
       "textoPregunta": "Pregunta VerdaderoFalso",
       "opciones": [
         {
-          "textoOpcion": "opcion 1",
+          "textoOpcion": "Correcta",
           "estadoOpcion": "Correcta"
         },
 	{
-	  "textoOpcion": "opcion 2",
+	  "textoOpcion": "Incorrecta sin penalidad",
           "estadoOpcion": "SinPenalidad"	
 	}
       ]
@@ -19,7 +19,7 @@
       "textoPregunta": "Pregunta Verdadero Falso con Penalidad",
       "opciones": [
         {
-          "textoOpcion": "opcion 1",
+          "textoOpcion": "Correcta",
           "estadoOpcion": "Correcta"
         }
       ]
@@ -29,7 +29,7 @@
       "textoPregunta": "Pregunta MultipleChoice",
       "opciones": [
         {
-          "textoOpcion": "opcion 1",
+          "textoOpcion": "Correcta",
           "estadoOpcion": "Correcta"
         }
       ]
@@ -40,7 +40,6 @@
       "opciones": [
         {
           "textoOpcion": "opcion 1",
-          "estadoOpcion": "Correcta",
           "grupoOpcion": "1"
         }
       ]

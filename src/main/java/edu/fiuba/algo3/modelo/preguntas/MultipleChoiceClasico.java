@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
+import edu.fiuba.algo3.modelo.excepciones.NoMarcoOpcionExcepcion;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.puntuador.Exclusividad;
 import edu.fiuba.algo3.modelo.preguntas.puntuador.Puntuador;
@@ -18,13 +19,20 @@ public class MultipleChoiceClasico extends Pregunta {
     @Override
     public int puntuar(Respuesta respuesta) {
         int puntos = 0;
-        for(Opcion opcion: respuesta.getOpciones()){
-            puntos += opcion.puntuar();
+        try {
+            List<Opcion> opciones = respuesta.getOpciones();
+            for (Opcion opcion : opciones) {
+                puntos += opcion.puntuar();
+            }
+            if (puntos == this.cantidadRespuestasCorrectas() && respuesta.todasLasOpcionesMarcadasSonCorrectas()) {
+                return 1;
+            }
         }
-        if(puntos == this.cantidadRespuestasCorrectas() && respuesta.todasLasOpcionesMarcadasSonCorrectas()){
-            return 1;
+        catch (NoMarcoOpcionExcepcion ex){
+            return puntos;
         }
-        return 0;
+
+        return puntos;
     }
 
     @Override

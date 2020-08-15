@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.NoMarcoOpcionExcepcion;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.ConPenalidad;
 import edu.fiuba.algo3.modelo.opcion.Correcta;
@@ -16,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RespuestaTest {
 
     @Test
-    public void respuestaSeCreaConDosOpcionesTest(){
+    public void respuestaSeCreaConDosOpcionesTest() throws NoMarcoOpcionExcepcion {
         List<Opcion> opciones = new ArrayList<Opcion>();
         opciones.add(new Opcion("opcion1", new Correcta()));
         opciones.add(new Opcion("opcion2", new SinPenalidad()));

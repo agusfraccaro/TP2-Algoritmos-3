@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
+import edu.fiuba.algo3.modelo.excepciones.NoMarcoOpcionExcepcion;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.puntuador.Multiplicador;
 import edu.fiuba.algo3.modelo.preguntas.puntuador.Puntuador;
@@ -18,10 +19,18 @@ public class MultipleChoiceConPenalidad extends Pregunta {
     @Override
     public int puntuar(Respuesta respuesta) {
         int puntos = 0;
-        for (Opcion opcion : respuesta.getOpciones()) {
-            puntos += opcion.puntuar();
+
+        try {
+            List<Opcion> opciones = respuesta.getOpciones();
+            for (Opcion opcion : opciones) {
+                puntos += opcion.puntuar();
+            }
+            return puntos;
         }
-        return puntos;
+
+        catch(NoMarcoOpcionExcepcion ex) {
+            return puntos;
+        }
     }
 
     @Override

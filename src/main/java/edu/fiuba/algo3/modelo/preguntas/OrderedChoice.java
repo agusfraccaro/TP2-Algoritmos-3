@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
+import edu.fiuba.algo3.modelo.excepciones.NoMarcoOpcionExcepcion;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.puntuador.Exclusividad;
 import edu.fiuba.algo3.modelo.preguntas.puntuador.Puntuador;
@@ -17,9 +18,15 @@ public class OrderedChoice extends Pregunta {
 
     @Override
     public int puntuar(Respuesta respuesta) {
-        if(opciones.equals(respuesta.getOpciones())){
-            return 1;
+        try {
+            if(opciones.equals(respuesta.getOpciones())){
+                return 1;
+            }
         }
+        catch (NoMarcoOpcionExcepcion ex) {
+            return 0;
+        }
+
         return 0;
     }
 
