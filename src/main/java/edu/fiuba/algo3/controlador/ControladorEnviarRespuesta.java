@@ -20,6 +20,7 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
     private final int cantidadRespuestas;
     private final Stage stage;
     private final List<ContenedorOpcion> botones;
+    private int extra;
 
     public ControladorEnviarRespuesta(Kahoot kahoot, VistaPreguntas vista, Stage stage, int cantidadRespuestas, List<ContenedorOpcion> botones){
         this.kahoot = kahoot;
@@ -28,6 +29,11 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
         this.stage = stage;
         this.botones = botones;
     }
+
+    public void setExtraPorBonus(int extra) {
+        this.extra = extra;
+    }
+
     @Override
     public void handle(ActionEvent actionEvent) {
         List<Opcion> respuesta = new ArrayList<>();

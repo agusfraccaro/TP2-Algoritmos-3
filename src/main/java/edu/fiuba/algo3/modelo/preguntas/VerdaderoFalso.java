@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
+import edu.fiuba.algo3.modelo.excepciones.NoMarcoOpcionExcepcion;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.puntuador.Exclusividad;
 import edu.fiuba.algo3.modelo.preguntas.puntuador.Puntuador;
@@ -17,7 +18,14 @@ public class VerdaderoFalso extends Pregunta {
 
     @Override
     public int puntuar(Respuesta respuesta) {
-        return respuesta.getOpciones().get(0).puntuar();
+        int puntaje;
+        try {
+          puntaje = respuesta.getOpciones().get(0).puntuar();
+        }
+        catch(NoMarcoOpcionExcepcion ex) {
+            puntaje=0;
+        }
+        return puntaje;
     }
 
     @Override

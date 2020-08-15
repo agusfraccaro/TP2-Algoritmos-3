@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.respuesta;
 
+import edu.fiuba.algo3.modelo.excepciones.NoMarcoOpcionExcepcion;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 
@@ -15,7 +16,10 @@ public class Respuesta {
         this.jugador = jugador;
     }
 
-    public List<Opcion> getOpciones(){
+    public List<Opcion> getOpciones() throws NoMarcoOpcionExcepcion {
+        if (this.opcionesMarcadas.isEmpty())
+                throw new NoMarcoOpcionExcepcion();
+
         return this.opcionesMarcadas;
     }
 

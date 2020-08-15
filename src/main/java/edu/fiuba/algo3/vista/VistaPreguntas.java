@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.ControladorAplicarBonus;
+import edu.fiuba.algo3.controlador.ControladorEnviarRespuesta;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import javafx.geometry.Insets;
@@ -39,7 +41,9 @@ public class VistaPreguntas {
         Label tiempo = new Label();
         tiempo.setId("tiempo");
         grid.add(tiempo, 0,1);
-        (new Temporizador(tiempo)).correrTiempo();
+
+        ControladorEnviarRespuesta controladorEnviarRespuesta = new ControladorEnviarRespuesta(kahoot,this,stage,cantidadRespuestas,botones);
+        (new Temporizador(tiempo,controladorEnviarRespuesta)).correrTiempo();
 
         Label lblJugadorActual = new Label("Turno de: " + kahoot.getJugadorActual().getNombre());
         Label puntaje = new Label("Puntos: " + kahoot.getJugadorActual().getPuntaje());
@@ -51,9 +55,9 @@ public class VistaPreguntas {
 
         new FabricaPanelOpciones().crearPanelParaOpciones(kahoot.getPreguntaActual(),grid,botones);
 
-        //new FabricaBonus().crearBonus(kahoot.getPreguntaActual(),grid);
+        new FabricaBotonBonus().crearBotonBonus(kahoot.getPreguntaActual(),grid, controladorEnviarRespuesta);
 
-        grid.add(new BotonResponder(kahoot, this, stage, cantidadRespuestas, botones),1,8);
+        grid.add(new BotonResponder(controladorEnviarRespuesta),1,8);
 
         Scene escena = new Scene(grid, 550, 450);
         File arch = new File("src/main/resources/styles/style.css");

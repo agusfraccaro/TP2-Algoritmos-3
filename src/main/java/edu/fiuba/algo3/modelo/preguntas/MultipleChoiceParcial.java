@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.preguntas;
 
+import edu.fiuba.algo3.modelo.excepciones.NoMarcoOpcionExcepcion;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.puntuador.Exclusividad;
 import edu.fiuba.algo3.modelo.preguntas.puntuador.Puntuador;
@@ -18,9 +19,16 @@ public class MultipleChoiceParcial extends Pregunta {
 
     @Override
     public int puntuar(Respuesta respuesta) {
-        if (respuesta.todasLasOpcionesMarcadasSonCorrectas()) {
-            return respuesta.getOpciones().size();
+        try {
+            if (respuesta.todasLasOpcionesMarcadasSonCorrectas()) {
+                return respuesta.getOpciones().size();
+            }
         }
+
+        catch(NoMarcoOpcionExcepcion ex) {
+            return 0;
+        }
+
         return 0;
     }
 
