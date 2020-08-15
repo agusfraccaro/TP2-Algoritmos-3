@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,14 +26,6 @@ public class ControladorIniciarJuego implements EventHandler<ActionEvent> {
     public  ControladorIniciarJuego(Kahoot kahoot, Stage stage){
         this.kahoot = kahoot;
         this.stage = stage;
-    }
-
-    private void registrarPreguntas() {
-        //Mover a JSON/XML
-        //kahoot.registrarPregunta(getPreguntaVerdaderoFalso());
-        //kahoot.registrarPregunta(getPreguntaVerdaderoFalsoConPenalidad());
-        kahoot.registrarPregunta(getPreguntaMultipleChoiceParcial());
-        kahoot.cargarPreguntas();
     }
 
     private VerdaderoFalso getPreguntaVerdaderoFalso() {
@@ -64,10 +57,10 @@ public class ControladorIniciarJuego implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        registrarPreguntas();
         try {
+            kahoot.cargarPreguntas();
             kahoot.iniciarRonda();
-        } catch (NoHaySiguientePreguntaExcepcion noHaySiguientePreguntaExcepcion) {
+        } catch (NoHaySiguientePreguntaExcepcion | IOException noHaySiguientePreguntaExcepcion) {
         }
         (new VistaPreguntas(kahoot, stage)).mostrarPregunta();
     }

@@ -1,0 +1,49 @@
+{ 
+  "preguntas": [
+    {
+      "tipoPregunta": "VerdaderoFalso",
+      "textoPregunta": "Pregunta VerdaderoFalso",
+      "opciones": [
+        {
+          "textoOpcion": "opcion 1",
+          "estadoOpcion": "Correcta"
+        },
+	{
+	  "textoOpcion": "opcion 2",
+          "estadoOpcion": "SinPenalidad"	
+	}
+      ]
+    },
+    {
+      "tipoPregunta": "VerdaderoFalsoConPenalidad",
+      "textoPregunta": "Pregunta Verdadero Falso con Penalidad",
+      "opciones": [
+        {
+          "textoOpcion": "opcion 1",
+          "estadoOpcion": "Correcta"
+        }
+      ]
+    },
+    {
+      "tipoPregunta": "MultipleChoiceClasico",
+      "textoPregunta": "Pregunta MultipleChoice",
+      "opciones": [
+        {
+          "textoOpcion": "opcion 1",
+          "estadoOpcion": "Correcta"
+        }
+      ]
+    },
+    {
+      "tipoPregunta": "GroupChoice",
+      "textoPregunta": "Pregunta GroupChoice",
+      "opciones": [
+        {
+          "textoOpcion": "opcion 1",
+          "estadoOpcion": "Correcta",
+          "grupoOpcion": "1"
+        }
+      ]
+    }
+  ]
+}
