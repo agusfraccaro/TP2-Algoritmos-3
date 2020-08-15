@@ -50,7 +50,7 @@ public class VistaPreguntas {
         grid.add(puntaje, 0, 3);
         grid.add(lblJugadorActual, 0, 2);
 
-        Label lblPregunta = new Label( kahoot.getPreguntaActual().getTexto());
+        Label lblPregunta = new Label(kahoot.getPreguntaActual().getTexto());
         grid.add(lblPregunta, 0, 4);
 
         new FabricaPanelOpciones().crearPanelParaOpciones(kahoot.getPreguntaActual(),grid,botones);
