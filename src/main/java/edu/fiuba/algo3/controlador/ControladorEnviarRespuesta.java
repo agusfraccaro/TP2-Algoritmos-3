@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.excepciones.NoHaySiguientePreguntaExcepcion;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.vista.ContenedorOpcion;
+import edu.fiuba.algo3.vista.Temporizador;
 import edu.fiuba.algo3.vista.VistaFinDelJuego;
 import edu.fiuba.algo3.vista.VistaPreguntas;
 import javafx.event.ActionEvent;

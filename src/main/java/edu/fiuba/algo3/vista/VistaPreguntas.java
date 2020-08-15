@@ -3,7 +3,6 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.controlador.ControladorAplicarBonus;
 import edu.fiuba.algo3.controlador.ControladorEnviarRespuesta;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,7 +17,7 @@ import java.util.List;
 public class VistaPreguntas {
     private Kahoot kahoot;
     private Stage stage;
-    List<ContenedorOpcion> botones = new ArrayList<ContenedorOpcion>();
+    List<ContenedorOpcion> botones = new ArrayList<>();
     private int cantidadRespuestas = 0;
     private int inicio = 15;
     private Integer segundos = inicio;
