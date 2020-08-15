@@ -122,7 +122,6 @@ public class JsonSerializer {
         switch(tipoPregunta) {
             case "VerdaderoFalso":
                 return new VerdaderoFalso(getOpciones(jsonObject),getTextoPregunta(jsonObject));
-
             case "VerdaderoFalsoConPenalidad":
                 return new VerdaderoFalsoConPenalidad(getOpciones(jsonObject),getTextoPregunta(jsonObject));
             case "MultipleChoiceClasico":

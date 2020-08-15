@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
-    private Kahoot kahoot;
-    private VistaPreguntas vista;
-    private int cantidadRespuestas;
-    private Stage stage;
-    private List<ContenedorOpcion> botones;
+    private final Kahoot kahoot;
+    private final VistaPreguntas vista;
+    private final int cantidadRespuestas;
+    private final Stage stage;
+    private final List<ContenedorOpcion> botones;
 
     public ControladorEnviarRespuesta(Kahoot kahoot, VistaPreguntas vista, Stage stage, int cantidadRespuestas, List<ContenedorOpcion> botones){
         this.kahoot = kahoot;
@@ -30,7 +30,7 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
     }
     @Override
     public void handle(ActionEvent actionEvent) {
-        List<Opcion> respuesta = new ArrayList<Opcion>();
+        List<Opcion> respuesta = new ArrayList<>();
         Opcion opcionSeleccionada;
         for(ContenedorOpcion boton : botones) {
             opcionSeleccionada = boton.getOpcionSeleccionada(); //devuelve la Opcion si esta fue seleccionada; sino, null

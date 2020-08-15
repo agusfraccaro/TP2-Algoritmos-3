@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Multiplicador implements Bonus {
-    private List<Integer> factores;
+    private final List<Integer> factores;
 
-    public Multiplicador(ArrayList factores){
+    public Multiplicador(ArrayList<Integer> factores){
         this.factores = factores;
     }
 
