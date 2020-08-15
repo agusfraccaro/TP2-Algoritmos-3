@@ -25,3 +25,8 @@
     -fx-background-radius: 5px;
     -fx-label-padding: 8px;
 }
+
+#ganadorDelJuego {
+    -fx-font-size: 50px;
+    -fx-font-family: "Skranji-Bold";
+}

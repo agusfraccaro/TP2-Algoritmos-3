@@ -53,6 +53,7 @@ public class VistaFinDelJuego {
         jugador2.setTextFill(Color.WHITE);
 
         Label resultado = new Label("El ganador es " + kahoot.getGanador().getNombre());
+        resultado.setId("ganadorDelJuego");
         resultado.setFont(fontGeneral);
         resultado.setTextFill(Color.WHITE);
 

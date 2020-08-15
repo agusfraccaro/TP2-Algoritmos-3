@@ -43,7 +43,6 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
         try {
             if (cantidadRespuestas == 2) {
                 kahoot.iniciarRonda();
-                cantidadRespuestas = 0;
             }
             vista.mostrarPregunta();
         }catch (NoHaySiguientePreguntaExcepcion noHaySiguientePreguntaExcepcion) {

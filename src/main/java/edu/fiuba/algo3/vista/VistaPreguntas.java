@@ -1,16 +1,11 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.ControladorEnviarRespuesta;
-import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -32,6 +27,8 @@ public class VistaPreguntas {
     }
 
     public void mostrarPregunta(){
+        if (cantidadRespuestas == 2)
+            cantidadRespuestas = 0;
         cantidadRespuestas++;
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -52,14 +49,11 @@ public class VistaPreguntas {
         Label lblPregunta = new Label( kahoot.getPreguntaActual().getTexto());
         grid.add(lblPregunta, 0, 4);
 
-        int i = 0;
-        for (Opcion opcion : kahoot.getPreguntaActual().getOpciones()) {
-            botones.add(new ContenedorOpcion(opcion));
-            grid.add((botones.get(i)).getBoton(), 0, 5+i);
-            i++;
-        }
+        new FabricaPanelOpciones().crearPanelParaOpciones(kahoot.getPreguntaActual(),grid,botones);
 
-        grid.add(new BotonResponder(kahoot, this, stage, cantidadRespuestas, botones),1,6+i);
+        //new FabricaBonus().crearBonus(kahoot.getPreguntaActual(),grid);
+
+        grid.add(new BotonResponder(kahoot, this, stage, cantidadRespuestas, botones),1,8);
 
         Scene escena = new Scene(grid, 550, 450);
         File arch = new File("src/main/resources/styles/style.css");

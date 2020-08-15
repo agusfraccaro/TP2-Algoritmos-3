@@ -23,7 +23,7 @@ public class Temporizador {
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
             label.setText(segundos.toString());
             segundos--;
-            if (segundos <= 0) {
+            if (segundos < 0) {
                 timeline.stop();
             }
         });

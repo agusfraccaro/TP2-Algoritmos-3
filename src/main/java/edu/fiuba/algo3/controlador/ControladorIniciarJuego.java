@@ -6,13 +6,16 @@ import edu.fiuba.algo3.modelo.opcion.ConPenalidad;
 import edu.fiuba.algo3.modelo.opcion.Correcta;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.SinPenalidad;
+import edu.fiuba.algo3.modelo.preguntas.MultipleChoiceParcial;
 import edu.fiuba.algo3.modelo.preguntas.VerdaderoFalso;
+import edu.fiuba.algo3.modelo.preguntas.VerdaderoFalsoConPenalidad;
 import edu.fiuba.algo3.vista.VistaPreguntas;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ControladorIniciarJuego implements EventHandler<ActionEvent> {
 
@@ -26,9 +29,9 @@ public class ControladorIniciarJuego implements EventHandler<ActionEvent> {
 
     private void registrarPreguntas() {
         //Mover a JSON/XML
-        kahoot.registrarPregunta(getPreguntaVerdaderoFalso());
-        kahoot.registrarPregunta(getPreguntaVerdaderoFalsoConPenalidad());
-
+        //kahoot.registrarPregunta(getPreguntaVerdaderoFalso());
+        //kahoot.registrarPregunta(getPreguntaVerdaderoFalsoConPenalidad());
+        kahoot.registrarPregunta(getPreguntaMultipleChoiceParcial());
         kahoot.cargarPreguntas();
     }
 
@@ -40,12 +43,23 @@ public class ControladorIniciarJuego implements EventHandler<ActionEvent> {
         return new VerdaderoFalso(opciones,"Texto de la primer pregunta");
     }
 
-    private VerdaderoFalso getPreguntaVerdaderoFalsoConPenalidad() {
+    private MultipleChoiceParcial getPreguntaMultipleChoiceParcial() {
+        Opcion correcta1 = new Opcion("opcion1", new Correcta());
+        Opcion correcta2 = new Opcion("opcion2", new Correcta());
+        Opcion correcta3 = new Opcion("opcion3", new Correcta());
+        List<Opcion> opciones = new ArrayList<Opcion>(){
+            {add(correcta1); add(correcta2); add(correcta3); add(new Opcion("opcion4", new SinPenalidad()));};
+        };
+
+        return new MultipleChoiceParcial(opciones, "una pregunta");
+    }
+
+    private VerdaderoFalsoConPenalidad getPreguntaVerdaderoFalsoConPenalidad() {
         ArrayList<Opcion> opciones = new ArrayList<Opcion>();
         opciones.add(new Opcion("Opcion correcta", new Correcta()));
         opciones.add(new Opcion("Opcion Incorrecta", new ConPenalidad()));
 
-        return new VerdaderoFalso(opciones, "Texto de la segunda pregunta y esta es con penalidad");
+        return new VerdaderoFalsoConPenalidad(opciones, "Texto de la segunda pregunta y esta es con penalidad");
     }
 
     @Override
