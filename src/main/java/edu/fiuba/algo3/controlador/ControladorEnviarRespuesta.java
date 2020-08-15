@@ -50,7 +50,8 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
             if (cantidadRespuestas == 2) {
                 kahoot.iniciarRonda();
             }
-            vista.mostrarPregunta();
+            //vista.mostrarPregunta();
+            new VistaPreguntas(kahoot, stage).mostrarPregunta();
         }catch (NoHaySiguientePreguntaExcepcion noHaySiguientePreguntaExcepcion) {
                 new VistaFinDelJuego(kahoot, stage).mostrarResultado();
         }

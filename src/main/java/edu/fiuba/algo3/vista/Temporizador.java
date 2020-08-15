@@ -10,7 +10,7 @@ import javafx.util.Duration;
 
 public class Temporizador {
 
-    private Integer inicio = 3;
+    private Integer inicio = 7;
     private Integer segundos = inicio;
     private Label label;
     private EventHandler<ActionEvent> eventoAlFinalizar;
@@ -23,14 +23,12 @@ public class Temporizador {
 
     public void correrTiempo(){
         Timeline timeline = new Timeline();
-        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.setOnFinished(eventoAlFinalizar);
+        timeline.setCycleCount(segundos+1);
+        System.out.println("nuevo temp");
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            label.setText(segundos.toString());
             segundos--;
-            if (segundos < -1) {
-                timeline.stop();
-                eventoAlFinalizar.handle(new ActionEvent());
-            }
+            label.setText(segundos.toString());
         });
         timeline.getKeyFrames().add(frame);
         timeline.playFromStart();
