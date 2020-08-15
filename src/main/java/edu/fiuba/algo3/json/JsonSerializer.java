@@ -14,7 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.IntConsumer;
 
 public class JsonSerializer {
     public List<Pregunta> leerPreguntasDesdeJSON(String archivo) {
@@ -35,12 +34,12 @@ public class JsonSerializer {
             alert.show();
         }
 
-        return new ArrayList<Pregunta>();
+        return new ArrayList<>();
     }
 
     private List<Pregunta> recuperarPreguntas(JsonObject jsonObject) throws Exception {
         JsonArray arrayJsonPreguntas = (JsonArray) jsonObject.get("preguntas");
-        ArrayList<Pregunta> arrayPreguntas = new ArrayList<Pregunta>();
+        ArrayList<Pregunta> arrayPreguntas = new ArrayList<>();
         for (JsonElement jsonObjectPregunta : arrayJsonPreguntas) {
             arrayPreguntas.add(crearPregunta(jsonObjectPregunta.getAsJsonObject()));
         }
@@ -56,7 +55,7 @@ public class JsonSerializer {
 
     private List<Opcion> getOpcionesGroupChoice(JsonObject jsonObject) {
         JsonArray arrayOpciones = (JsonArray)jsonObject.get("opciones");
-        ArrayList<Opcion> opciones = new ArrayList<Opcion>();
+        ArrayList<Opcion> opciones = new ArrayList<>();
         for (JsonElement jsonObjectOpcion : arrayOpciones) {
             opciones.add(crearOpcionGroupChoice(jsonObjectOpcion.getAsJsonObject()));
         }
@@ -65,7 +64,7 @@ public class JsonSerializer {
 
     private List<Opcion> getOpcionesOrderedChoice(JsonObject jsonObject) {
         JsonArray arrayOpciones = (JsonArray)jsonObject.get("opciones");
-        ArrayList<Opcion> opciones = new ArrayList<Opcion>();
+        ArrayList<Opcion> opciones = new ArrayList<>();
         for (JsonElement jsonObjectOpcion : arrayOpciones) {
             opciones.add(crearOpcionOrderedChoice(jsonObjectOpcion.getAsJsonObject()));
         }
@@ -74,7 +73,7 @@ public class JsonSerializer {
 
     private List<Opcion> getOpciones(JsonObject jsonObject) {
         JsonArray arrayOpciones = (JsonArray)jsonObject.get("opciones");
-        ArrayList<Opcion> opciones = new ArrayList<Opcion>();
+        ArrayList<Opcion> opciones = new ArrayList<>();
         for (JsonElement jsonObjectOpcion : arrayOpciones) {
             opciones.add(crearOpcion(jsonObjectOpcion.getAsJsonObject()));
         }
@@ -122,26 +121,20 @@ public class JsonSerializer {
 
         switch(tipoPregunta) {
             case "VerdaderoFalso":
-                VerdaderoFalso verdaderoFalso = new VerdaderoFalso(getOpciones(jsonObject),getTextoPregunta(jsonObject));
-                return verdaderoFalso;
+                return new VerdaderoFalso(getOpciones(jsonObject),getTextoPregunta(jsonObject));
+
             case "VerdaderoFalsoConPenalidad":
-                VerdaderoFalsoConPenalidad verdaderoFalsoConPenalidad = new VerdaderoFalsoConPenalidad(getOpciones(jsonObject),getTextoPregunta(jsonObject));
-                return verdaderoFalsoConPenalidad;
+                return new VerdaderoFalsoConPenalidad(getOpciones(jsonObject),getTextoPregunta(jsonObject));
             case "MultipleChoiceClasico":
-                MultipleChoiceClasico multipleChoiceClasico = new MultipleChoiceClasico(getOpciones(jsonObject),getTextoPregunta(jsonObject));
-                return multipleChoiceClasico;
+                return new MultipleChoiceClasico(getOpciones(jsonObject),getTextoPregunta(jsonObject));
             case "GroupChoice":
-                GroupChoice groupChoice = new GroupChoice(getOpcionesGroupChoice(jsonObject),getTextoPregunta(jsonObject));
-                return groupChoice;
+                return new GroupChoice(getOpcionesGroupChoice(jsonObject),getTextoPregunta(jsonObject));
             case "MultipleChoiceConPenalidad":
-                MultipleChoiceConPenalidad multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(getOpciones(jsonObject),getTextoPregunta(jsonObject));
-                return multipleChoiceConPenalidad;
+                return new MultipleChoiceConPenalidad(getOpciones(jsonObject),getTextoPregunta(jsonObject));
             case "MultipleChoiceParcial":
-                MultipleChoiceParcial multipleChoiceParcial = new MultipleChoiceParcial(getOpciones(jsonObject),getTextoPregunta(jsonObject));
-                return multipleChoiceParcial;
+                return new MultipleChoiceParcial(getOpciones(jsonObject),getTextoPregunta(jsonObject));
             case "OrderedChoice":
-                OrderedChoice orderedChoice = new OrderedChoice(getOpcionesOrderedChoice(jsonObject),getTextoPregunta(jsonObject));
-                return orderedChoice;
+                return new OrderedChoice(getOpcionesOrderedChoice(jsonObject),getTextoPregunta(jsonObject));
             default:
                 throw new Exception("Pregunta invalida");
         }
