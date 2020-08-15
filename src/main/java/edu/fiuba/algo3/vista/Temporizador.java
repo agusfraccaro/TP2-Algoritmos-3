@@ -14,6 +14,7 @@ public class Temporizador {
     private Integer segundos = inicio;
     private Label label;
     private EventHandler<ActionEvent> eventoAlFinalizar;
+    private Timeline timeline = new Timeline();
 
     public Temporizador(Label label, EventHandler<ActionEvent> controladorEnviarRespuesta){
         this.label = label;
@@ -22,15 +23,17 @@ public class Temporizador {
     }
 
     public void correrTiempo(){
-        Timeline timeline = new Timeline();
         timeline.setOnFinished(eventoAlFinalizar);
         timeline.setCycleCount(segundos+1);
-        System.out.println("nuevo temp");
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
             segundos--;
             label.setText(segundos.toString());
         });
         timeline.getKeyFrames().add(frame);
         timeline.playFromStart();
+    }
+
+    public void stop(){
+        timeline.stop();
     }
 }

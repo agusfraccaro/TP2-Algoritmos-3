@@ -27,12 +27,10 @@ public class MultipleChoiceClasico extends Pregunta {
             if (puntos == this.cantidadRespuestasCorrectas() && respuesta.todasLasOpcionesMarcadasSonCorrectas()) {
                 return 1;
             }
+        } catch (NoMarcoOpcionExcepcion ex){
+            return 0;
         }
-        catch (NoMarcoOpcionExcepcion ex){
-            return puntos;
-        }
-
-        return puntos;
+        return 0;
     }
 
     @Override
