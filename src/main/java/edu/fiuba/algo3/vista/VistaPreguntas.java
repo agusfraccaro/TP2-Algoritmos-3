@@ -46,7 +46,7 @@ public class VistaPreguntas {
 
                 Responder
          */
-        Pane optionsPane = SantiFabrica.getOptionsPane(kahoot.getPreguntaActual());
+        Pane optionsPane = FabricaPanelOpciones.getOptionsPane(kahoot.getPreguntaActual());
 
         Button responderButton = new Button("RESPONDER");
         ControladorEnviarRespuesta controladorEnviarRespuesta = new ControladorEnviarRespuesta(kahoot, this, stage, cantidadRespuestas, optionsPane.getChildren());
