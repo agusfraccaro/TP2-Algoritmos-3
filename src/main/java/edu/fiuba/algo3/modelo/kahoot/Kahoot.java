@@ -5,10 +5,12 @@ import edu.fiuba.algo3.modelo.excepciones.NoHaySiguientePreguntaExcepcion;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.puntuador.Bonus;
 import edu.fiuba.algo3.modelo.ronda.Ronda;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,6 +23,7 @@ public class Kahoot {
     private Pregunta preguntaActual;
     static String FILENAME_RELATIVE_PATH = "questions.json";
     private JsonSerializer jsonSerializer;
+    private HashMap<Jugador, List<Bonus>> bonusPorJugador;
 
     public Kahoot() {
         jugadores = new ArrayList<Jugador>();
@@ -56,6 +59,7 @@ public class Kahoot {
     public void registrarJugador(String nombre) {
         Jugador jugador = new Jugador(nombre);
         this.jugadores.add(jugador);
+        bonusPorJugador.put(jugador,new ArrayList<Bonus>());
     }
 
     public Jugador getJugadorActual() {
@@ -76,4 +80,10 @@ public class Kahoot {
         }
         return jugadores.get(1);
     }
+
+    public Boolean puedeAplicarMultiplicadorPor2() {
+       // return getJugadorActual().puedeAplicarMultiplicadorPor2();
+        return true;
+    }
+
 }

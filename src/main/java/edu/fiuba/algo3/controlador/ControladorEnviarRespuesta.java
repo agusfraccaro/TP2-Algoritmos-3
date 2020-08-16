@@ -22,7 +22,8 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
     private final int cantidadRespuestas;
     private final Stage stage;
     private final ObservableList<Node> buttons;
-    private int extra;
+    private int extra = 1;
+    private Temporizador temporizador;
 
     public ControladorEnviarRespuesta(Kahoot kahoot, VistaPreguntas vista, Stage stage, int cantidadRespuestas, ObservableList<Node> buttons){
         this.kahoot = kahoot;
@@ -36,6 +37,10 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
         this.extra = extra;
     }
 
+    public void setTemporizador(Temporizador temporizador) {
+        this.temporizador = temporizador;
+    }
+
     @Override
     public void handle(ActionEvent actionEvent) {
         List<Opcion> selectedOptions = new ArrayList<>();
@@ -46,14 +51,13 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
             }
         }
         kahoot.enviarRespuesta(selectedOptions,extra);
-
+        this.temporizador.stop();
         try {
             if (cantidadRespuestas == 2) {
-                System.out.println("New Round");
                 kahoot.iniciarRonda();
             }
             vista.mostrarPregunta();
-            new VistaPreguntas(kahoot, stage).mostrarPregunta();
+
         } catch (NoHaySiguientePreguntaExcepcion noHaySiguientePreguntaExcepcion) {
                 new VistaFinDelJuego(kahoot, stage).mostrarResultado();
         }

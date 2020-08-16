@@ -1,16 +1,12 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.ControladorAplicarBonus;
 import edu.fiuba.algo3.controlador.ControladorEnviarRespuesta;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -54,8 +50,11 @@ public class VistaPreguntas {
 
         Label timer = new Label();
         timer.setId("tiempo");
-        (new Temporizador(timer, responderButton)).correrTiempo();
-        VBox bonusLayout = FabricaBotonBonus.crearBotonBonus(kahoot.getPreguntaActual(), controladorEnviarRespuesta);
+        Temporizador temporizador = new Temporizador(timer, responderButton);
+        temporizador.correrTiempo();
+        controladorEnviarRespuesta.setTemporizador(temporizador);
+
+        VBox bonusLayout = FabricaBotonBonus.crearBotonBonus(kahoot, controladorEnviarRespuesta);
 
         VBox timerAndBonusInfoLayout = new VBox();
         timerAndBonusInfoLayout.getChildren().addAll(timer, bonusLayout);

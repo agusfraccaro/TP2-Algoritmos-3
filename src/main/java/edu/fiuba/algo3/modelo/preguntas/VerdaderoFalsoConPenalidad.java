@@ -31,7 +31,7 @@ public class VerdaderoFalsoConPenalidad extends Pregunta {
     }
 
     @Override
-    public void activarBonus(ArrayList<Integer> numeros) {
+    public void activarBonus(List<Integer> numeros) {
         this.puntuador.activarBonus(new Multiplicador(numeros));
     }
 }

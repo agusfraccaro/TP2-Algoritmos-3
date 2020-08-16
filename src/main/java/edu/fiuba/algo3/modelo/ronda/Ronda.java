@@ -29,6 +29,7 @@ public class Ronda {
     }
 
     private void evaluar(){
+        pregunta.activarBonus(extras);
         pregunta.evaluarRespuestas(respuestas);
     }
 
