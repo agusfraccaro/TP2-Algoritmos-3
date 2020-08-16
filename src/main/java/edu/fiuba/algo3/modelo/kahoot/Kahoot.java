@@ -29,7 +29,7 @@ public class Kahoot {
     }
 
     private Pregunta getSiguientePregunta() throws NoHaySiguientePreguntaExcepcion {
-        if(iteradorPreguntas.hasNext()){
+        if (iteradorPreguntas.hasNext()){
             preguntaActual = iteradorPreguntas.next();
             return preguntaActual;
         }

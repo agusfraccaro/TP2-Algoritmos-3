@@ -3,13 +3,14 @@ package edu.fiuba.algo3.controlador;
 import edu.fiuba.algo3.modelo.excepciones.NoHaySiguientePreguntaExcepcion;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.vista.ContenedorOpcion;
 import edu.fiuba.algo3.vista.Temporizador;
 import edu.fiuba.algo3.vista.VistaFinDelJuego;
 import edu.fiuba.algo3.vista.VistaPreguntas;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.CheckBox;
+import javafx.scene.Node;
+import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -20,15 +21,15 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
     private final VistaPreguntas vista;
     private final int cantidadRespuestas;
     private final Stage stage;
-    private final List<ContenedorOpcion> botones;
+    private final ObservableList<Node> buttons;
     private int extra;
 
-    public ControladorEnviarRespuesta(Kahoot kahoot, VistaPreguntas vista, Stage stage, int cantidadRespuestas, List<ContenedorOpcion> botones){
+    public ControladorEnviarRespuesta(Kahoot kahoot, VistaPreguntas vista, Stage stage, int cantidadRespuestas, ObservableList<Node> buttons){
         this.kahoot = kahoot;
-        this.cantidadRespuestas = cantidadRespuestas;
         this.vista = vista;
+        this.cantidadRespuestas = cantidadRespuestas;
         this.stage = stage;
-        this.botones = botones;
+        this.buttons = buttons;
     }
 
     public void setExtraPorBonus(int extra) {
@@ -37,23 +38,23 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        List<Opcion> respuesta = new ArrayList<>();
-        Opcion opcionSeleccionada;
-        for(ContenedorOpcion boton : botones) {
-            opcionSeleccionada = boton.getOpcionSeleccionada(); //devuelve la Opcion si esta fue seleccionada; sino, null
-            if(opcionSeleccionada != null){
-                respuesta.add(opcionSeleccionada);
+        List<Opcion> selectedOptions = new ArrayList<>();
+        for (Node node : buttons) {
+            RadioButton button = (RadioButton) node;
+            if (button.isSelected()) {
+                selectedOptions.add((Opcion) button.getUserData());
             }
         }
-        kahoot.enviarRespuesta(respuesta,1);
+        kahoot.enviarRespuesta(selectedOptions,extra);
 
         try {
             if (cantidadRespuestas == 2) {
+                System.out.println("New Round");
                 kahoot.iniciarRonda();
             }
-            //vista.mostrarPregunta();
+            vista.mostrarPregunta();
             new VistaPreguntas(kahoot, stage).mostrarPregunta();
-        }catch (NoHaySiguientePreguntaExcepcion noHaySiguientePreguntaExcepcion) {
+        } catch (NoHaySiguientePreguntaExcepcion noHaySiguientePreguntaExcepcion) {
                 new VistaFinDelJuego(kahoot, stage).mostrarResultado();
         }
     }
