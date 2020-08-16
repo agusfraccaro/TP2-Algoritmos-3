@@ -22,7 +22,7 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
     private final int cantidadRespuestas;
     private final Stage stage;
     private final ObservableList<Node> buttons;
-    private int extra;
+    private int extra = 1;
 
     public ControladorEnviarRespuesta(Kahoot kahoot, VistaPreguntas vista, Stage stage, int cantidadRespuestas, ObservableList<Node> buttons){
         this.kahoot = kahoot;
@@ -49,10 +49,8 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
             }
         }
         kahoot.enviarRespuesta(selectedOptions,extra);
-
         try {
             if (cantidadRespuestas == 2) {
-                System.out.println("New Round");
                 kahoot.iniciarRonda();
             }
             vista.mostrarPregunta();

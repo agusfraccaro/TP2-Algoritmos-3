@@ -50,8 +50,7 @@ public class VistaPreguntas {
         Temporizador my_timer = new Temporizador(lblTimer, responderButton);
         my_timer.correrTiempo();
 
-        VBox bonusLayout = FabricaBotonBonus.crearBotonBonus(kahoot.getPreguntaActual(), controladorEnviarRespuesta);
-
+        VBox bonusLayout = FabricaBotonBonus.crearBotonBonus(kahoot, controladorEnviarRespuesta);
 
         VBox timerAndBonusInfoLayout = new VBox();
         timerAndBonusInfoLayout.getChildren().addAll(lblTimer, bonusLayout);

@@ -2,12 +2,15 @@ package edu.fiuba.algo3.modelo.kahoot;
 
 import edu.fiuba.algo3.json.JsonSerializer;
 import edu.fiuba.algo3.modelo.excepciones.NoHaySiguientePreguntaExcepcion;
+import edu.fiuba.algo3.modelo.jugador.BONUS;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.puntuador.Bonus;
 import edu.fiuba.algo3.modelo.ronda.Ronda;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -71,4 +74,22 @@ public class Kahoot {
         }
         return jugadores.get(1);
     }
+
+    public Boolean puedeAplicarMultiplicadorPor2() {
+       return getJugadorActual().puedeAplicarMultiplicadorPor2();
+    }
+
+    public Boolean puedeAplicarMultiplicadorPor3() {
+        return getJugadorActual().puedeAplicarMultiplicadorPor3();
+    }
+
+    public Boolean puedeAplicarExclusividad() {
+        return getJugadorActual().puedeAplicarExclusividad();
+    }
+
+    public void gastarBonus(BONUS bonus) {
+        getJugadorActual().gastarBonus(bonus);
+
+    }
+
 }
