@@ -20,22 +20,34 @@ public class OrderedChoiceTest {
         Opcion opcion2 = new Opcion("opcion2");
         Opcion opcion3 = new Opcion("opcion3");
 
-        List <Opcion> opciones = new ArrayList<Opcion>(){
-            {add(opcion1); add(opcion2); add(opcion3);};
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
         };
 
         Pregunta pregunta = new OrderedChoice(opciones, "una pregunta");
 
         Jugador jugador1 = new Jugador("Agus");
         Jugador jugador2 = new Jugador("Cami");
-        List <Opcion> opcionesMarcadas1 = new ArrayList<Opcion>(){
-            {add(opcion1); add(opcion2); add(opcion3);}
+        List <Opcion> opcionesMarcadas1 = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
         };
-        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>(){
-            {add(opcion1); add(opcion2); add(opcion3);}
+        List <Opcion> opcionesMarcadas2 = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
         };
 
-        List <Respuesta> respuestas = new ArrayList<Respuesta>();
+        List <Respuesta> respuestas = new ArrayList<>();
         respuestas.add(new Respuesta(opcionesMarcadas1, jugador1));
         respuestas.add(new Respuesta(opcionesMarcadas2, jugador2));
 
@@ -51,22 +63,34 @@ public class OrderedChoiceTest {
         Opcion opcion2 = new Opcion("opcion2");
         Opcion opcion3 = new Opcion("opcion3");
 
-        List <Opcion> opciones = new ArrayList<Opcion>(){
-            {add(opcion1); add(opcion2); add(opcion3);};
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
         };
 
         Pregunta pregunta = new OrderedChoice(opciones, "una pregunta");
 
         Jugador jugador1 = new Jugador("Agus");
         Jugador jugador2 = new Jugador("Cami");
-        List <Opcion> opcionesMarcadas1 = new ArrayList<Opcion>(){
-            {add(opcion3); add(opcion1); add(opcion2);}
+        List <Opcion> opcionesMarcadas1 = new ArrayList<>() {
+            {
+                add(opcion3);
+                add(opcion1);
+                add(opcion2);
+            }
         };
-        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>(){
-            {add(opcion1); add(opcion2); add(opcion3);}
+        List <Opcion> opcionesMarcadas2 = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
         };
 
-        List <Respuesta> respuestas = new ArrayList<Respuesta>();
+        List <Respuesta> respuestas = new ArrayList<>();
         respuestas.add(new Respuesta(opcionesMarcadas1, jugador1));
         respuestas.add(new Respuesta(opcionesMarcadas2, jugador2));
 
@@ -82,22 +106,34 @@ public class OrderedChoiceTest {
         Opcion opcion2 = new Opcion("opcion2");
         Opcion opcion3 = new Opcion("opcion3");
 
-        List <Opcion> opciones = new ArrayList<Opcion>(){
-            {add(opcion1); add(opcion2); add(opcion3);};
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
         };
 
         Pregunta pregunta = new OrderedChoice(opciones, "una pregunta");
 
         Jugador jugador1 = new Jugador("Agus");
         Jugador jugador2 = new Jugador("Cami");
-        List <Opcion> opcionesMarcadas1 = new ArrayList<Opcion>(){
-            {add(opcion3); add(opcion1); add(opcion2);}
+        List <Opcion> opcionesMarcadas1 = new ArrayList<>() {
+            {
+                add(opcion3);
+                add(opcion1);
+                add(opcion2);
+            }
         };
-        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>(){
-            {add(opcion2); add(opcion3); add(opcion1);}
+        List <Opcion> opcionesMarcadas2 = new ArrayList<>() {
+            {
+                add(opcion2);
+                add(opcion3);
+                add(opcion1);
+            }
         };
 
-        List <Respuesta> respuestas = new ArrayList<Respuesta>();
+        List <Respuesta> respuestas = new ArrayList<>();
         respuestas.add(new Respuesta(opcionesMarcadas1, jugador1));
         respuestas.add(new Respuesta(opcionesMarcadas2, jugador2));
 
@@ -113,22 +149,32 @@ public class OrderedChoiceTest {
         Opcion opcion2 = new Opcion("opcion2");
         Opcion opcion3 = new Opcion("opcion3");
 
-        List <Opcion> opciones = new ArrayList<Opcion>(){
-            {add(opcion1); add(opcion2); add(opcion3);};
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
         };
 
         Pregunta pregunta = new OrderedChoice(opciones, "una pregunta");
 
         Jugador jugador1 = new Jugador("Agus");
         Jugador jugador2 = new Jugador("Cami");
-        List <Opcion> opcionesMarcadas1 = new ArrayList<Opcion>(){
-            {add(opcion1); add(opcion2);}
+        List <Opcion> opcionesMarcadas1 = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+            }
         };
-        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>(){
-            {add(opcion3); add(opcion2);}
+        List <Opcion> opcionesMarcadas2 = new ArrayList<>() {
+            {
+                add(opcion3);
+                add(opcion2);
+            }
         };
 
-        List <Respuesta> respuestas = new ArrayList<Respuesta>();
+        List <Respuesta> respuestas = new ArrayList<>();
         respuestas.add(new Respuesta(opcionesMarcadas1, jugador1));
         respuestas.add(new Respuesta(opcionesMarcadas2, jugador2));
 
@@ -144,14 +190,22 @@ public class OrderedChoiceTest {
         Opcion opcion2 = new Opcion("opcion2");
         Opcion opcion3 = new Opcion("opcion3");
 
-        List <Opcion> opciones = new ArrayList<Opcion>(){
-            {add(opcion1); add(opcion2); add(opcion3);};
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
         };
 
         Pregunta pregunta = new OrderedChoice(opciones, "una pregunta");
 
-        List <Opcion> opcionesMarcadas = new ArrayList<Opcion>(){
-            {add(opcion1); add(opcion2); add(opcion3);}
+        List <Opcion> opcionesMarcadas = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
         };
 
         Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("santi"));
@@ -165,14 +219,22 @@ public class OrderedChoiceTest {
         Opcion opcion2 = new Opcion("opcion2");
         Opcion opcion3 = new Opcion("opcion3");
 
-        List <Opcion> opciones = new ArrayList<Opcion>(){
-            {add(opcion1); add(opcion2); add(opcion3);};
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
         };
 
         Pregunta pregunta = new OrderedChoice(opciones, "una pregunta");
 
-        List <Opcion> opcionesMarcadas = new ArrayList<Opcion>(){
-            {add(opcion3); add(opcion2); add(opcion1);}
+        List <Opcion> opcionesMarcadas = new ArrayList<>() {
+            {
+                add(opcion3);
+                add(opcion2);
+                add(opcion1);
+            }
         };
 
         Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("kevin"));

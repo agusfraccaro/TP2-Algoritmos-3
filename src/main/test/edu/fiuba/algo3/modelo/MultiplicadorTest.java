@@ -15,7 +15,10 @@ public class MultiplicadorTest {
 
     @Test
     public void MultiplicadorNoHaceNadaSiSeInicializaConUnoUno(){
-        Multiplicador mult= new Multiplicador((new ArrayList<Integer>(){{add(1);add(1);}}));
+        Multiplicador mult= new Multiplicador((new ArrayList<>() {{
+            add(1);
+            add(1);
+        }}));
         List<Opcion> opciones = new ArrayList<>();
         List<Respuesta> respuestas = new ArrayList<>();
         Respuesta respuesta1 = new Respuesta(opciones, new Jugador("Flash"));
@@ -31,7 +34,10 @@ public class MultiplicadorTest {
 
     @Test
     public void multiplicadorMultiplicaCorrectamente(){
-        Multiplicador mult = new Multiplicador((new ArrayList<Integer>(){{add(2);add(3);}}));
+        Multiplicador mult = new Multiplicador((new ArrayList<>() {{
+            add(2);
+            add(3);
+        }}));
         List<Opcion> opciones = new ArrayList<>();
         List<Respuesta> respuestas = new ArrayList<>();
         Respuesta respuesta1 = new Respuesta(opciones, new Jugador("Flash"));

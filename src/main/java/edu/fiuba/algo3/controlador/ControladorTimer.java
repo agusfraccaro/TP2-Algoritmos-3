@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.controlador;
 
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;

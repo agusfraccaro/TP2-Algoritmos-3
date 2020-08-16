@@ -7,12 +7,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class ControladorIniciarJuego implements EventHandler<ActionEvent> {
 
-    private Kahoot kahoot;
-    private Stage stage;
+    private final Kahoot kahoot;
+    private final Stage stage;
 
     public  ControladorIniciarJuego(Kahoot kahoot, Stage stage){
         this.kahoot = kahoot;
@@ -24,7 +22,7 @@ public class ControladorIniciarJuego implements EventHandler<ActionEvent> {
         try {
             kahoot.cargarPreguntas();
             kahoot.iniciarRonda();
-        } catch (NoHaySiguientePreguntaExcepcion | IOException noHaySiguientePreguntaExcepcion) {
+        } catch (NoHaySiguientePreguntaExcepcion ignore) {
         }
         (new VistaPreguntas(kahoot, stage)).mostrarPregunta();
     }

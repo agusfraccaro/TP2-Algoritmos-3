@@ -7,11 +7,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-import java.util.List;
 
 public class FabricaPanelOpciones {
     public static Pane getOptionsPane(Pregunta pregunta) {

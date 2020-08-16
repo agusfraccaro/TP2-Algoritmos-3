@@ -1,32 +1,23 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.ControladorAplicarBonus;
 import edu.fiuba.algo3.controlador.ControladorEnviarRespuesta;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
 public class VistaPreguntas {
-    private Kahoot kahoot;
-    private Stage stage;
-    List<ContenedorOpcion> botones = new ArrayList<>();
+    private final Kahoot kahoot;
+    private final Stage stage;
     private int cantidadRespuestas = 0;
-    private int inicio = 15;
-    private Integer segundos = inicio;
 
     public VistaPreguntas(Kahoot kahoot, Stage stage){
         this.kahoot = kahoot;
@@ -36,6 +27,7 @@ public class VistaPreguntas {
     public void mostrarPregunta(){
         cantidadRespuestas %= 2;
         cantidadRespuestas++;
+        System.out.println(cantidadRespuestas);
         /*
         Jugador         Timer
         Puntos          Bonus
@@ -49,16 +41,20 @@ public class VistaPreguntas {
         Pane optionsPane = FabricaPanelOpciones.getOptionsPane(kahoot.getPreguntaActual());
 
         Button responderButton = new Button("RESPONDER");
+
         ControladorEnviarRespuesta controladorEnviarRespuesta = new ControladorEnviarRespuesta(kahoot, this, stage, cantidadRespuestas, optionsPane.getChildren());
         responderButton.setOnAction(controladorEnviarRespuesta);
 
-        Label timer = new Label();
-        timer.setId("tiempo");
-        (new Temporizador(timer, responderButton)).correrTiempo();
+        Label lblTimer = new Label();
+        lblTimer.setId("tiempo");
+        Temporizador my_timer = new Temporizador(lblTimer, responderButton);
+        my_timer.correrTiempo();
+
         VBox bonusLayout = FabricaBotonBonus.crearBotonBonus(kahoot.getPreguntaActual(), controladorEnviarRespuesta);
 
+
         VBox timerAndBonusInfoLayout = new VBox();
-        timerAndBonusInfoLayout.getChildren().addAll(timer, bonusLayout);
+        timerAndBonusInfoLayout.getChildren().addAll(lblTimer, bonusLayout);
         timerAndBonusInfoLayout.setAlignment(Pos.TOP_RIGHT);
 
         VBox playerInfoLayout = new VBox();

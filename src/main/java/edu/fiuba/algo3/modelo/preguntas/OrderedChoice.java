@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.preguntas.puntuador.Exclusividad;
 import edu.fiuba.algo3.modelo.preguntas.puntuador.Puntuador;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderedChoice extends Pregunta {
@@ -31,7 +30,7 @@ public class OrderedChoice extends Pregunta {
     }
 
     @Override
-    public void activarBonus(ArrayList<Integer> numeros) {
+    public void activarBonus(List<Integer> numeros) {
         this.puntuador.activarBonus(new Exclusividad(numeros));
     }
 }

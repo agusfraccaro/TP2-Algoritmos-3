@@ -20,8 +20,12 @@ public class GroupChoiceTest {
         Opcion opcion2 = new Opcion("opcion2", "Grupo2");
         Opcion opcion3 = new Opcion("opcion3", "Grupo2");
 
-        List<Opcion> opciones = new ArrayList<Opcion>(){
-            {add(opcion1); add(opcion2); add(opcion3);};
+        List<Opcion> opciones = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
         };
 
         Pregunta pregunta = new GroupChoice(opciones, "una pregunta");
@@ -32,18 +36,26 @@ public class GroupChoiceTest {
         Opcion opcion1Jugador1 = new Opcion("opcion1", "Grupo1");
         Opcion opcion2Jugador1 = new Opcion("opcion2", "Grupo2");
         Opcion opcion3Jugador1 = new Opcion("opcion3", "Grupo2");
-        List <Opcion> opcionesMarcadas1 = new ArrayList<Opcion>(){
-            {add(opcion1Jugador1); add(opcion2Jugador1); add(opcion3Jugador1);}
+        List <Opcion> opcionesMarcadas1 = new ArrayList<>() {
+            {
+                add(opcion1Jugador1);
+                add(opcion2Jugador1);
+                add(opcion3Jugador1);
+            }
         };
 
         Opcion opcion1Jugador2 = new Opcion("opcion1", "Grupo1");
         Opcion opcion2Jugador2 = new Opcion("opcion2", "Grupo2");
         Opcion opcion3Jugador2 = new Opcion("opcion3", "Grupo2");
-        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>(){
-            {add(opcion1Jugador1); add(opcion2Jugador1); add(opcion3Jugador1);}
+        List <Opcion> opcionesMarcadas2 = new ArrayList<>() {
+            {
+                add(opcion1Jugador2);
+                add(opcion2Jugador2);
+                add(opcion3Jugador2);
+            }
         };
 
-        List <Respuesta> respuestas = new ArrayList<Respuesta>();
+        List <Respuesta> respuestas = new ArrayList<>();
         respuestas.add(new Respuesta(opcionesMarcadas1, jugador1));
         respuestas.add(new Respuesta(opcionesMarcadas2, jugador2));
 
@@ -59,8 +71,12 @@ public class GroupChoiceTest {
         Opcion opcion2 = new Opcion("opcion2", "Grupo2");
         Opcion opcion3 = new Opcion("opcion3", "Grupo2");
 
-        List<Opcion> opciones = new ArrayList<Opcion>(){
-            {add(opcion1); add(opcion2); add(opcion3);};
+        List<Opcion> opciones = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
         };
 
         Pregunta pregunta = new GroupChoice(opciones, "una pregunta");
@@ -68,17 +84,23 @@ public class GroupChoiceTest {
         Jugador jugador1 = new Jugador("Agus");
         Jugador jugador2 = new Jugador("Kevin");
 
-        List <Opcion> opcionesMarcadas1 = new ArrayList<Opcion>(){
-            {add(new Opcion("opcion1", "Grupo2")); add(new Opcion("opcion2", "Grupo2"));
-            add(new Opcion("opcion3", "Grupo1"));}
+        List <Opcion> opcionesMarcadas1 = new ArrayList<>() {
+            {
+                add(new Opcion("opcion1", "Grupo2"));
+                add(new Opcion("opcion2", "Grupo2"));
+                add(new Opcion("opcion3", "Grupo1"));
+            }
         };
 
-        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>(){
-            {add(new Opcion("opcion1", "Grupo1")); add(new Opcion("opcion2", "Grupo2"));
-                add(new Opcion("opcion3", "Grupo2"));}
+        List <Opcion> opcionesMarcadas2 = new ArrayList<>() {
+            {
+                add(new Opcion("opcion1", "Grupo1"));
+                add(new Opcion("opcion2", "Grupo2"));
+                add(new Opcion("opcion3", "Grupo2"));
+            }
         };
 
-        List <Respuesta> respuestas = new ArrayList<Respuesta>();
+        List <Respuesta> respuestas = new ArrayList<>();
         respuestas.add(new Respuesta(opcionesMarcadas1, jugador1));
         respuestas.add(new Respuesta(opcionesMarcadas2, jugador2));
 
@@ -94,8 +116,12 @@ public class GroupChoiceTest {
         Opcion opcion2 = new Opcion("opcion2", "Grupo2");
         Opcion opcion3 = new Opcion("opcion3", "Grupo2");
 
-        List<Opcion> opciones = new ArrayList<Opcion>(){
-            {add(opcion1); add(opcion2); add(opcion3);};
+        List<Opcion> opciones = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
         };
 
         Pregunta pregunta = new GroupChoice(opciones, "una pregunta");
@@ -103,17 +129,23 @@ public class GroupChoiceTest {
         Jugador jugador1 = new Jugador("Agus");
         Jugador jugador2 = new Jugador("Kevin");
 
-        List <Opcion> opcionesMarcadas1 = new ArrayList<Opcion>(){
-            {add(new Opcion("opcion1", "Grupo2")); add(new Opcion("opcion2", "Grupo2"));
-                add(new Opcion("opcion3", "Grupo1"));}
+        List <Opcion> opcionesMarcadas1 = new ArrayList<>() {
+            {
+                add(new Opcion("opcion1", "Grupo2"));
+                add(new Opcion("opcion2", "Grupo2"));
+                add(new Opcion("opcion3", "Grupo1"));
+            }
         };
 
-        List <Opcion> opcionesMarcadas2 = new ArrayList<Opcion>(){
-            {add(new Opcion("opcion1", "Grupo1")); add(new Opcion("opcion2", "Grupo1"));
-                add(new Opcion("opcion3", "Grupo2"));}
+        List <Opcion> opcionesMarcadas2 = new ArrayList<>() {
+            {
+                add(new Opcion("opcion1", "Grupo1"));
+                add(new Opcion("opcion2", "Grupo1"));
+                add(new Opcion("opcion3", "Grupo2"));
+            }
         };
 
-        List <Respuesta> respuestas = new ArrayList<Respuesta>();
+        List <Respuesta> respuestas = new ArrayList<>();
         respuestas.add(new Respuesta(opcionesMarcadas1, jugador1));
         respuestas.add(new Respuesta(opcionesMarcadas2, jugador2));
 
@@ -129,15 +161,22 @@ public class GroupChoiceTest {
         Opcion opcion2 = new Opcion("opcion2", "Grupo2");
         Opcion opcion3 = new Opcion("opcion3", "Grupo2");
 
-        List<Opcion> opciones = new ArrayList<Opcion>(){
-            {add(opcion1); add(opcion2); add(opcion3);};
+        List<Opcion> opciones = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
         };
 
         Pregunta pregunta = new GroupChoice(opciones, "una pregunta");
 
-        List <Opcion> opcionesMarcadas = new ArrayList<Opcion>(){
-            {add(new Opcion("opcion1", "Grupo1")); add(new Opcion("opcion2", "Grupo2"));
-                add(new Opcion("opcion3", "Grupo2"));}
+        List <Opcion> opcionesMarcadas = new ArrayList<>() {
+            {
+                add(new Opcion("opcion1", "Grupo1"));
+                add(new Opcion("opcion2", "Grupo2"));
+                add(new Opcion("opcion3", "Grupo2"));
+            }
         };
 
         Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("agus"));
@@ -151,15 +190,22 @@ public class GroupChoiceTest {
         Opcion opcion2 = new Opcion("opcion2", "Grupo2");
         Opcion opcion3 = new Opcion("opcion3", "Grupo2");
 
-        List<Opcion> opciones = new ArrayList<Opcion>(){
-            {add(opcion1); add(opcion2); add(opcion3);};
+        List<Opcion> opciones = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
         };
 
         Pregunta pregunta = new GroupChoice(opciones, "una pregunta");
 
-        List <Opcion> opcionesMarcadas = new ArrayList<Opcion>(){
-            {add(new Opcion("opcion1", "Grupo1")); add(new Opcion("opcion2", "Grupo2"));
-                add(new Opcion("opcion3", "Grupo1"));}
+        List <Opcion> opcionesMarcadas = new ArrayList<>() {
+            {
+                add(new Opcion("opcion1", "Grupo1"));
+                add(new Opcion("opcion2", "Grupo2"));
+                add(new Opcion("opcion3", "Grupo1"));
+            }
         };
 
         Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("agus"));

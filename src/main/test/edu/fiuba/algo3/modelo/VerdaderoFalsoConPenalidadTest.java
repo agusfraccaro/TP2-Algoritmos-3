@@ -17,17 +17,20 @@ public class VerdaderoFalsoConPenalidadTest {
     public void preguntaVerdaderoFalsoConPenalidadSumaPuntosAAmbosJugadoresQueEligeRespuestaCorrectaTest(){
         Opcion correcta = new Opcion("opcion1", new Correcta());
         Opcion incorrecta = new Opcion("opcion2", new ConPenalidad());
-        List <Opcion> opciones = new ArrayList<Opcion>(){
-            {add(correcta); add(incorrecta);}
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(correcta);
+                add(incorrecta);
+            }
         };
         Pregunta pregunta = new VerdaderoFalsoConPenalidad(opciones, "una pregunta");
         Jugador jugador1 = new Jugador("Cami");
         Jugador jugador2 = new Jugador("Kevin");
-        List <Opcion> opcionesMarcadasJugador1 = new ArrayList<Opcion>();
-        List <Opcion> opcionesMarcadasJugador2 = new ArrayList<Opcion>();
+        List <Opcion> opcionesMarcadasJugador1 = new ArrayList<>();
+        List <Opcion> opcionesMarcadasJugador2 = new ArrayList<>();
         opcionesMarcadasJugador1.add(correcta);
         opcionesMarcadasJugador2.add(correcta);
-        List <Respuesta> respuestas = new ArrayList<Respuesta>();
+        List <Respuesta> respuestas = new ArrayList<>();
         respuestas.add(new Respuesta(opcionesMarcadasJugador1, jugador1));
         respuestas.add(new Respuesta(opcionesMarcadasJugador2, jugador2));
 
@@ -42,17 +45,20 @@ public class VerdaderoFalsoConPenalidadTest {
     public void preguntaVerdaderoFalsoConPenalidadRestaPuntosAJugador1QueEligeRespuestaIncorrectaYSumaPuntoAJugador2QueEligeRespuestaCorrectaTest(){
         Opcion correcta = new Opcion("opcion1", new Correcta());
         Opcion incorrecta = new Opcion("opcion2", new ConPenalidad());
-        List <Opcion> opciones = new ArrayList<Opcion>(){
-            {add(correcta); add(incorrecta);}
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(correcta);
+                add(incorrecta);
+            }
         };
         Pregunta pregunta = new VerdaderoFalsoConPenalidad(opciones, "una pregunta");
         Jugador jugador1 = new Jugador("Cami");
         Jugador jugador2 = new Jugador("Kevin");
-        List <Opcion> opcionesMarcadasJugador1 = new ArrayList<Opcion>();
-        List <Opcion> opcionesMarcadasJugador2 = new ArrayList<Opcion>();
+        List <Opcion> opcionesMarcadasJugador1 = new ArrayList<>();
+        List <Opcion> opcionesMarcadasJugador2 = new ArrayList<>();
         opcionesMarcadasJugador1.add(incorrecta);
         opcionesMarcadasJugador2.add(correcta);
-        List <Respuesta> respuestas = new ArrayList<Respuesta>();
+        List <Respuesta> respuestas = new ArrayList<>();
         respuestas.add(new Respuesta(opcionesMarcadasJugador1, jugador1));
         respuestas.add(new Respuesta(opcionesMarcadasJugador2, jugador2));
 
@@ -67,17 +73,20 @@ public class VerdaderoFalsoConPenalidadTest {
     public void preguntaVerdaderoFalsoConPenalidadRestaPuntosSiSeEligeRespuestaIncorrectaTest(){
         Opcion correcta = new Opcion("opcion1", new Correcta());
         Opcion incorrecta = new Opcion("opcion2", new ConPenalidad());
-        List <Opcion> opciones = new ArrayList<Opcion>(){
-            {add(correcta); add(incorrecta);}
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(correcta);
+                add(incorrecta);
+            }
         };
         Pregunta pregunta = new VerdaderoFalsoConPenalidad(opciones, "una pregunta");
         Jugador jugador1 = new Jugador("Cami");
         Jugador jugador2 = new Jugador("Kevin");
-        List <Opcion> opcionesMarcadasJugador1 = new ArrayList<Opcion>();
-        List <Opcion> opcionesMarcadasJugador2 = new ArrayList<Opcion>();
+        List <Opcion> opcionesMarcadasJugador1 = new ArrayList<>();
+        List <Opcion> opcionesMarcadasJugador2 = new ArrayList<>();
         opcionesMarcadasJugador1.add(incorrecta);
         opcionesMarcadasJugador2.add(incorrecta);
-        List <Respuesta> respuestas = new ArrayList<Respuesta>();
+        List <Respuesta> respuestas = new ArrayList<>();
         respuestas.add(new Respuesta(opcionesMarcadasJugador1, jugador1));
         respuestas.add(new Respuesta(opcionesMarcadasJugador2, jugador2));
 
@@ -92,8 +101,11 @@ public class VerdaderoFalsoConPenalidadTest {
     public void preguntaVerdaderoFalsoConPenalidadPuntuaCorrectamenteSiSeEligeRespuestaCorrectaTest(){
         Opcion correcta = new Opcion("opcion1", new Correcta());
         Opcion incorrecta = new Opcion("opcion2", new ConPenalidad());
-        List <Opcion> opciones = new ArrayList<Opcion>(){
-            {add(correcta); add(incorrecta);}
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(correcta);
+                add(incorrecta);
+            }
         };
         Pregunta pregunta = new VerdaderoFalsoConPenalidad(opciones, "una pregunta");
 
@@ -110,8 +122,11 @@ public class VerdaderoFalsoConPenalidadTest {
     public void preguntaVerdaderoFalsoConPenalidadPuntuaCorrectamenteSiSeEligeRespuestaInorrectaTest(){
         Opcion correcta = new Opcion("opcion1", new Correcta());
         Opcion incorrecta = new Opcion("opcion2", new ConPenalidad());
-        List <Opcion> opciones = new ArrayList<Opcion>(){
-            {add(correcta); add(incorrecta);}
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(correcta);
+                add(incorrecta);
+            }
         };
         Pregunta pregunta = new VerdaderoFalsoConPenalidad(opciones, "una pregunta");
 

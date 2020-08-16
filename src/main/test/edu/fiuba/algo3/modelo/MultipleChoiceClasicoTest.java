@@ -17,13 +17,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MultipleChoiceClasicoTest {
     @Test
-    public void preguntaMultipleChoiceClásicoSeCreaConOpcionesCorrectasTest(){
+    public void preguntaMultipleChoiceClasicoSeCreaConOpcionesCorrectasTest(){
         Opcion correcta1 = new Opcion("opcion1", new Correcta());
         Opcion correcta2 = new Opcion("opcion2", new Correcta());
         Opcion incorrecta = new Opcion("opcion3", new SinPenalidad());
 
-        List <Opcion> opciones = new ArrayList<Opcion>() {
-            {add(correcta1); add(correcta2); add(incorrecta);};
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(correcta1);
+                add(correcta2);
+                add(incorrecta);
+            }
         };
 
         Pregunta pregunta = new MultipleChoiceParcial(opciones, "una pregunta");
@@ -37,8 +41,13 @@ public class MultipleChoiceClasicoTest {
         Opcion correcta2 = new Opcion("opcion2", new Correcta());
         Opcion correcta3 = new Opcion("opcion3", new Correcta());
 
-        List <Opcion> opciones = new ArrayList<Opcion>() {
-            {add(correcta1); add(correcta2); add(correcta3); add(new Opcion("opcion4", new SinPenalidad()));}
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(correcta1);
+                add(correcta2);
+                add(correcta3);
+                add(new Opcion("opcion4", new SinPenalidad()));
+            }
         };
 
         Pregunta pregunta = new MultipleChoiceClasico(opciones, "una pregunta");
@@ -76,8 +85,13 @@ public class MultipleChoiceClasicoTest {
         Opcion correcta2 = new Opcion("opcion2", new Correcta());
         Opcion correcta3 = new Opcion("opcion3", new Correcta());
 
-        List <Opcion> opciones = new ArrayList<Opcion>() {
-            {add(correcta1); add(correcta2); add(correcta3); add(new Opcion("opcion4", new SinPenalidad()));}
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(correcta1);
+                add(correcta2);
+                add(correcta3);
+                add(new Opcion("opcion4", new SinPenalidad()));
+            }
         };
 
         Pregunta pregunta = new MultipleChoiceClasico(opciones, "una pregunta");
@@ -114,8 +128,14 @@ public class MultipleChoiceClasicoTest {
         Opcion incorrecta1 = new Opcion("opcion4", new SinPenalidad());
         Opcion incorrecta2 = new Opcion("opcion5", new SinPenalidad());
 
-        List<Opcion> opciones = new ArrayList<Opcion>() {
-            {add(correcta1); add(correcta2); add(correcta3); add(incorrecta1); add(incorrecta2);}
+        List<Opcion> opciones = new ArrayList<>() {
+            {
+                add(correcta1);
+                add(correcta2);
+                add(correcta3);
+                add(incorrecta1);
+                add(incorrecta2);
+            }
         };
 
         Pregunta pregunta = new MultipleChoiceClasico(opciones, "una pregunta");
@@ -156,8 +176,13 @@ public class MultipleChoiceClasicoTest {
         Opcion correcta2 = new Opcion("opcion2", new Correcta());
         Opcion correcta3 = new Opcion("opcion3", new Correcta());
 
-        List <Opcion> opciones = new ArrayList<Opcion>() {
-            {add(correcta1); add(correcta2); add(correcta3); add(new Opcion("opcion4", new SinPenalidad()));}
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(correcta1);
+                add(correcta2);
+                add(correcta3);
+                add(new Opcion("opcion4", new SinPenalidad()));
+            }
         };
 
         Pregunta pregunta = new MultipleChoiceClasico(opciones, "una pregunta");
@@ -177,8 +202,13 @@ public class MultipleChoiceClasicoTest {
         Opcion correcta2 = new Opcion("opcion2", new Correcta());
         Opcion correcta3 = new Opcion("opcion3", new Correcta());
 
-        List <Opcion> opciones = new ArrayList<Opcion>() {
-            {add(correcta1); add(correcta2); add(correcta3); add(new Opcion("opcion4", new SinPenalidad()));}
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(correcta1);
+                add(correcta2);
+                add(correcta3);
+                add(new Opcion("opcion4", new SinPenalidad()));
+            }
         };
 
         Pregunta pregunta = new MultipleChoiceClasico(opciones, "una pregunta");
@@ -199,8 +229,13 @@ public class MultipleChoiceClasicoTest {
         Opcion correcta3 = new Opcion("opcion3", new Correcta());
         Opcion incorrecta = new Opcion("opcion4", new SinPenalidad());
 
-        List <Opcion> opciones = new ArrayList<Opcion>() {
-            {add(correcta1); add(correcta2); add(correcta3); add(new Opcion("opcion4", new SinPenalidad()));}
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(correcta1);
+                add(correcta2);
+                add(correcta3);
+                add(new Opcion("opcion4", new SinPenalidad()));
+            }
         };
 
         Pregunta pregunta = new MultipleChoiceClasico(opciones, "una pregunta");

@@ -7,7 +7,6 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.ronda.Ronda;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,16 +14,16 @@ import java.util.List;
 
 public class Kahoot {
     private Ronda ronda;
-    private List<Jugador> jugadores;
+    private final List<Jugador> jugadores;
     private List<Pregunta> preguntas;
     private Iterator<Pregunta> iteradorPreguntas;
     private Pregunta preguntaActual;
     static String FILENAME_RELATIVE_PATH = "questions.json";
-    private JsonSerializer jsonSerializer;
+    private final JsonSerializer jsonSerializer;
 
     public Kahoot() {
-        jugadores = new ArrayList<Jugador>();
-        preguntas = new ArrayList<Pregunta>();
+        jugadores = new ArrayList<>();
+        preguntas = new ArrayList<>();
         jsonSerializer = new JsonSerializer();
     }
 
@@ -40,17 +39,13 @@ public class Kahoot {
         return preguntaActual;
     }
 
-    public void cargarPreguntas() throws IOException {
+    public void cargarPreguntas() {
         this.preguntas = jsonSerializer.leerPreguntasDesdeJSON(FILENAME_RELATIVE_PATH);
         iteradorPreguntas = preguntas.iterator();
     }
 
     public void iniciarRonda() throws NoHaySiguientePreguntaExcepcion {
-        try{
-            ronda = new Ronda (jugadores, getSiguientePregunta());
-        }catch (NoHaySiguientePreguntaExcepcion excepcion){
-            throw excepcion;
-        }
+        ronda = new Ronda (jugadores, getSiguientePregunta());
     }
 
     public void registrarJugador(String nombre) {

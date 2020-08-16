@@ -14,7 +14,7 @@ public class Temporizador {
     private Integer segundos = inicio;
     private final Label label;
     private final ControladorTimer controladorTimer;
-    private Timeline timeline = new Timeline();
+    private final Timeline timeline = new Timeline();
 
     public Temporizador(Label label, Button button){
         this.label = label;

@@ -18,7 +18,7 @@ public class RondaTest {
     @Test
     public void rondaEvaluaCorrectamenteRespuestasDeUnJugador(){
 
-        List <Opcion> opciones = new ArrayList<Opcion>();
+        List <Opcion> opciones = new ArrayList<>();
         Opcion correcta = new Opcion("opcion1", new Correcta());
         opciones.add(correcta);
         opciones.add(new Opcion("opcion1", new SinPenalidad()));

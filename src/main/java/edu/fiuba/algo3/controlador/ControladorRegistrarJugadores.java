@@ -1,13 +1,7 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
-import edu.fiuba.algo3.modelo.opcion.ConPenalidad;
-import edu.fiuba.algo3.modelo.opcion.Correcta;
-import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.modelo.opcion.SinPenalidad;
-import edu.fiuba.algo3.modelo.preguntas.VerdaderoFalso;
 import edu.fiuba.algo3.vista.VistaInicioJuego;
-import edu.fiuba.algo3.vista.VistaPreguntas;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
@@ -15,13 +9,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-
 public class ControladorRegistrarJugadores implements EventHandler<ActionEvent> {
-    private Kahoot kahoot;
-    private Stage stage;
-    private TextField jugador1;
-    private TextField jugador2;
+    private final Kahoot kahoot;
+    private final Stage stage;
+    private final TextField jugador1;
+    private final TextField jugador2;
 
     public ControladorRegistrarJugadores(Kahoot kahoot, Stage stage, TextField jugador1, TextField jugador2){
         this.kahoot = kahoot;

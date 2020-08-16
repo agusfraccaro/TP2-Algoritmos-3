@@ -18,7 +18,7 @@ public class RespuestaTest {
 
     @Test
     public void respuestaSeCreaConDosOpcionesTest() throws NoMarcoOpcionExcepcion {
-        List<Opcion> opciones = new ArrayList<Opcion>();
+        List<Opcion> opciones = new ArrayList<>();
         opciones.add(new Opcion("opcion1", new Correcta()));
         opciones.add(new Opcion("opcion2", new SinPenalidad()));
 
@@ -29,7 +29,7 @@ public class RespuestaTest {
     }
     @Test
     public void respuestaSeCreaConUnJugadorTest() {
-        List<Opcion> opciones = new ArrayList<Opcion>();
+        List<Opcion> opciones = new ArrayList<>();
         opciones.add(new Opcion("opcion1", new Correcta()));
         opciones.add(new Opcion("opcion2", new SinPenalidad()));
 
@@ -40,7 +40,7 @@ public class RespuestaTest {
 
     @Test
     public void respuestaSumaPuntosCorrectamenteTest(){
-        List<Opcion> opciones = new ArrayList<Opcion>();
+        List<Opcion> opciones = new ArrayList<>();
         opciones.add(new Opcion("opcion1", new Correcta()));
         opciones.add(new Opcion("opcion2", new SinPenalidad()));
 

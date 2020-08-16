@@ -33,16 +33,6 @@
           "estadoOpcion": "Correcta"
         }
       ]
-    },
-    {
-      "tipoPregunta": "GroupChoice",
-      "textoPregunta": "Pregunta GroupChoice",
-      "opciones": [
-        {
-          "textoOpcion": "opcion 1",
-          "grupoOpcion": "1"
-        }
-      ]
     }
   ]
 }

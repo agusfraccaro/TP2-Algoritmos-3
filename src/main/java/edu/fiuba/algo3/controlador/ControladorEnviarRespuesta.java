@@ -3,7 +3,6 @@ package edu.fiuba.algo3.controlador;
 import edu.fiuba.algo3.modelo.excepciones.NoHaySiguientePreguntaExcepcion;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
-import edu.fiuba.algo3.vista.Temporizador;
 import edu.fiuba.algo3.vista.VistaFinDelJuego;
 import edu.fiuba.algo3.vista.VistaPreguntas;
 import javafx.collections.ObservableList;
@@ -17,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
+    private boolean wasCalled = false;
     private final Kahoot kahoot;
     private final VistaPreguntas vista;
     private final int cantidadRespuestas;
@@ -38,6 +38,9 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
+        if (this.wasCalled) { return; }
+        this.wasCalled = true;
+
         List<Opcion> selectedOptions = new ArrayList<>();
         for (Node node : buttons) {
             RadioButton button = (RadioButton) node;
@@ -53,7 +56,6 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
                 kahoot.iniciarRonda();
             }
             vista.mostrarPregunta();
-            new VistaPreguntas(kahoot, stage).mostrarPregunta();
         } catch (NoHaySiguientePreguntaExcepcion noHaySiguientePreguntaExcepcion) {
                 new VistaFinDelJuego(kahoot, stage).mostrarResultado();
         }

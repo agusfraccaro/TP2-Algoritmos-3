@@ -7,8 +7,8 @@ import edu.fiuba.algo3.modelo.opcion.Opcion;
 import java.util.List;
 
 public class Respuesta {
-    private List<Opcion> opcionesMarcadas;
-    private Jugador jugador;
+    private final List<Opcion> opcionesMarcadas;
+    private final Jugador jugador;
     private int puntos = 0;
 
     public Respuesta(List<Opcion> opciones, Jugador jugador) {

@@ -4,9 +4,9 @@ import edu.fiuba.algo3.modelo.excepciones.EstadoNuloNoEsIncorrectoNiCorrectoExce
 import edu.fiuba.algo3.modelo.excepciones.EstadoNuloNoPuntuaExcepcion;
 
 public class Opcion {
-    private String texto;
-    private EstadoOpcion estado;
-    private String grupo;
+    private final String texto;
+    private final EstadoOpcion estado;
+    private final String grupo;
 
     //para las que son Correcta o Incorrecta (no tienen grupo)
     public Opcion(String texto, EstadoOpcion estado){
@@ -33,7 +33,7 @@ public class Opcion {
         int puntos = 0;
         try{
             puntos = this.estado.puntuar();
-        } catch (EstadoNuloNoPuntuaExcepcion estadoNuloNoPuntuaExcepcion){}
+        } catch (EstadoNuloNoPuntuaExcepcion ignore){}
 
         return puntos;
     }
@@ -42,7 +42,7 @@ public class Opcion {
         boolean estado = false;
         try{
             estado = this.estado.esCorrecta();
-        }catch (EstadoNuloNoEsIncorrectoNiCorrectoExcepcion estadoNuloNoEsIncorrectoNiCorrectoExcepcion){}
+        }catch (EstadoNuloNoEsIncorrectoNiCorrectoExcepcion ignore){}
 
         return estado;
     }

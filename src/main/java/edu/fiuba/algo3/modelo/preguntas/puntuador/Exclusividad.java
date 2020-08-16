@@ -8,7 +8,7 @@ import java.util.List;
 public class Exclusividad implements Bonus {
     private final int factorExclusividad;
 
-    public Exclusividad(ArrayList<Integer> numeros) {
+    public Exclusividad(List<Integer> numeros) {
         this.factorExclusividad = numeros.get(0) * numeros.get(1);
     }
 

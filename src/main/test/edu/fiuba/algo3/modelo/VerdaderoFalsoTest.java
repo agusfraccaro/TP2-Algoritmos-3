@@ -1,13 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.jugador.Jugador;
-import edu.fiuba.algo3.modelo.opcion.ConPenalidad;
 import edu.fiuba.algo3.modelo.opcion.Correcta;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.opcion.SinPenalidad;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.preguntas.VerdaderoFalso;
-import edu.fiuba.algo3.modelo.preguntas.VerdaderoFalsoConPenalidad;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class VerdaderoFalsoTest {
     @Test
     public void preguntaVerdaderoFalsoSeCreaConRespuestaCorrectaTest(){
-        ArrayList <Opcion> opciones = new ArrayList<Opcion>();
+        ArrayList <Opcion> opciones = new ArrayList<>();
         opciones.add(new Opcion("opcion1", new Correcta()));
         opciones.add(new Opcion("opcion2", new SinPenalidad()));
 
@@ -30,7 +28,7 @@ public class VerdaderoFalsoTest {
 
     @Test
     public void preguntaVerdaderoFalsoAsignaUnPuntoSiEligenRespuestaCorrectaTest(){
-        List <Opcion> opciones = new ArrayList<Opcion>();
+        List <Opcion> opciones = new ArrayList<>();
         Opcion correcta = new Opcion("opcion1", new Correcta());
         opciones.add(correcta);
         opciones.add(new Opcion("opcion2", new SinPenalidad()));
@@ -55,7 +53,7 @@ public class VerdaderoFalsoTest {
     @Test
     public void preguntaVerdaderoFalsoNoAsignaPuntosSiEligenRespuestaIncorrectaTest(){
 
-        List <Opcion> opciones = new ArrayList<Opcion>();
+        List <Opcion> opciones = new ArrayList<>();
         Opcion incorrecta = new Opcion("opcion1", new SinPenalidad());
         opciones.add(incorrecta);
         opciones.add(new Opcion("opcion2", new Correcta()));
@@ -81,8 +79,11 @@ public class VerdaderoFalsoTest {
     public void preguntaVerdaderoFalsoPuntuaCorrectamenteSiSeEligeRespuestaCorrectaTest(){
         Opcion correcta = new Opcion("opcion1", new Correcta());
         Opcion incorrecta = new Opcion("opcion2", new SinPenalidad());
-        List <Opcion> opciones = new ArrayList<Opcion>(){
-            {add(correcta); add(incorrecta);}
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(correcta);
+                add(incorrecta);
+            }
         };
         Pregunta pregunta = new VerdaderoFalso(opciones, "una pregunta");
 
@@ -99,8 +100,11 @@ public class VerdaderoFalsoTest {
     public void preguntaVerdaderoFalsoPuntuaCorrectamenteSiSeEligeRespuestaInorrectaTest(){
         Opcion correcta = new Opcion("opcion1", new Correcta());
         Opcion incorrecta = new Opcion("opcion2", new SinPenalidad());
-        List <Opcion> opciones = new ArrayList<Opcion>(){
-            {add(correcta); add(incorrecta);}
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(correcta);
+                add(incorrecta);
+            }
         };
         Pregunta pregunta = new VerdaderoFalso(opciones, "una pregunta");
 

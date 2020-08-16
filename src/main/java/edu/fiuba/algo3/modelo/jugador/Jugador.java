@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.jugador;
 
 public class Jugador {
     private int puntaje = 0;
-    private String nombre;
+    private final String nombre;
 
     public Jugador(String nombre){
         this.nombre = nombre;

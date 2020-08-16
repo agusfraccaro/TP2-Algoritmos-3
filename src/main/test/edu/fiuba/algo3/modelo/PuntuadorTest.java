@@ -1,13 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.preguntas.puntuador.BonusNulo;
 import edu.fiuba.algo3.modelo.preguntas.puntuador.Exclusividad;
 import edu.fiuba.algo3.modelo.preguntas.puntuador.Multiplicador;
 import edu.fiuba.algo3.modelo.preguntas.puntuador.Puntuador;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,7 +14,10 @@ public class PuntuadorTest {
     @Test
     public void PuntuadorActivaBonusExclusividadCorrectamente(){
         Puntuador puntuador = new Puntuador();
-        Exclusividad exclusividad = new Exclusividad(new ArrayList<Integer>(){{add(1);add(1);}});
+        Exclusividad exclusividad = new Exclusividad(new ArrayList<>() {{
+            add(1);
+            add(1);
+        }});
 
         puntuador.activarBonus(exclusividad);
 
@@ -26,7 +27,10 @@ public class PuntuadorTest {
     @Test
     public void PuntuadorActivaBonusMultiplicadorCorrectamente(){
         Puntuador puntuador = new Puntuador();
-        Multiplicador multiplicador= new Multiplicador((new ArrayList<Integer>(){{add(1);add(1);}}));
+        Multiplicador multiplicador= new Multiplicador((new ArrayList<>() {{
+            add(1);
+            add(1);
+        }}));
 
         puntuador.activarBonus(multiplicador);
 
