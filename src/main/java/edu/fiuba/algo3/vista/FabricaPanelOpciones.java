@@ -12,19 +12,19 @@ import javafx.scene.layout.VBox;
 
 
 public class FabricaPanelOpciones {
-    public static Pane getOptionsPane(Pregunta pregunta) {
-        VBox optionsLayout = new VBox();
-        optionsLayout.setSpacing(16);
-        optionsLayout.setAlignment(Pos.CENTER);
-        ObservableList<Node> boxChildren = optionsLayout.getChildren();
+    public static Pane getPanelOpciones(Pregunta pregunta) {
+        VBox layoutOpciones = new VBox();
+        layoutOpciones.setSpacing(16);
+        layoutOpciones.setAlignment(Pos.CENTER);
+        ObservableList<Node> boxChildren = layoutOpciones.getChildren();
 
         if (esVerdaderoFalso(pregunta)) {
             ToggleGroup toggleGroup = new ToggleGroup();
             for (Opcion opcion : pregunta.getOpciones()) {
-                RadioButton optionButton = new RadioButton(opcion.getTexto());
-                optionButton.setUserData(opcion);
-                optionButton.setToggleGroup(toggleGroup);
-                boxChildren.add(optionButton);
+                RadioButton botonOpcion = new RadioButton(opcion.getTexto());
+                botonOpcion.setUserData(opcion);
+                botonOpcion.setToggleGroup(toggleGroup);
+                boxChildren.add(botonOpcion);
             }
         } else if (esMultipleChoice(pregunta)) {
             for (Opcion opcion : pregunta.getOpciones()) {
@@ -37,7 +37,7 @@ public class FabricaPanelOpciones {
         } else if (pregunta instanceof GroupChoice) {
 
         }
-        return optionsLayout;
+        return layoutOpciones;
 
     }
 

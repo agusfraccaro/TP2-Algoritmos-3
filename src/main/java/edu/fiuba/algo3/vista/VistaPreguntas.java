@@ -38,50 +38,52 @@ public class VistaPreguntas {
 
                 Responder
          */
-        Pane optionsPane = FabricaPanelOpciones.getOptionsPane(kahoot.getPreguntaActual());
+        Pane panelOpciones = FabricaPanelOpciones.getPanelOpciones(kahoot.getPreguntaActual());
 
-        Button responderButton = new Button("RESPONDER");
+        Button botonResponder = new Button("RESPONDER");
 
-        ControladorEnviarRespuesta controladorEnviarRespuesta = new ControladorEnviarRespuesta(kahoot, this, stage, cantidadRespuestas, optionsPane.getChildren());
-        responderButton.setOnAction(controladorEnviarRespuesta);
+        ControladorEnviarRespuesta controladorEnviarRespuesta = new ControladorEnviarRespuesta(kahoot, this, stage, cantidadRespuestas, panelOpciones.getChildren());
+        botonResponder.setOnAction(controladorEnviarRespuesta);
 
-        Label lblTimer = new Label();
-        lblTimer.setId("tiempo");
-        Temporizador my_timer = new Temporizador(lblTimer, responderButton);
-        my_timer.correrTiempo();
+        Label labelTemporizador = new Label();
+        labelTemporizador.setId("tiempo");
+        Temporizador temporizador = new Temporizador(labelTemporizador, botonResponder);
+        temporizador.correrTiempo();
 
-        VBox bonusLayout = FabricaBotonBonus.crearBotonBonus(kahoot, controladorEnviarRespuesta);
+        HBox bonusLayout = FabricaBotonBonus.crearBotonBonus(kahoot, controladorEnviarRespuesta);
 
-        VBox timerAndBonusInfoLayout = new VBox();
-        timerAndBonusInfoLayout.getChildren().addAll(lblTimer, bonusLayout);
-        timerAndBonusInfoLayout.setAlignment(Pos.TOP_RIGHT);
+        VBox temporizadorLayout = new VBox();
+        temporizadorLayout.setSpacing(5);
+        temporizadorLayout.getChildren().addAll(labelTemporizador);
+        temporizadorLayout.setAlignment(Pos.TOP_RIGHT);
 
-        VBox playerInfoLayout = new VBox();
-        Label lblJugadorActual = new Label("Turno de: " + kahoot.getJugadorActual().getNombre());
+        VBox infoJugadorLayout = new VBox();
+        infoJugadorLayout.setSpacing(10);
+        Label labelJugadorActual = new Label("Turno de: " + kahoot.getJugadorActual().getNombre());
         Label puntaje = new Label("Puntos: " + kahoot.getJugadorActual().getPuntaje());
-        playerInfoLayout.getChildren().addAll(lblJugadorActual, puntaje);
-        playerInfoLayout.setAlignment(Pos.BASELINE_LEFT);
+        infoJugadorLayout.getChildren().addAll(labelJugadorActual, puntaje, bonusLayout);
+        infoJugadorLayout.setAlignment(Pos.CENTER);
 
         HBox header = new HBox();
-        header.getChildren().addAll(playerInfoLayout, timerAndBonusInfoLayout);
-        header.setSpacing(200);
+        header.getChildren().addAll(infoJugadorLayout, temporizadorLayout);
+        header.setSpacing(300);
 
-        VBox questionLayout = new VBox();
-        Label lblQuestion= new Label(kahoot.getPreguntaActual().getTexto());
-        questionLayout.getChildren().addAll(lblQuestion, optionsPane);
-        questionLayout.setPadding(new Insets(16, 16, 16, 16));
-        questionLayout.setSpacing(70);
-        questionLayout.setAlignment(Pos.CENTER);
+        VBox preguntaLayout = new VBox();
+        Label labelPregunta = new Label(kahoot.getPreguntaActual().getTexto());
+        preguntaLayout.getChildren().addAll(labelPregunta, panelOpciones);
+        preguntaLayout.setPadding(new Insets(16, 16, 16, 16));
+        preguntaLayout.setSpacing(70);
+        preguntaLayout.setAlignment(Pos.CENTER);
 
-        VBox mainLayout = new VBox();
-        mainLayout.getChildren().addAll(header, questionLayout, responderButton);
-        mainLayout.setAlignment(Pos.CENTER);
-        mainLayout.setPadding(new Insets(16, 16, 16, 16));
-        mainLayout.setSpacing(50);
+        VBox layoutPrincipal = new VBox();
+        layoutPrincipal.getChildren().addAll(header, preguntaLayout, botonResponder);
+        layoutPrincipal.setAlignment(Pos.CENTER);
+        layoutPrincipal.setPadding(new Insets(16, 16, 16, 16));
+        layoutPrincipal.setSpacing(50);
 
-        Scene scene = new Scene(mainLayout, 550, 450);
-        File my_style_file = new File("src/main/resources/styles/style.css");
-        scene.getStylesheets().add("file:///" + my_style_file.getAbsolutePath().replace("\\", "/")  );
+        Scene scene = new Scene(layoutPrincipal, 550, 450);
+        File archivo = new File("src/main/resources/styles/style.css");
+        scene.getStylesheets().add("file:///" + archivo.getAbsolutePath().replace("\\", "/")  );
 
         stage.setScene(scene);
     }
