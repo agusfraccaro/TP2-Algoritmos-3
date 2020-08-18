@@ -5,10 +5,18 @@ import edu.fiuba.algo3.modelo.preguntas.*;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
 public class FabricaPanelOpciones {
@@ -33,6 +41,20 @@ public class FabricaPanelOpciones {
                 boxChildren.add(optionButton);
             }
         } else if (pregunta instanceof OrderedChoice) {
+            ArrayList<Opcion> opcionesDesordenadas =  new ArrayList<Opcion>(pregunta.getOpciones());
+            Collections.shuffle(opcionesDesordenadas);
+
+            for (Opcion opcion : opcionesDesordenadas) {
+                HBox hbox = new HBox();
+                Label lblTextoOpcion = new Label(opcion.getTexto());
+                TextField txtNumeroOpcion = new TextField();
+                txtNumeroOpcion.setMaxWidth(25);
+                txtNumeroOpcion.setUserData(opcion);
+                hbox.getChildren().addAll(lblTextoOpcion,txtNumeroOpcion);
+                hbox.setSpacing(5);
+                hbox.setAlignment(Pos.CENTER);
+                boxChildren.add(hbox);
+            }
 
         } else if (pregunta instanceof GroupChoice) {
 

@@ -6,11 +6,9 @@ import edu.fiuba.algo3.modelo.jugador.BONUS;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.preguntas.puntuador.Bonus;
 import edu.fiuba.algo3.modelo.ronda.Ronda;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -91,7 +89,6 @@ public class Kahoot {
 
     public void gastarBonus(BONUS bonus) {
         getJugadorActual().gastarBonus(bonus);
-
     }
 
 }

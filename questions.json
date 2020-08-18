@@ -1,6 +1,21 @@
 { 
   "preguntas": [
     {
+      "tipoPregunta": "OrderedChoice",
+      "textoPregunta": "Pregunta OrderedChoice",
+      "opciones": [
+        {
+          "textoOpcion": "primera"
+        },
+        {
+          "textoOpcion": "segunda"
+        },
+        {
+          "textoOpcion": "tercera"
+        }
+      ]
+    },
+    {
       "tipoPregunta": "VerdaderoFalso",
       "textoPregunta": "Pregunta VerdaderoFalso",
       "opciones": [
