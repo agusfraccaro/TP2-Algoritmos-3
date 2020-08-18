@@ -3,12 +3,24 @@
     src: url("../fonts/digital-7.ttf");
 }
 
-#pane{
-    -fx-background-image: url("../images/fondo2.jpg");
+#fondoInicio{
+    -fx-background-image: url("../images/fondoInicio.jpg");
     -fx-background-repeat: stretch;
     -fx-background-size: cover;
     -fx-background-position: center;
     -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+
+#fondoPregunta{
+    -fx-background-image: url("../images/fondoPregunta.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+}
+
+#fondoResultados{
+    -fx-background-image: url("../images/fondo2.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
 }
 
 .button:hover{
@@ -24,9 +36,4 @@
     -fx-border-color: white;
     -fx-background-radius: 5px;
     -fx-label-padding: 8px;
-}
-
-#ganadorDelJuego {
-    -fx-font-size: 50px;
-    -fx-font-family: "Skranji-Bold";
 }

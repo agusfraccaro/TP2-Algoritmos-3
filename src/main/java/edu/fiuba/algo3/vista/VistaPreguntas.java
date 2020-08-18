@@ -80,6 +80,7 @@ public class VistaPreguntas {
         layoutPrincipal.setAlignment(Pos.CENTER);
         layoutPrincipal.setPadding(new Insets(16, 16, 16, 16));
         layoutPrincipal.setSpacing(50);
+        layoutPrincipal.setId("fondoPregunta");
 
         Scene scene = new Scene(layoutPrincipal, 550, 450);
         File archivo = new File("src/main/resources/styles/style.css");
