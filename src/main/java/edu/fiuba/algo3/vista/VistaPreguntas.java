@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -40,7 +41,11 @@ public class VistaPreguntas {
          */
         Pane panelOpciones = FabricaPanelOpciones.getPanelOpciones(kahoot.getPreguntaActual());
 
+        Font fontGeneral = Font.loadFont("file:src/main/resources/fonts/Skranji-Regular.ttf", 25);
+        Font fontPregunta = Font.loadFont("file:src/main/resources/fonts/BalooTamma2-Medium.ttf", 25);
+
         Button botonResponder = new Button("RESPONDER");
+        botonResponder.setFont(fontGeneral);
 
         ControladorEnviarRespuesta controladorEnviarRespuesta = new ControladorEnviarRespuesta(kahoot, this, stage, cantidadRespuestas, panelOpciones.getChildren());
         botonResponder.setOnAction(controladorEnviarRespuesta);
@@ -60,16 +65,20 @@ public class VistaPreguntas {
         VBox infoJugadorLayout = new VBox();
         infoJugadorLayout.setSpacing(10);
         Label labelJugadorActual = new Label("Turno de: " + kahoot.getJugadorActual().getNombre());
+        labelJugadorActual.setFont(fontGeneral);
         Label puntaje = new Label("Puntos: " + kahoot.getJugadorActual().getPuntaje());
+        puntaje.setFont(fontGeneral);
         infoJugadorLayout.getChildren().addAll(labelJugadorActual, puntaje, bonusLayout);
-        infoJugadorLayout.setAlignment(Pos.CENTER);
+        infoJugadorLayout.setAlignment(Pos.TOP_LEFT);
 
         HBox header = new HBox();
         header.getChildren().addAll(infoJugadorLayout, temporizadorLayout);
-        header.setSpacing(300);
+        header.setAlignment(Pos.CENTER);
+        header.setSpacing(200);
 
         VBox preguntaLayout = new VBox();
         Label labelPregunta = new Label(kahoot.getPreguntaActual().getTexto());
+        labelPregunta.setFont(fontPregunta);
         preguntaLayout.getChildren().addAll(labelPregunta, panelOpciones);
         preguntaLayout.setPadding(new Insets(16, 16, 16, 16));
         preguntaLayout.setSpacing(70);
@@ -78,11 +87,11 @@ public class VistaPreguntas {
         VBox layoutPrincipal = new VBox();
         layoutPrincipal.getChildren().addAll(header, preguntaLayout, botonResponder);
         layoutPrincipal.setAlignment(Pos.CENTER);
-        layoutPrincipal.setPadding(new Insets(16, 16, 16, 16));
-        layoutPrincipal.setSpacing(50);
+        layoutPrincipal.setPadding(new Insets(30));
+        layoutPrincipal.setSpacing(20);
         layoutPrincipal.setId("fondoPregunta");
 
-        Scene scene = new Scene(layoutPrincipal, 550, 450);
+        Scene scene = new Scene(layoutPrincipal, 600, 500);
         File archivo = new File("src/main/resources/styles/style.css");
         scene.getStylesheets().add("file:///" + archivo.getAbsolutePath().replace("\\", "/")  );
 

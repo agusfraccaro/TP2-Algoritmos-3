@@ -23,7 +23,7 @@ public class VerdaderoFalsoConPenalidad extends Pregunta {
             puntaje = respuesta.getOpciones().get(0).puntuar();
         }
         catch(NoMarcoOpcionExcepcion ex) {
-            puntaje=-1;
+            puntaje = 0;
         }
 
         return puntaje;

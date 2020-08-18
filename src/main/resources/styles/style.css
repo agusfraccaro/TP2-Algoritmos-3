@@ -18,7 +18,7 @@
 }
 
 #fondoResultados{
-    -fx-background-image: url("../images/fondo2.jpg");
+    -fx-background-image: url("../images/fondoInicio.jpg");
     -fx-background-repeat: stretch;
     -fx-background-size: cover;
 }

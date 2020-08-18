@@ -68,11 +68,13 @@ public class Kahoot {
         ronda.enviarRespuesta(opciones, extra);
     }
 
-    public Jugador getGanador(){
-        if(jugadores.get(0).getPuntaje() > jugadores.get(1).getPuntaje()){
+    public Jugador getGanador() {
+        if (jugadores.get(0).getPuntaje() > jugadores.get(1).getPuntaje()) {
             return jugadores.get(0);
+        } else if (jugadores.get(1).getPuntaje() > jugadores.get(0).getPuntaje()) {
+            return jugadores.get(1);
         }
-        return jugadores.get(1);
+        return null;
     }
 
     public Boolean puedeAplicarMultiplicadorPor2() {
