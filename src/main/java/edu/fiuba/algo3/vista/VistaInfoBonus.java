@@ -21,7 +21,7 @@ public class VistaInfoBonus {
 
     public void mostrar(){
         VBox contenedorInformacion = new VBox();
-        contenedorInformacion.setId("infoBonus");
+        contenedorInformacion.setId("ventanasAyuda");
 
         Label labelInfo = new Label("EXCLUSIVIDAD: Duplica puntaje en caso de que un solo jugador responda correctamente.\n"
                 + "X2: Duplica puntaje para el jugador que seleccione el Bonus.\n"
