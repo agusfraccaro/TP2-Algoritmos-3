@@ -19,13 +19,14 @@ public class ControladorTextoNumerico implements ChangeListener<String>{
         if (!newValue.matches("[0-9]*")) {
             txtNumeroOpcion.setText(newValue.replaceAll("[^\\d]", ""));
         }
+        else if (newValue.length() != 0 && (Integer.parseInt(newValue) > cantidadOpciones || Integer.parseInt(newValue) == 0))
+        {
+            txtNumeroOpcion.setText("");
+        }
 
         if( newValue.length() > 1){
             txtNumeroOpcion.setText(newValue.substring(0,1));
         }
 
-        if(Integer.parseInt(newValue) > cantidadOpciones){
-            txtNumeroOpcion.setText("");
-        }
     }
 }

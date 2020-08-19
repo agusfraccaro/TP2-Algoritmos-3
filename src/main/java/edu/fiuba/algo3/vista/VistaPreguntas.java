@@ -28,17 +28,7 @@ public class VistaPreguntas {
     public void mostrarPregunta(){
         cantidadRespuestas %= 2;
         cantidadRespuestas++;
-        System.out.println(cantidadRespuestas);
-        /*
-        Jugador         Timer
-        Puntos          Bonus
 
-                Pregunta
-
-                Opciones
-
-                Responder
-         */
         Pane panelOpciones = FabricaPanelOpciones.getPanelOpciones(kahoot.getPreguntaActual());
 
         Font fontGeneral = Font.loadFont("file:src/main/resources/fonts/Skranji-Regular.ttf", 25);
