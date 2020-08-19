@@ -116,6 +116,23 @@ public class VerdaderoFalsoTest {
 
         assertEquals(0, pregunta.puntuar(respuesta));
     }
+
+    @Test
+    public void preguntaVerdaderoFalsoPuntuaCeroPuntosARespuestaVaciaTest(){
+        Opcion correcta = new Opcion("opcion1", new Correcta());
+        Opcion incorrecta = new Opcion("opcion2", new SinPenalidad());
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(correcta);
+                add(incorrecta);
+            }
+        };
+        Pregunta pregunta = new VerdaderoFalso(opciones, "una pregunta");
+
+        Respuesta respuesta = new Respuesta(new ArrayList<Opcion>(), new Jugador("santi"));
+
+        assertEquals(0, pregunta.puntuar(respuesta));
+    }
 }
 
 

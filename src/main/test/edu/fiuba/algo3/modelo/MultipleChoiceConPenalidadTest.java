@@ -149,5 +149,23 @@ public class MultipleChoiceConPenalidadTest {
 
         assertEquals(-1, pregunta.puntuar(respuesta));
     }
+
+    @Test
+    public void preguntaMultipleChoiceConPenalidadPuntuaCeroPuntosARespuestaVaciaTest(){
+        Opcion incorrecta1 = new Opcion("opcion1", new ConPenalidad());
+        Opcion incorrecta2 = new Opcion("opcion2", new ConPenalidad());
+        Opcion incorrecta3 = new Opcion("opcion3", new ConPenalidad());
+        Opcion correcta1 = new Opcion("opcion4", new Correcta());
+        Opcion correcta2 = new Opcion("opcion5", new Correcta());
+        List<Opcion> opciones = new ArrayList<>(){
+            {add(incorrecta1); add(incorrecta2); add(incorrecta3); add(correcta1); add(correcta2);}
+        };
+
+        Pregunta pregunta = new MultipleChoiceConPenalidad(opciones, "Pregunta Test");
+
+        Respuesta respuesta = new Respuesta(new ArrayList<Opcion>(), new Jugador("cami"));
+
+        assertEquals(0, pregunta.puntuar(respuesta));
+    }
 }
 

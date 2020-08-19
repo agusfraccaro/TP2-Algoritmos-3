@@ -88,4 +88,17 @@ public class RespuestaTest {
         assertFalse(respuesta.todasLasOpcionesMarcadasSonCorrectas());
     }
 
+    @Test
+    public void respuestaLanzaExcepcionSiLePidenSuListaYEstaEstaVaciaTest(){
+        Respuesta respuesta = new Respuesta(new ArrayList<Opcion>(), new Jugador("kevin"));
+
+        boolean atrapada = false;
+        try{
+            respuesta.getOpciones();
+        }catch (NoMarcoOpcionExcepcion e){
+            atrapada = true;
+        }
+
+        assertTrue(atrapada);
+    }
 }

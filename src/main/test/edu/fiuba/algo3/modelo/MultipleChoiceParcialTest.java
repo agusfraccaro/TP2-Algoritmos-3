@@ -132,4 +132,21 @@ public class MultipleChoiceParcialTest {
 
         assertEquals(0, pregunta.puntuar(respuesta));
     }
+
+    @Test
+    public void preguntaMultipleChoiceParcialPuntuaCeroPuntosARespuestaVaciaTest(){
+        Opcion correcta1 = new Opcion("opcion1", new Correcta());
+        Opcion correcta2 = new Opcion("opcion2", new Correcta());
+        Opcion correcta3 = new Opcion("opcion3", new Correcta());
+        Opcion incorrecta = new Opcion("opcion4", new SinPenalidad());
+        List <Opcion> opciones = new ArrayList<Opcion>(){
+            {add(correcta1); add(correcta2); add(correcta3); add(incorrecta);};
+        };
+
+        Pregunta pregunta = new MultipleChoiceParcial(opciones, "una pregunta");
+
+        Respuesta respuesta = new Respuesta(new ArrayList<Opcion>(), new Jugador("cami"));
+
+        assertEquals(0, pregunta.puntuar(respuesta));
+    }
 }

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.NoMarcoOpcionExcepcion;
 import edu.fiuba.algo3.modelo.jugador.Jugador;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.GroupChoice;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GroupChoiceTest {
 
@@ -209,6 +211,27 @@ public class GroupChoiceTest {
         };
 
         Respuesta respuesta = new Respuesta(opcionesMarcadas, new Jugador("agus"));
+
+        assertEquals(0, pregunta.puntuar(respuesta));
+    }
+
+    @Test
+    public void preguntaGroupChoicePuntuaCeroCuandoPuntuaUnaRespuestaVaciaTest(){
+        Opcion opcion1 = new Opcion("opcion1", "Grupo1");
+        Opcion opcion2 = new Opcion("opcion2", "Grupo2");
+        Opcion opcion3 = new Opcion("opcion3", "Grupo2");
+
+        List<Opcion> opciones = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
+        };
+
+        Pregunta pregunta = new GroupChoice(opciones, "una pregunta");
+
+        Respuesta respuesta = new Respuesta(new ArrayList<Opcion>(), new Jugador("agus"));
 
         assertEquals(0, pregunta.puntuar(respuesta));
     }
