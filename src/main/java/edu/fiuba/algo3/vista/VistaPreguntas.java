@@ -31,7 +31,7 @@ public class VistaPreguntas {
 
         Pane panelOpciones = FabricaPanelOpciones.getPanelOpciones(kahoot.getPreguntaActual());
 
-        Font fontGeneral = Font.loadFont("file:src/main/resources/fonts/Skranji-Regular.ttf", 25);
+        Font fontGeneral = Font.loadFont("file:src/main/resources/fonts/Skranji-Regular.ttf", 20);
         Font fontPregunta = Font.loadFont("file:src/main/resources/fonts/BalooTamma2-Medium.ttf", 25);
 
         Button botonResponder = new Button("RESPONDER");
@@ -65,13 +65,13 @@ public class VistaPreguntas {
         HBox header = new HBox();
         header.getChildren().addAll(infoJugadorLayout, temporizadorLayout);
         header.setAlignment(Pos.CENTER);
-        header.setSpacing(200);
+        header.setSpacing(300);
 
         VBox preguntaLayout = new VBox();
         Label labelPregunta = new Label(kahoot.getPreguntaActual().getTexto());
         labelPregunta.setFont(fontPregunta);
         preguntaLayout.getChildren().addAll(labelPregunta, panelOpciones);
-        preguntaLayout.setPadding(new Insets(16, 16, 16, 16));
+        preguntaLayout.setPadding(new Insets(10, 10, 10, 10));
         preguntaLayout.setSpacing(40);
         preguntaLayout.setAlignment(Pos.CENTER);
 
@@ -79,7 +79,7 @@ public class VistaPreguntas {
         layoutPrincipal.getChildren().addAll(header, preguntaLayout, botonResponder);
         layoutPrincipal.setAlignment(Pos.CENTER);
         layoutPrincipal.setPadding(new Insets(30));
-        layoutPrincipal.setSpacing(20);
+        layoutPrincipal.setSpacing(30);
         layoutPrincipal.setId("fondoPregunta");
 
         Scene scene = new Scene(layoutPrincipal, 700, 550);

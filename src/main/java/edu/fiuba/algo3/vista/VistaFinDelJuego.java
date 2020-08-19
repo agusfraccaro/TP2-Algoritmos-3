@@ -27,29 +27,20 @@ public class VistaFinDelJuego {
         this.stage = stage;
     }
 
-    public void mostrarResultado(){
+    public void mostrarResultado() {
         VBox contenedorVertical = new VBox();
         contenedorVertical.setId("fondoResultados");
-        contenedorVertical.setSpacing(40);
-        contenedorVertical.setAlignment(Pos.CENTER);
-        contenedorVertical.setPadding(new Insets(30));
 
         Text tituloFinal = new Text("FIN DEL JUEGO!");
-        Font fontTitulo = Font.loadFont("file:src/main/resources/fonts/Bangers-Regular.ttf", 60);
-        tituloFinal.setFont(fontTitulo);
-        tituloFinal.setFill(Color.rgb(0,91,153));
+        tituloFinal.setId("titulo");
         contenedorVertical.getChildren().add(tituloFinal);
-
-        Font fontGeneral = Font.loadFont("file:src/main/resources/fonts/Skranji-Regular.ttf", 25);
 
         List<Jugador> jugadores = kahoot.getJugadores();
         Label jugador1 = new Label("Puntaje de " + (jugadores.get(0)).getNombre()+ ": " + (jugadores.get(0)).getPuntaje());
-        jugador1.setFont(fontGeneral);
-        jugador1.setTextFill(Color.rgb(0,91,153));
+        jugador1.setId("info");
 
         Label jugador2 = new Label("Puntaje de " + (jugadores.get(1)).getNombre()+ ": " + (jugadores.get(1)).getPuntaje());
-        jugador2.setFont(fontGeneral);
-        jugador2.setTextFill(Color.rgb(0,91,153));
+        jugador2.setId("info");
 
         Label resultado = new Label();
         if(kahoot.getGanador() != null) {
@@ -57,12 +48,11 @@ public class VistaFinDelJuego {
         }else{
             resultado.setText("Empate!");
         }
-        resultado.setFont(fontTitulo);
-        resultado.setTextFill(Color.rgb(0,91,153));
+        resultado.setId("titulo");
 
         contenedorVertical.getChildren().addAll(jugador1, jugador2, resultado);
 
-        Scene escena = new Scene(contenedorVertical, 550, 450);
+        Scene escena = new Scene(contenedorVertical, 700, 550);
 
         File arch = new File("src/main/resources/styles/style.css");
 

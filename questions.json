@@ -16,7 +16,7 @@
     },
     {
       "tipoPregunta": "GroupChoice",
-      "textoPregunta": "Seleccionar si las siguientes afirmaciones pertenecen \n a programacíon estructurada (grupo 1) o a \n programación orientada a objetos (grupo 2)",
+      "textoPregunta": "Seleccionar si las siguientes afirmaciones pertenecen\na programacíon estructurada (grupo 1) o a\nprogramación orientada a objetos (grupo 2)",
       "opciones": [
         {
           "textoOpcion": "No admite herencia",

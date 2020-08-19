@@ -29,36 +29,26 @@ public class VistaInicioJuego {
 
     public void mostrarInicio(){
         VBox contenedorVertical = new VBox();
-        contenedorVertical.setId("fondoInicio");
-        contenedorVertical.setSpacing(40);
-        contenedorVertical.setAlignment(Pos.CENTER);
-        contenedorVertical.setPadding(new Insets(30));
+        contenedorVertical.setId("inicio");
 
         Text scenetitle = new Text("INFO JUGADORES");
-        Font fontTitulo = Font.loadFont("file:src/main/resources/fonts/Bangers-Regular.ttf", 60);
-        scenetitle.setFont(fontTitulo);
-        scenetitle.setFill(Color.rgb(0,91,153));
+        scenetitle.setId("titulo");
         contenedorVertical.getChildren().add(scenetitle);
-
-        Font fontGeneral = Font.loadFont("file:src/main/resources/fonts/Skranji-Regular.ttf", 25);
 
         List<Jugador> jugadores = kahoot.getJugadores();
         Label jugador1 = new Label("Nombre jugador 1: " + (jugadores.get(0)).getNombre());
-        jugador1.setFont(fontGeneral);
-        jugador1.setTextFill(Color.rgb(0,91,153));
+        jugador1.setId("info");
 
         Label jugador2 = new Label("Nombre jugador 2: " + (jugadores.get(1)).getNombre());
-        jugador2.setFont(fontGeneral);
-        jugador2.setTextFill(Color.rgb(0,91,153));
+        jugador2.setId("info");
 
         contenedorVertical.getChildren().addAll(jugador1, jugador2);
 
         Button btnInicio = new Button("Iniciar juego!");
-        btnInicio.setFont(fontGeneral);
         btnInicio.setOnAction(new ControladorIniciarJuego(kahoot, stage));
         contenedorVertical.getChildren().add(btnInicio);
 
-        Scene escena = new Scene(contenedorVertical, 550, 450);
+        Scene escena = new Scene(contenedorVertical, 700, 550);
 
         File arch = new File("src/main/resources/styles/style.css");
 

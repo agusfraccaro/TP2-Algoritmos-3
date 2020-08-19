@@ -1,14 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Skranji&display=swap');
+
 @font-face{
     font-family: "digital-7";
     src: url("../fonts/digital-7.ttf");
 }
 
-#fondoInicio{
+#inicio{
     -fx-background-image: url("../images/fondoInicio.jpg");
     -fx-background-repeat: stretch;
     -fx-background-size: cover;
     -fx-background-position: center;
     -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+    -fx-padding: 30px;
+    -fx-spacing: 40px;
+    -fx-alignment: center;
+}
+
+#titulo{
+    -fx-font-family: "Bangers", regular;
+    -fx-text-fill: rgb(0,91,153);
+    -fx-fill: rgb(0,91,153);
+    -fx-font-size: 60px;
+}
+
+#info{
+    -fx-font-family: "Skranji", regular;
+    -fx-text-fill: rgb(0,91,153);
+    -fx-font-size: 25px;
+}
+#contenedorJugadores{
+    -fx-spacing: 80px;
+    -fx-alignment: center;
 }
 
 #fondoPregunta{
@@ -21,6 +44,14 @@
     -fx-background-image: url("../images/fondoInicio.jpg");
     -fx-background-repeat: stretch;
     -fx-background-size: cover;
+    -fx-spacing: 40px;
+    -fx-alignment: center;
+    -fx-padding: 30px;
+}
+
+.button{
+    -fx-font-family: "Skranji", regular;
+    -fx-font-size: 25px;
 }
 
 .button:hover{
