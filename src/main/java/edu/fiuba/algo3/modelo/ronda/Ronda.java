@@ -42,7 +42,6 @@ public class Ronda {
         }else{
             evaluar();
         }
-
     }
 
     public Jugador getJugadorActual(){

@@ -18,10 +18,10 @@ public class RondaTest {
     @Test
     public void rondaEvaluaCorrectamenteRespuestasDeUnJugador(){
 
-        List <Opcion> opciones = new ArrayList<>();
         Opcion correcta = new Opcion("opcion1", new Correcta());
-        opciones.add(correcta);
-        opciones.add(new Opcion("opcion1", new SinPenalidad()));
+        List <Opcion> opciones = new ArrayList<>(){
+            {add(correcta); add(new Opcion("opcion1", new SinPenalidad()));}
+        };
 
         Pregunta pregunta = new VerdaderoFalso(opciones,"una pregunta");
         List<Jugador> jugadores = new ArrayList<>();
@@ -37,6 +37,40 @@ public class RondaTest {
         ronda.enviarRespuesta(opcionesMarcadas, 1);
 
         assertEquals(1, jugador.getPuntaje());
+    }
+
+    @Test
+    public void rondaEstableceComoJugadorActualAlPrimeroEnLaListaTest(){
+        List<Jugador> jugadores = new ArrayList<>(){
+            {add(new Jugador("cami")); add(new Jugador("kevin"));}
+        };
+        List <Opcion> opciones = new ArrayList<>(){
+            {add(new Opcion("opcion", new Correcta())); add(new Opcion("opcion1", new SinPenalidad()));}
+        };
+
+        Ronda ronda = new Ronda(jugadores, new VerdaderoFalso(opciones, "texto pregunta"));
+
+        assertEquals("cami", ronda.getJugadorActual().getNombre());
+    }
+
+    @Test
+    public void rondaCambiaDeJugadorActualCuandoSeEnviaLasRespuestasDelPrimerJugadorTest(){
+        List<Jugador> jugadores = new ArrayList<>(){
+            {add(new Jugador("cami")); add(new Jugador("kevin"));}
+        };
+        Opcion correcta = new Opcion("opcion1", new Correcta());
+        List <Opcion> opciones = new ArrayList<>(){
+            {add(correcta); add(new Opcion("opcion1", new SinPenalidad()));}
+        };
+
+        Ronda ronda = new Ronda(jugadores, new VerdaderoFalso(opciones, "texto pregunta"));
+        List<Opcion> opcionesMarcadas = new ArrayList<>(){
+            {add(correcta);}
+        };
+
+        ronda.enviarRespuesta(opcionesMarcadas, 1);
+
+        assertEquals("kevin", ronda.getJugadorActual().getNombre());
     }
 }
 
