@@ -1,11 +1,10 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
-
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class App extends Application {

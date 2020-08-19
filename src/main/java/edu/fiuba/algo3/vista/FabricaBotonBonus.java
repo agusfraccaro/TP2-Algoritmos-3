@@ -4,11 +4,11 @@ import edu.fiuba.algo3.controlador.ControladorAplicarBonus;
 import edu.fiuba.algo3.controlador.ControladorEnviarRespuesta;
 import edu.fiuba.algo3.modelo.jugador.BONUS;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
-import edu.fiuba.algo3.modelo.preguntas.*;
+import edu.fiuba.algo3.modelo.preguntas.MultipleChoiceConPenalidad;
+import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.preguntas.VerdaderoFalsoConPenalidad;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 
 public class FabricaBotonBonus {
     public static HBox crearBotonBonus(Kahoot kahoot, ControladorEnviarRespuesta controladorEnviarRespuesta) {

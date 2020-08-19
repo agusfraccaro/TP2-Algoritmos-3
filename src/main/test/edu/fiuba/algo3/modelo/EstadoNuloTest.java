@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.excepciones.EstadoNuloNoPuntuaExcepcion;
 import edu.fiuba.algo3.modelo.opcion.EstadoNulo;
 import edu.fiuba.algo3.modelo.opcion.EstadoOpcion;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class EstadoNuloTest {

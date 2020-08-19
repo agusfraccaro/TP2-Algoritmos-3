@@ -9,8 +9,10 @@ import edu.fiuba.algo3.modelo.preguntas.MultipleChoiceParcial;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MultipleChoiceConPenalidadTest {

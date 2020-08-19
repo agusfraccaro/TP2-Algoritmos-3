@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.opcion.ConPenalidad;
 import edu.fiuba.algo3.modelo.opcion.Incorrecta;
 import edu.fiuba.algo3.modelo.opcion.SinPenalidad;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 

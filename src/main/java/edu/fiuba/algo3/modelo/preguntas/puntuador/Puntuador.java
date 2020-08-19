@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.preguntas.puntuador;
 
-import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 import edu.fiuba.algo3.modelo.preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.respuesta.Respuesta;
 
 import java.util.List;
 
