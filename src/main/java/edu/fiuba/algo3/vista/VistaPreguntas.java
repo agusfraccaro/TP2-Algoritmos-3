@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ControladorEnviarRespuesta;
+import edu.fiuba.algo3.controlador.ControladorMostrarInfoBonus;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,62 +27,58 @@ public class VistaPreguntas {
         this.stage = stage;
     }
 
+    private void setBotonInfoBonus(HBox bonusLayout){
+        Button botonInfo = new Button();
+        botonInfo.setId("botonAyudaBonus");
+        botonInfo.setCursor(Cursor.HAND);
+        botonInfo.setOnAction(new ControladorMostrarInfoBonus(stage));
+        bonusLayout.getChildren().add(botonInfo);
+    }
+
     public void mostrarPregunta(){
         cantidadRespuestas %= 2;
         cantidadRespuestas++;
 
         Pane panelOpciones = FabricaPanelOpciones.getPanelOpciones(kahoot.getPreguntaActual());
 
-        Font fontGeneral = Font.loadFont("file:src/main/resources/fonts/Skranji-Regular.ttf", 20);
-        Font fontPregunta = Font.loadFont("file:src/main/resources/fonts/BalooTamma2-Medium.ttf", 25);
+        Label labelPregunta = new Label(kahoot.getPreguntaActual().getTexto());
+        labelPregunta.setId("estiloPregunta");
+
+        VBox preguntaLayout = new VBox();
+        preguntaLayout.setId("layoutPregunta");
+        preguntaLayout.getChildren().addAll(labelPregunta, panelOpciones);
 
         Button botonResponder = new Button("RESPONDER");
-        botonResponder.setFont(fontGeneral);
+        botonResponder.setId("estiloJuegoGeneral");
 
         ControladorEnviarRespuesta controladorEnviarRespuesta = new ControladorEnviarRespuesta(kahoot, this, stage, cantidadRespuestas, panelOpciones.getChildren());
         botonResponder.setOnAction(controladorEnviarRespuesta);
 
         Label labelTemporizador = new Label();
-        labelTemporizador.setMinWidth(50);
-        labelTemporizador.setId("tiempo");
+        labelTemporizador.setId("labelTiempo");
         Temporizador temporizador = new Temporizador(labelTemporizador, botonResponder);
         temporizador.correrTiempo();
 
+        VBox layoutTemporizador = new VBox();
+        layoutTemporizador.setId("layoutTemporizador");
+        layoutTemporizador.getChildren().addAll(labelTemporizador);
+
         HBox bonusLayout = FabricaBotonBonus.crearBotonBonus(kahoot, controladorEnviarRespuesta);
+        setBotonInfoBonus(bonusLayout);
 
-        VBox temporizadorLayout = new VBox();
-        temporizadorLayout.setSpacing(5);
-        temporizadorLayout.getChildren().addAll(labelTemporizador);
-        temporizadorLayout.setAlignment(Pos.TOP_RIGHT);
-
-        VBox infoJugadorLayout = new VBox();
-        infoJugadorLayout.setSpacing(10);
         Label labelJugadorActual = new Label("Turno de: " + kahoot.getJugadorActual().getNombre());
-        labelJugadorActual.setFont(fontGeneral);
         Label puntaje = new Label("Puntos: " + kahoot.getJugadorActual().getPuntaje());
-        puntaje.setFont(fontGeneral);
+        VBox infoJugadorLayout = new VBox();
+        infoJugadorLayout.setId("layoutInfoJugador");
         infoJugadorLayout.getChildren().addAll(labelJugadorActual, puntaje, bonusLayout);
-        infoJugadorLayout.setAlignment(Pos.TOP_LEFT);
 
         HBox header = new HBox();
-        header.getChildren().addAll(infoJugadorLayout, temporizadorLayout);
-        header.setAlignment(Pos.CENTER);
-        header.setSpacing(300);
-
-        VBox preguntaLayout = new VBox();
-        Label labelPregunta = new Label(kahoot.getPreguntaActual().getTexto());
-        labelPregunta.setFont(fontPregunta);
-        preguntaLayout.getChildren().addAll(labelPregunta, panelOpciones);
-        preguntaLayout.setPadding(new Insets(10, 10, 10, 10));
-        preguntaLayout.setSpacing(40);
-        preguntaLayout.setAlignment(Pos.CENTER);
+        header.setId("header");
+        header.getChildren().addAll(infoJugadorLayout, layoutTemporizador);
 
         VBox layoutPrincipal = new VBox();
+        layoutPrincipal.setId("layoutPrincipal");
         layoutPrincipal.getChildren().addAll(header, preguntaLayout, botonResponder);
-        layoutPrincipal.setAlignment(Pos.CENTER);
-        layoutPrincipal.setPadding(new Insets(30));
-        layoutPrincipal.setSpacing(30);
-        layoutPrincipal.setId("fondoPregunta");
 
         Scene scene = new Scene(layoutPrincipal, 700, 550);
         File archivo = new File("src/main/resources/styles/style.css");
