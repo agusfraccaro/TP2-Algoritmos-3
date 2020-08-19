@@ -31,12 +31,13 @@
     -fx-font-size: 25px;
 }
 
-#infoBonus{
+#ventanasAyuda{
     -fx-alignment: center;
     -fx-padding: 15px;
+    -fx-spacing: 15px;
 }
 
-#infoBonus .label{
+#ventanasAyuda .label{
     -fx-font-family: "Skranji", regular;
     -fx-text-fill: rgb(0,91,153);
     -fx-font-size: 15px;

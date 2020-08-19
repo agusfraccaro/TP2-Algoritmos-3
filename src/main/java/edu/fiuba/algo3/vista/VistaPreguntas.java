@@ -2,9 +2,8 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ControladorEnviarRespuesta;
 import edu.fiuba.algo3.controlador.ControladorMostrarInfoBonus;
+import edu.fiuba.algo3.controlador.ControladorMostrarInfoPreguntas;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,7 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -35,6 +33,14 @@ public class VistaPreguntas {
         bonusLayout.getChildren().add(botonInfo);
     }
 
+    private void setBotonInfoPreguntas(VBox preguntasLayout){
+        Button botonInfo = new Button();
+        botonInfo.setId("botonAyudaBonus");
+        botonInfo.setCursor(Cursor.HAND);
+        botonInfo.setOnAction(new ControladorMostrarInfoPreguntas(stage));
+        preguntasLayout.getChildren().add(botonInfo);
+    }
+
     public void mostrarPregunta(){
         cantidadRespuestas %= 2;
         cantidadRespuestas++;
@@ -46,7 +52,9 @@ public class VistaPreguntas {
 
         VBox preguntaLayout = new VBox();
         preguntaLayout.setId("layoutPregunta");
-        preguntaLayout.getChildren().addAll(labelPregunta, panelOpciones);
+        preguntaLayout.getChildren().add(labelPregunta);
+        setBotonInfoPreguntas(preguntaLayout);
+        preguntaLayout.getChildren().add(panelOpciones);
 
         Button botonResponder = new Button("RESPONDER");
         botonResponder.setId("estiloJuegoGeneral");
