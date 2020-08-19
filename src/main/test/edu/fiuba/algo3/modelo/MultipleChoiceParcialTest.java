@@ -26,7 +26,21 @@ public class MultipleChoiceParcialTest {
 
         Pregunta pregunta = new MultipleChoiceParcial(opciones, "una pregunta");
 
-        assertEquals(3, pregunta.cantidadRespuestasCorrectas());
+        assertEquals(3, pregunta.cantidadOpcionesCorrectas());
+    }
+
+    @Test
+    public void preguntaMultipleChoiceParcialSeCreaConTextoCorrectoTest(){
+        Opcion correcta1 = new Opcion("opcion1", new Correcta());
+        Opcion correcta2 = new Opcion("opcion2", new Correcta());
+        Opcion correcta3 = new Opcion("opcion3", new Correcta());
+        List <Opcion> opciones = new ArrayList<Opcion>(){
+            {add(correcta1); add(correcta2); add(correcta3); add(new Opcion("opcion4", new SinPenalidad()));};
+        };
+
+        Pregunta pregunta = new MultipleChoiceParcial(opciones, "una pregunta");
+
+        assertEquals("una pregunta", pregunta.getTexto());
     }
 
     @Test

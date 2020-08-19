@@ -16,6 +16,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MultipleChoiceClasicoTest {
+
     @Test
     public void preguntaMultipleChoiceClasicoSeCreaConOpcionesCorrectasTest(){
         Opcion correcta1 = new Opcion("opcion1", new Correcta());
@@ -32,7 +33,24 @@ public class MultipleChoiceClasicoTest {
 
         Pregunta pregunta = new MultipleChoiceParcial(opciones, "una pregunta");
 
-        assertEquals(2, pregunta.cantidadRespuestasCorrectas());
+        assertEquals(2, pregunta.cantidadOpcionesCorrectas());
+    }
+
+    @Test
+    public void preguntaMultipleChoiceClasicoSeCreaConTextoCorrectoTest(){
+        Opcion correcta = new Opcion("opcion1", new Correcta());
+        Opcion incorrecta = new Opcion("opcion3", new SinPenalidad());
+
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(correcta);
+                add(incorrecta);
+            }
+        };
+
+        Pregunta pregunta = new MultipleChoiceParcial(opciones, "una pregunta");
+
+        assertEquals("una pregunta", pregunta.getTexto());
     }
 
     @Test

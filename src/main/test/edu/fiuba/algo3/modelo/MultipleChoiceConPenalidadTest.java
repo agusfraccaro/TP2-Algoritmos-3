@@ -25,7 +25,7 @@ public class MultipleChoiceConPenalidadTest {
         };
 
         Pregunta pregunta = new MultipleChoiceParcial(opciones, "Pregunta Test");
-        assertEquals(3, pregunta.cantidadRespuestasCorrectas());
+        assertEquals(3, pregunta.cantidadOpcionesCorrectas());
     }
 
     @Test
@@ -38,7 +38,20 @@ public class MultipleChoiceConPenalidadTest {
         };
 
         Pregunta pregunta = new MultipleChoiceConPenalidad(opciones, "Pregunta Test");
-        assertEquals(0, pregunta.cantidadRespuestasCorrectas());
+        assertEquals(0, pregunta.cantidadOpcionesCorrectas());
+    }
+
+    @Test
+    public void preguntaMultipleChoiceConPenalidadSeCreaConTextoCorrectoTest() {
+        Opcion incorrecta1 = new Opcion("opcion1", new ConPenalidad());
+        Opcion incorrecta2 = new Opcion("opcion2", new ConPenalidad());
+        Opcion incorrecta3 = new Opcion("opcion3", new ConPenalidad());
+        List<Opcion> opciones = new ArrayList<>(){
+            {add(incorrecta1); add(incorrecta2); add(incorrecta3);}
+        };
+
+        Pregunta pregunta = new MultipleChoiceConPenalidad(opciones, "Pregunta Test");
+        assertEquals("Pregunta Test", pregunta.getTexto());
     }
 
     @Test
@@ -54,7 +67,7 @@ public class MultipleChoiceConPenalidadTest {
 
         Pregunta pregunta = new MultipleChoiceConPenalidad(opciones, "Pregunta Test");
 
-        assertEquals(2, pregunta.cantidadRespuestasCorrectas());
+        assertEquals(2, pregunta.cantidadOpcionesCorrectas());
     }
 
     @Test

@@ -23,7 +23,18 @@ public class VerdaderoFalsoTest {
 
         Pregunta pregunta = new VerdaderoFalso(opciones,"una pregunta");
 
-        assertEquals(1, pregunta.cantidadRespuestasCorrectas());
+        assertEquals(1, pregunta.cantidadOpcionesCorrectas());
+    }
+
+    @Test
+    public void preguntaVerdaderoFalsoSeCreaConTextoCorrectoTest(){
+        ArrayList <Opcion> opciones = new ArrayList<>();
+        opciones.add(new Opcion("opcion1", new Correcta()));
+        opciones.add(new Opcion("opcion2", new SinPenalidad()));
+
+        Pregunta pregunta = new VerdaderoFalso(opciones,"una pregunta");
+
+        assertEquals("una pregunta", pregunta.getTexto());
     }
 
     @Test

@@ -23,7 +23,7 @@ public class MultipleChoiceClasico extends Pregunta {
             for (Opcion opcion : opciones) {
                 puntos += opcion.puntuar();
             }
-            if (puntos == this.cantidadRespuestasCorrectas() && respuesta.todasLasOpcionesMarcadasSonCorrectas()) {
+            if (puntos == this.cantidadOpcionesCorrectas() && respuesta.todasLasOpcionesMarcadasSonCorrectas()) {
                 return 1;
             }
         } catch (NoMarcoOpcionExcepcion ex){

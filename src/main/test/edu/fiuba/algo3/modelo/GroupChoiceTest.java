@@ -15,6 +15,43 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GroupChoiceTest {
+    @Test
+    public void preguntaGroupChoiceSeCreaConTextoCorrectoTest() {
+        Opcion opcion1 = new Opcion("opcion1", "Grupo1");
+        Opcion opcion2 = new Opcion("opcion2", "Grupo2");
+        Opcion opcion3 = new Opcion("opcion3", "Grupo2");
+
+        List<Opcion> opciones = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
+        };
+
+        Pregunta pregunta = new GroupChoice(opciones, "una pregunta");
+
+        assertEquals("una pregunta", pregunta.getTexto());
+    }
+
+    @Test
+    public void preguntaGroupChoiceSeCreaConListaDeOpcionesCorrectamenteTest() {
+        Opcion opcion1 = new Opcion("opcion1", "Grupo1");
+        Opcion opcion2 = new Opcion("opcion2", "Grupo2");
+        Opcion opcion3 = new Opcion("opcion3", "Grupo2");
+
+        List<Opcion> opciones = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
+        };
+
+        Pregunta pregunta = new GroupChoice(opciones, "una pregunta");
+
+        assertEquals(opciones, pregunta.getOpciones());
+    }
 
     @Test
     public void preguntaGroupChoiceAsignaPuntosSiAmbosAgrupanLasOpcionesCorrectamenteTest(){

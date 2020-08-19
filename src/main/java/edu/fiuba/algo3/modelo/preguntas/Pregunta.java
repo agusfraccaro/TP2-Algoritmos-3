@@ -25,7 +25,7 @@ public abstract class Pregunta {
 
     public abstract int puntuar(Respuesta respuesta);
 
-    public int cantidadRespuestasCorrectas(){
+    public int cantidadOpcionesCorrectas(){
         int cantidad = 0;
         for(Opcion opcion: this.opciones){
             if(opcion.esCorrecta()){

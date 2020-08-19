@@ -39,13 +39,13 @@ public class ExclusividadTest {
         List<Respuesta> respuestas = new ArrayList<>();
         Respuesta respuesta1 = new Respuesta(opciones, new Jugador("Flash"));
         Respuesta respuesta2 = new Respuesta(opciones, new Jugador("Aquaman"));
-        respuesta1.sumarPuntos(5);
-        respuesta2.sumarPuntos(7);
+        respuesta2.sumarPuntos(5);
+        respuesta1.sumarPuntos(7);
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
         excl.aplicarBonus(respuestas);
-        assertEquals(respuesta1.getPuntos(), 5);
-        assertEquals(respuesta2.getPuntos(), 14);
+        assertEquals(respuesta2.getPuntos(), 5);
+        assertEquals(respuesta1.getPuntos(), 14);
     }
 
     @Test

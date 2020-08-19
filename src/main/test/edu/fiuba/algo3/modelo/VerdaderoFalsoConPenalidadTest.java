@@ -14,6 +14,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VerdaderoFalsoConPenalidadTest {
     @Test
+    public void preguntaVerdaderoFalsoSeCreaConTextoCorrectoTest(){
+        Opcion correcta = new Opcion("opcion1", new Correcta());
+        Opcion incorrecta = new Opcion("opcion2", new ConPenalidad());
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(correcta);
+                add(incorrecta);
+            }
+        };
+        Pregunta pregunta = new VerdaderoFalsoConPenalidad(opciones, "una pregunta");
+
+        assertEquals("una pregunta", pregunta.getTexto());
+    }
+
+    @Test
     public void preguntaVerdaderoFalsoConPenalidadSumaPuntosAAmbosJugadoresQueEligeRespuestaCorrectaTest(){
         Opcion correcta = new Opcion("opcion1", new Correcta());
         Opcion incorrecta = new Opcion("opcion2", new ConPenalidad());

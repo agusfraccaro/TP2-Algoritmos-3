@@ -13,6 +13,22 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OrderedChoiceTest {
+    @Test
+    public void preguntaOrderedChoiceSeCreaConTextoCorrectoTest(){
+        Opcion opcion1 = new Opcion("opcion1");
+        Opcion opcion2 = new Opcion("opcion2");
+
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+            }
+        };
+
+        Pregunta pregunta = new OrderedChoice(opciones, "una pregunta");
+
+        assertEquals("una pregunta", pregunta.getTexto());
+    }
 
     @Test
     public void preguntaOrderedChoiceAsignaUnPuntoSiAmbosJugadoresOrdenanCorrectamenteLasOpcionesTest(){

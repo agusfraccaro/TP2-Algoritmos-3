@@ -81,4 +81,19 @@ public class OpcionTest {
 
         assertEquals(0, opcion.puntuar());
     }
+
+    @Test
+    public void metodoEqualsDevuelveTrueSiElObjetoRecibidoEsIgualALaOpcionTest(){
+        Opcion opcion = new Opcion("opcion");
+
+        assertEquals(true, opcion.equals(opcion));
+    }
+
+    @Test
+    public void metodoEqualsDevuelveFalseSiElObjetoRecibidoEsNullTest(){
+        Opcion opcion = new Opcion("opcion");
+        Opcion opcion1 = null;
+
+        assertEquals(false, opcion.equals(opcion1));
+    }
 }
