@@ -3,10 +3,7 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.controlador.ControladorTextoNumerico;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -14,13 +11,10 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.util.converter.IntegerStringConverter;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.UnaryOperator;
 
 public class FabricaPanelOpciones {
 
@@ -43,7 +37,7 @@ public class FabricaPanelOpciones {
     }
 
     private static void getPanelOrderedChoice(Pregunta pregunta, ObservableList<Node> boxChildren){
-        ArrayList<Opcion> opcionesDesordenadas =  new ArrayList<Opcion>(pregunta.getOpciones());
+        ArrayList<Opcion> opcionesDesordenadas = new ArrayList<>(pregunta.getOpciones());
         Collections.shuffle(opcionesDesordenadas);
 
         for (Opcion opcion : opcionesDesordenadas) {

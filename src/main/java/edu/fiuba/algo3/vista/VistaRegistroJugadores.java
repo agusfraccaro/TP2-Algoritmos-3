@@ -8,20 +8,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.io.File;
 
 public class VistaRegistroJugadores {
-    private Kahoot kahoot;
-    private Stage stage;
+    private final Kahoot kahoot;
+    private final Stage stage;
 
     public VistaRegistroJugadores(Kahoot kahoot, Stage stage){
         this.kahoot= kahoot;

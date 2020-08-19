@@ -41,6 +41,7 @@ public class VistaPreguntas {
         botonResponder.setOnAction(controladorEnviarRespuesta);
 
         Label labelTemporizador = new Label();
+        labelTemporizador.setMinWidth(50);
         labelTemporizador.setId("tiempo");
         Temporizador temporizador = new Temporizador(labelTemporizador, botonResponder);
         temporizador.correrTiempo();
