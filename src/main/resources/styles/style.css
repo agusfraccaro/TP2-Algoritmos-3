@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Skranji&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@500&display=swap');
 
 @font-face{
     font-family: "digital-7";
@@ -29,15 +30,31 @@
     -fx-text-fill: rgb(0,91,153);
     -fx-font-size: 25px;
 }
+
+#estiloJuegoGeneral, #layoutInfoJugador .label{
+    -fx-font-family: "Skranji", regular;
+    -fx-text-fill: black;
+    -fx-font-size: 20px;
+}
+
+#estiloPregunta{
+    -fx-font-family: "Baloo Tamma 2", cursive;
+    -fx-text-fill: black;
+    -fx-font-size: 25px;
+}
+
 #contenedorJugadores{
     -fx-spacing: 80px;
     -fx-alignment: center;
 }
 
-#fondoPregunta{
+#layoutPrincipal{
     -fx-background-image: url("../images/fondoPregunta.jpg");
     -fx-background-repeat: stretch;
     -fx-background-size: cover;
+    -fx-spacing: 30px;
+    -fx-alignment: center;
+    -fx-padding: 30px;
 }
 
 #fondoResultados{
@@ -54,11 +71,24 @@
     -fx-font-size: 25px;
 }
 
+#botonBonus{
+    -fx-font-family: "Skranji", regular;
+    -fx-font-size: 15px;
+}
+
 .button:hover{
     -fx-background-color: #0B7A97;
 }
 
-#tiempo{
+#botonAyudaBonus{
+    -fx-graphic: url("../images/ayuda4.png");
+    -fx-background-color: Transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 15px;
+}
+
+#labelTiempo{
     -fx-background-color: black;
     -fx-text-fill: white;
     -fx-font-family: "digital-7";
@@ -67,4 +97,27 @@
     -fx-border-color: white;
     -fx-background-radius: 5px;
     -fx-label-padding: 8px;
+    -fx-min-width: 50px;
 }
+
+#layoutTemporizador{
+    -fx-spacing: 5px;
+    -fx-alignment: top-right;
+}
+
+#layoutInfoJugador{
+    -fx-spacing: 10px;
+    -fx-alignment: top-left;
+}
+
+#layoutPregunta{
+    -fx-spacing: 40px;
+    -fx-alignment: center;
+    -fx-padding: 10px;
+}
+
+#header{
+    -fx-spacing: 300px;
+    -fx-alignment: center;
+}
+
