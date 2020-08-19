@@ -20,21 +20,12 @@ public class VistaInfoBonus {
     }
 
     public void mostrar(){
-        Font fontGeneral = Font.loadFont("file:src/main/resources/fonts/Skranji-Regular.ttf", 15);
-
-        VBox contenedorInformacion = new VBox(20);
-        contenedorInformacion.setPadding(new Insets(15));
-        contenedorInformacion.setAlignment(Pos.CENTER);
-        contenedorInformacion.setId("inicio");
+        VBox contenedorInformacion = new VBox();
+        contenedorInformacion.setId("infoBonus");
 
         Label labelInfo = new Label("EXCLUSIVIDAD: Duplica puntaje en caso de que un solo jugador responda correctamente.\n"
                 + "X2: Duplica puntaje para el jugador que seleccione el Bonus.\n"
                 + "X2: Duplica puntaje para el jugador que seleccione el Bonus.\n");
-        labelInfo.setLineSpacing(15);
-        labelInfo.setFont(fontGeneral);
-        labelInfo.setTextFill(Color.rgb(0,91,153));
-        labelInfo.setTextAlignment(TextAlignment.CENTER);
-
         contenedorInformacion.getChildren().add(labelInfo);
 
         Scene escenaInfoBonus = new Scene(contenedorInformacion, 650, 190);
