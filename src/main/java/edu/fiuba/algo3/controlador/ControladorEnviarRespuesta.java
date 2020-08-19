@@ -3,6 +3,7 @@ package edu.fiuba.algo3.controlador;
 import edu.fiuba.algo3.modelo.excepciones.NoHaySiguientePreguntaExcepcion;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
+import edu.fiuba.algo3.modelo.preguntas.GroupChoice;
 import edu.fiuba.algo3.modelo.preguntas.OrderedChoice;
 import edu.fiuba.algo3.vista.VistaFinDelJuego;
 import edu.fiuba.algo3.vista.VistaPreguntas;
@@ -10,6 +11,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -41,7 +44,7 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
         this.extra = extra;
     }
 
-    private void getOpcionesSeleccionadasOrderChoice(List<Opcion> opcionesSeleccionadas) {
+    private void getOpcionesSeleccionadasOrderedChoice(List<Opcion> opcionesSeleccionadas) {
 
         for(Opcion ignored : kahoot.getPreguntaActual().getOpciones()) {
             opcionesSeleccionadas.add(null);
@@ -52,6 +55,15 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
                 int posicion = Integer.parseInt(txtPosicion.getText()) - 1;
                 opcionesSeleccionadas.set(posicion ,(Opcion)txtPosicion.getUserData() );
             }
+        }
+    }
+
+    private void getOpcionesSeleccionadasGroupChoice(List<Opcion> opcionesSeleccionadas){
+        for (Node nodo : botones){
+            ComboBox comboBox = (ComboBox) ((HBox)nodo).getChildren().get(1);
+            String grupo = (String) comboBox.getValue();
+            String texto = (String) ( (Label) (((HBox)nodo).getChildren().get(0))).getText();
+            opcionesSeleccionadas.add(new Opcion(texto, grupo));
         }
     }
 
@@ -74,7 +86,10 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
         List<Opcion> opcionesSeleccionadas = new ArrayList<>(kahoot.getPreguntaActual().getOpciones().size());
 
         if (kahoot.getPreguntaActual() instanceof OrderedChoice){
-            getOpcionesSeleccionadasOrderChoice(opcionesSeleccionadas);
+            getOpcionesSeleccionadasOrderedChoice(opcionesSeleccionadas);
+        }
+        else if (kahoot.getPreguntaActual() instanceof GroupChoice){
+            getOpcionesSeleccionadasGroupChoice(opcionesSeleccionadas);
         }
         else {
             for (Node nodo : botones) {

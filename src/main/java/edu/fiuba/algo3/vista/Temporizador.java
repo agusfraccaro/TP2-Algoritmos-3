@@ -11,7 +11,7 @@ import javafx.util.Duration;
 
 public class Temporizador {
 
-    private final Integer inicio = 7;
+    private final Integer inicio = 15;
     private Integer segundos = inicio;
     private final Label label;
     private final ControladorTimer controladorTimer;

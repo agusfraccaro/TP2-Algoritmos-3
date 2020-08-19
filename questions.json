@@ -1,6 +1,24 @@
 { 
   "preguntas": [
     {
+      "tipoPregunta": "GroupChoice",
+      "textoPregunta": "Pregunta GroupChoice",
+      "opciones": [
+        {
+          "textoOpcion": "opcion1",
+          "grupoOpcion": "grupo 1"
+        },
+        {
+          "textoOpcion": "opcion2",
+          "grupoOpcion": "grupo 2"
+        },
+        {
+          "textoOpcion": "opcion3",
+          "grupoOpcion": "grupo 1"
+        }
+      ]
+    },
+    {
       "tipoPregunta": "OrderedChoice",
       "textoPregunta": "Pregunta OrderedChoice",
       "opciones": [
@@ -31,7 +49,7 @@
     },
     {
       "tipoPregunta": "VerdaderoFalsoConPenalidad",
-      "textoPregunta": "Pregunta Verdadero Falso con Penalidad",
+      "textoPregunta": "verdaderofalso sin penalidad",
       "opciones": [
         {
           "textoOpcion": "Correcta",
