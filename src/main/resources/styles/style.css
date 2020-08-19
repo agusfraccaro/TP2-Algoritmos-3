@@ -54,7 +54,7 @@
 #estiloPregunta{
     -fx-font-family: "Baloo Tamma 2", cursive;
     -fx-text-fill: black;
-    -fx-font-size: 25px;
+    -fx-font-size: 20px;
 }
 
 #contenedorJugadores{
@@ -66,9 +66,8 @@
     -fx-background-image: url("../images/fondoPregunta.jpg");
     -fx-background-repeat: stretch;
     -fx-background-size: cover;
-    -fx-spacing: 30px;
+    -fx-spacing: 10px;
     -fx-alignment: center;
-    -fx-padding: 30px;
 }
 
 #fondoResultados{
@@ -99,7 +98,6 @@
     -fx-background-color: Transparent;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-background-size: 15px;
 }
 
 #labelTiempo{
@@ -125,9 +123,8 @@
 }
 
 #layoutPregunta{
-    -fx-spacing: 40px;
+    -fx-spacing: 20px;
     -fx-alignment: center;
-    -fx-padding: 10px;
 }
 
 #header{

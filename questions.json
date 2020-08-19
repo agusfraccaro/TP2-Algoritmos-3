@@ -5,34 +5,34 @@
       "textoPregunta": "Los métodos abstractos no tienen implementación",
       "opciones": [
         {
-          "textoOpcion": "Incorrecto",
+          "textoOpcion": "Falso",
           "estadoOpcion": "ConPenalidad"
         },
         {
-          "textoOpcion": "Correcto",
+          "textoOpcion": "Verdadero",
           "estadoOpcion": "Correcta"
         }
       ]
     },
     {
       "tipoPregunta": "GroupChoice",
-      "textoPregunta": "Seleccionar si las siguientes afirmaciones pertenecen\na programacíon estructurada (grupo 1) o a\nprogramación orientada a objetos (grupo 2)",
+      "textoPregunta": "Seleccionar si las siguientes afirmaciones pertenecen\na programación estructurada o a\nprogramación orientada a objetos.",
       "opciones": [
         {
           "textoOpcion": "No admite herencia",
-          "grupoOpcion": "grupo 1"
+          "grupoOpcion": "estructurada"
         },
         {
           "textoOpcion": "Centrada en clases y objetos",
-          "grupoOpcion": "grupo 2"
+          "grupoOpcion": "POO"
         },
         {
           "textoOpcion": "Tipo de programación imperativa",
-          "grupoOpcion": "grupo 1"
+          "grupoOpcion": "estructurada"
         },
         {
           "textoOpcion": "Encapsula datos (atributos y métodos) en objetos que están relacionados entre si",
-          "grupoOpcion": "grupo 2"
+          "grupoOpcion": "POO"
         }
       ]
     },
@@ -89,14 +89,14 @@
     },
     {
       "tipoPregunta": "VerdaderoFalso",
-      "textoPregunta": "XP busca llevar al extremo las buenas prácticas de \n programación",
+      "textoPregunta": "XP busca llevar al extremo las buenas prácticas de programación",
       "opciones": [
         {
-          "textoOpcion": "Correcta",
+          "textoOpcion": "Verdadero",
           "estadoOpcion": "Correcta"
         },
 	    {
-	      "textoOpcion": "Incorrecta",
+	      "textoOpcion": "Falso",
           "estadoOpcion": "SinPenalidad"	
 	    }
       ]
