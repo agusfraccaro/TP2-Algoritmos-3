@@ -40,4 +40,15 @@ public class KahootTest {
 
         assertEquals(null, kahoot.getGanador());
     }
+
+    @Test
+    public void kahootDevuelveJugadorActualCorrectamenteTest() throws NoHaySiguientePreguntaExcepcion {
+        Kahoot kahoot = new Kahoot();
+        kahoot.registrarJugador("cami");
+        kahoot.registrarJugador("santi");
+        kahoot.cargarPreguntas();
+        kahoot.iniciarRonda();
+
+        assertEquals("cami", kahoot.getJugadorActual().getNombre());
+    }
 }

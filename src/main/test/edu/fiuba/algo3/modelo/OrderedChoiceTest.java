@@ -242,6 +242,24 @@ public class OrderedChoiceTest {
         assertEquals(0, pregunta.puntuar(respuesta));
     }
 
+    @Test
+    public void preguntaOrderedChoicePuntuaCeroPuntosARespuestaVaciaTest(){
+        Opcion opcion1 = new Opcion("opcion1");
+        Opcion opcion2 = new Opcion("opcion2");
+        Opcion opcion3 = new Opcion("opcion3");
 
+        List <Opcion> opciones = new ArrayList<>() {
+            {
+                add(opcion1);
+                add(opcion2);
+                add(opcion3);
+            }
+        };
 
+        Pregunta pregunta = new OrderedChoice(opciones, "una pregunta");
+
+        Respuesta respuesta = new Respuesta(new ArrayList<Opcion>(), new Jugador("kevin"));
+
+        assertEquals(0, pregunta.puntuar(respuesta));
+    }
 }
