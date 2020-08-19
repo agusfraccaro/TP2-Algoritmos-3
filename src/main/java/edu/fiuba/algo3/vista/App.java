@@ -16,10 +16,10 @@ public class App extends Application {
     public void start(Stage stage) {
         stage.setTitle("Kahoot");
 
-        //Media media = new Media((App.class.getResource("/music/musica_kahoot.mp3")).toExternalForm());
-        //AudioClip reproductor = new AudioClip(media.getSource());
-        //reproductor.setCycleCount(AudioClip.INDEFINITE);
-        //reproductor.play(0.2);
+        Media media = new Media((App.class.getResource("/music/musica_kahoot.mp3")).toExternalForm());
+        AudioClip reproductor = new AudioClip(media.getSource());
+        reproductor.setCycleCount(AudioClip.INDEFINITE);
+        reproductor.play(0.2);
 
         stage.getIcons().add(new Image((App.class.getResource("/images/icono.png")).toExternalForm()));
 

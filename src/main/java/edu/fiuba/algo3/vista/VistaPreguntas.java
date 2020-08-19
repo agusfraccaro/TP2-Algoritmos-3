@@ -72,7 +72,7 @@ public class VistaPreguntas {
         labelPregunta.setFont(fontPregunta);
         preguntaLayout.getChildren().addAll(labelPregunta, panelOpciones);
         preguntaLayout.setPadding(new Insets(16, 16, 16, 16));
-        preguntaLayout.setSpacing(70);
+        preguntaLayout.setSpacing(40);
         preguntaLayout.setAlignment(Pos.CENTER);
 
         VBox layoutPrincipal = new VBox();
@@ -82,7 +82,7 @@ public class VistaPreguntas {
         layoutPrincipal.setSpacing(20);
         layoutPrincipal.setId("fondoPregunta");
 
-        Scene scene = new Scene(layoutPrincipal, 600, 500);
+        Scene scene = new Scene(layoutPrincipal, 700, 550);
         File archivo = new File("src/main/resources/styles/style.css");
         scene.getStylesheets().add("file:///" + archivo.getAbsolutePath().replace("\\", "/")  );
 

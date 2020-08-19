@@ -1,71 +1,124 @@
 { 
   "preguntas": [
     {
-      "tipoPregunta": "GroupChoice",
-      "textoPregunta": "Pregunta GroupChoice",
+      "tipoPregunta": "VerdaderoFalsoConPenalidad",
+      "textoPregunta": "Los métodos abstractos no tienen implementación",
       "opciones": [
         {
-          "textoOpcion": "opcion1",
+          "textoOpcion": "Incorrecto",
+          "estadoOpcion": "ConPenalidad"
+        },
+        {
+          "textoOpcion": "Correcto",
+          "estadoOpcion": "Correcta"
+        }
+      ]
+    },
+    {
+      "tipoPregunta": "GroupChoice",
+      "textoPregunta": "Seleccionar si las siguientes afirmaciones pertenecen \n a programacíon estructurada (grupo 1) o a \n programación orientada a objetos (grupo 2)",
+      "opciones": [
+        {
+          "textoOpcion": "No admite herencia",
           "grupoOpcion": "grupo 1"
         },
         {
-          "textoOpcion": "opcion2",
+          "textoOpcion": "Centrada en clases y objetos",
           "grupoOpcion": "grupo 2"
         },
         {
-          "textoOpcion": "opcion3",
+          "textoOpcion": "Tipo de programación imperativa",
           "grupoOpcion": "grupo 1"
-        }
-      ]
-    },
-    {
-      "tipoPregunta": "OrderedChoice",
-      "textoPregunta": "Pregunta OrderedChoice",
-      "opciones": [
-        {
-          "textoOpcion": "primera"
         },
         {
-          "textoOpcion": "segunda"
-        },
-        {
-          "textoOpcion": "tercera"
-        }
-      ]
-    },
-    {
-      "tipoPregunta": "VerdaderoFalso",
-      "textoPregunta": "Pregunta VerdaderoFalso",
-      "opciones": [
-        {
-          "textoOpcion": "Correcta",
-          "estadoOpcion": "Correcta"
-        },
-	{
-	  "textoOpcion": "Incorrecta sin penalidad",
-          "estadoOpcion": "SinPenalidad"	
-	}
-      ]
-    },
-    {
-      "tipoPregunta": "VerdaderoFalsoConPenalidad",
-      "textoPregunta": "verdaderofalso sin penalidad",
-      "opciones": [
-        {
-          "textoOpcion": "Correcta",
-          "estadoOpcion": "Correcta"
+          "textoOpcion": "Encapsula datos (atributos y métodos) en objetos que están relacionados entre si",
+          "grupoOpcion": "grupo 2"
         }
       ]
     },
     {
       "tipoPregunta": "MultipleChoiceClasico",
-      "textoPregunta": "Pregunta MultipleChoice",
+      "textoPregunta": "¿Cuál es el número ideal de parámetros de un método?",
+      "opciones": [
+        {
+          "textoOpcion": "3 o 4",
+          "estadoOpcion": "SinPenalidad"
+        },
+        {
+          "textoOpcion": "5 o 6",
+          "estadoOpcion": "SinPenalidad"
+        },
+        {
+          "textoOpcion": "Lo menos posible",
+          "estadoOpcion": "Correcta"
+        }
+      ]
+    },
+    {
+      "tipoPregunta": "OrderedChoice",
+      "textoPregunta": "¿Cuál es el orden correcto para realizar TDD?",
+      "opciones": [
+        {
+          "textoOpcion": "Test-First"
+        },
+        {
+          "textoOpcion": "Automatización"
+        },
+        {
+          "textoOpcion": "Refactorización"
+        }
+      ]
+    },
+    {
+      "tipoPregunta": "MultipleChoiceClasico",
+      "textoPregunta": "Seleccionar distintas maneras de realizar una \n refactorización del código:",
+      "opciones": [
+        {
+          "textoOpcion": "Modificar comportamiento observable",
+          "estadoOpcion": "SinPenalidad"
+        },
+        {
+          "textoOpcion": "Introducir polimorfismo",
+          "estadoOpcion": "Correcta"
+        },
+        {
+          "textoOpcion": "Eliminar código duplicado",
+          "estadoOpcion": "Correcta"
+        }
+      ]
+    },
+    {
+      "tipoPregunta": "VerdaderoFalso",
+      "textoPregunta": "XP busca llevar al extremo las buenas prácticas de \n programación",
       "opciones": [
         {
           "textoOpcion": "Correcta",
           "estadoOpcion": "Correcta"
+        },
+	    {
+	      "textoOpcion": "Incorrecta",
+          "estadoOpcion": "SinPenalidad"	
+	    }
+      ]
+    },
+    {
+      "tipoPregunta": "MultipleChoiceConPenalidad",
+      "textoPregunta": "¿A qué se llama polimorfismo?",
+      "opciones": [
+        {
+          "textoOpcion": "Manera en la que se pueden representar los objetos en modo de código",
+          "estadoOpcion": "ConPenalidad"
+        },
+        {
+          "textoOpcion": "Capacidad que tienen distintos objetos de responder de maneras distintas a un mismo mensaje",
+          "estadoOpcion": "Correcta"
+        },
+        {
+          "textoOpcion": "Conjunto de objetos que tienen el mismo comportamiento",
+          "estadoOpcion": "ConPenalidad"
         }
       ]
     }
   ]
 }
+
