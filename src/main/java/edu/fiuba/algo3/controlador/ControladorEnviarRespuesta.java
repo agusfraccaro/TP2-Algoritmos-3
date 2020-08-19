@@ -62,7 +62,7 @@ public class ControladorEnviarRespuesta implements EventHandler<ActionEvent> {
         for (Node nodo : botones){
             ComboBox comboBox = (ComboBox) ((HBox)nodo).getChildren().get(1);
             String grupo = (String) comboBox.getValue();
-            String texto = (String) ( (Label) (((HBox)nodo).getChildren().get(0))).getText();
+            String texto = ((Label) (((HBox)nodo).getChildren().get(0))).getText(); //texto de la opción
             opcionesSeleccionadas.add(new Opcion(texto, grupo));
         }
     }

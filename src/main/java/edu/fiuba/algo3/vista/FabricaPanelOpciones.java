@@ -1,8 +1,12 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.controlador.ControladorTextoNumerico;
 import edu.fiuba.algo3.modelo.opcion.Opcion;
 import edu.fiuba.algo3.modelo.preguntas.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -11,10 +15,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.UnaryOperator;
 
 public class FabricaPanelOpciones {
 
@@ -44,7 +50,8 @@ public class FabricaPanelOpciones {
             HBox hbox = new HBox();
             Label lblTextoOpcion = new Label(opcion.getTexto());
             TextField txtNumeroOpcion = new TextField();
-            txtNumeroOpcion.setMaxWidth(25);
+            txtNumeroOpcion.setMaxWidth(40);
+            txtNumeroOpcion.textProperty().addListener(new ControladorTextoNumerico(txtNumeroOpcion, opcionesDesordenadas.size()));
             txtNumeroOpcion.setUserData(opcion);
             hbox.getChildren().addAll(lblTextoOpcion,txtNumeroOpcion);
             hbox.setSpacing(5);
@@ -52,6 +59,11 @@ public class FabricaPanelOpciones {
             boxChildren.add(hbox);
         }
     }
+
+    private static boolean validate(String text) {
+        return text.matches("[0-9]*");
+    }
+
 
     private static void getPanelGroupChoice(Pregunta pregunta, ObservableList<Node> boxChildren){
         List<String> grupos = new ArrayList<>();
