@@ -2,7 +2,7 @@
   "preguntas": [
     {
       "tipoPregunta": "VerdaderoFalsoConPenalidad",
-      "textoPregunta": "Los métodos abstractos no tienen implementación",
+      "textoPregunta": "Es necesario probar que un método lance una excepción cuando en los \ncasos que esperamos que lo haga.",
       "opciones": [
         {
           "textoOpcion": "Falso",
@@ -51,6 +51,10 @@
         {
           "textoOpcion": "Lo menos posible",
           "estadoOpcion": "Correcta"
+        },
+        {
+          "textoOpcion": "Es indistinto",
+          "estadoOpcion": "SinPenalidad"
         }
       ]
     },
@@ -59,13 +63,13 @@
       "textoPregunta": "¿Cuál es el orden correcto para realizar TDD?",
       "opciones": [
         {
-          "textoOpcion": "Test-First"
+          "textoOpcion": "Test-First."
         },
         {
-          "textoOpcion": "Automatización"
+          "textoOpcion": "Automatización."
         },
         {
-          "textoOpcion": "Refactorización"
+          "textoOpcion": "Refactorización."
         }
       ]
     },
@@ -74,22 +78,22 @@
       "textoPregunta": "Seleccionar distintas maneras de realizar una refactorización del código:",
       "opciones": [
         {
-          "textoOpcion": "Modificar comportamiento observable",
+          "textoOpcion": "Modificar comportamiento observable.",
           "estadoOpcion": "SinPenalidad"
         },
         {
-          "textoOpcion": "Introducir polimorfismo",
+          "textoOpcion": "Introducir polimorfismo.",
           "estadoOpcion": "Correcta"
         },
         {
-          "textoOpcion": "Eliminar código duplicado",
+          "textoOpcion": "Eliminar código duplicado.",
           "estadoOpcion": "Correcta"
         }
       ]
     },
     {
       "tipoPregunta": "VerdaderoFalso",
-      "textoPregunta": "XP busca llevar al extremo las buenas prácticas de programación",
+      "textoPregunta": "XP busca llevar al extremo las buenas prácticas de programación.",
       "opciones": [
         {
           "textoOpcion": "Verdadero",
@@ -106,16 +110,38 @@
       "textoPregunta": "¿A qué se llama polimorfismo?",
       "opciones": [
         {
-          "textoOpcion": "Manera en la que se pueden representar los objetos en modo de código",
+          "textoOpcion": "Manera en la que se pueden representar los objetos en modo de código.",
           "estadoOpcion": "ConPenalidad"
         },
         {
-          "textoOpcion": "Capacidad que tienen distintos objetos de responder de maneras distintas a un mismo mensaje",
+          "textoOpcion": "Capacidad que tienen distintos objetos de responder de maneras distintas a un mismo mensaje.",
           "estadoOpcion": "Correcta"
         },
         {
-          "textoOpcion": "Conjunto de objetos que tienen el mismo comportamiento",
+          "textoOpcion": "Conjunto de objetos que tienen el mismo comportamiento.",
           "estadoOpcion": "ConPenalidad"
+        }
+      ]
+    },
+    {
+      "tipoPregunta": "MultipleChoiceParcial",
+      "textoPregunta": "Con una metodología incremental...",
+      "opciones": [
+        {
+          "textoOpcion": "Se puede partir de una aproximación.",
+          "estadoOpcion": "Correcta"
+        },
+        {
+          "textoOpcion": "Es mas lenta que su predecesora.",
+          "estadoOpcion": "SinPenalidad"
+        },
+        {
+          "textoOpcion": "Se llega a una solución cada vez más refinada.",
+          "estadoOpcion": "Correcta"
+        },
+        {
+          "textoOpcion": "Es ineficiente.",
+          "estadoOpcion": "SinPenalidad"
         }
       ]
     }
