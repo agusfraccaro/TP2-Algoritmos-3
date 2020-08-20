@@ -16,31 +16,37 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 Corrector: **Martín Picco**
 
-### Link informe: 
-
-[Informe OverLeaf](https://www.overleaf.com/6946127717bfmqhrfvrryh)
-
-### Link diagramas:
-
-[Diagramas online](https://app.diagrams.net/#G1hpMyQL8DPGZu_8Gn1cA6cx-ZGXHk0fAF)
-
 ### Pre-requisitos
 
-Listado de software/herramientas necesarias para el proyecto
+Las herramientas necesarias para trabajar en este proyecto son el entorno de desarrollo de Java, Apache Maven para la construcción automatizada y Git para el control de versiones. 
+En particular:
 
 ```
 java 11
-maven 3.6.0
-...
+javafx-controls 11.0.2
+javafx-media 13
+junit 3.8.1
+maven 3.8.0
+```
+Verificar que estén instalados correctamente:
+
+```
+javac -version
+mvn --version
+git --version
 ```
 
 ## Ejecutando las pruebas
 
-Explicación de como ejecutar las pruebas
+```
+mvn clean test
+```
 
 ## Ejecutando la aplicación
 
-Explicación de como ejecutar la aplicación
+```
+mvn clean javafx:run
+```
 
 ## Licencia
 
