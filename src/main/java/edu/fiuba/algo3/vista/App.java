@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
+import edu.fiuba.algo3.vista.generales.VistaRegistroJugadores;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
