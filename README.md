@@ -26,21 +26,35 @@ Corrector: **Martín Picco**
 
 ### Pre-requisitos
 
-Listado de software/herramientas necesarias para el proyecto
+Las herramientas necesarias para trabajar en este proyecto son el entorno de desarrollo de Java, Apache Maven para la construcción automatizada y Git para el control de versiones. 
+En particular:
 
 ```
 java 11
-maven 3.6.0
-...
+javafx-controls 11.0.2
+javafx-media 13
+junit 3.8.1
+maven 3.8.0
+```
+Verificar que estén instalados correctamente:
+
+```
+javac -version
+mvn --version
+git --version
 ```
 
 ## Ejecutando las pruebas
 
-Explicación de como ejecutar las pruebas
+```
+mvn clean test
+```
 
 ## Ejecutando la aplicación
 
-Explicación de como ejecutar la aplicación
+```
+mvn javafx:run
+```
 
 ## Licencia
 
