@@ -4,16 +4,20 @@ import edu.fiuba.algo3.controlador.ControladorEnviarRespuesta;
 import edu.fiuba.algo3.controlador.ControladorMostrarInfoBonus;
 import edu.fiuba.algo3.controlador.ControladorMostrarInfoPreguntas;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
+import edu.fiuba.algo3.modelo.preguntas.MultipleChoiceConPenalidad;
+import edu.fiuba.algo3.modelo.preguntas.VerdaderoFalsoConPenalidad;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import javax.security.auth.callback.TextOutputCallback;
 import java.io.File;
 
 public class VistaPreguntas {
@@ -32,6 +36,20 @@ public class VistaPreguntas {
         botonInfo.setCursor(Cursor.HAND);
         botonInfo.setOnAction(new ControladorMostrarInfoBonus(stage));
         bonusLayout.getChildren().add(botonInfo);
+    }
+
+    private boolean tienePenalidad(){
+        return (kahoot.getPreguntaActual() instanceof MultipleChoiceConPenalidad
+                || kahoot.getPreguntaActual() instanceof VerdaderoFalsoConPenalidad);
+    }
+
+    private void setPenalidad(VBox infoJugadorLayout){
+        Label penalidad = new Label();
+        penalidad.setId("penalidad");
+        Tooltip tooltip = new Tooltip();
+        tooltip.setText("Por cada opción incorrecta se resta un punto!");
+        penalidad.setTooltip(tooltip);
+        infoJugadorLayout.getChildren().add(penalidad);
     }
 
     private Button setBotonInfoPreguntas(){
@@ -77,7 +95,11 @@ public class VistaPreguntas {
         Label puntaje = new Label("Puntos: " + kahoot.getJugadorActual().getPuntaje());
         VBox infoJugadorLayout = new VBox();
         infoJugadorLayout.setId("layoutInfoJugador");
-        infoJugadorLayout.getChildren().addAll(labelJugadorActual, puntaje, bonusLayout);
+        if (tienePenalidad()){
+            infoJugadorLayout.getChildren().addAll(labelJugadorActual, puntaje, bonusLayout);
+            setPenalidad(infoJugadorLayout);
+        }
+        else infoJugadorLayout.getChildren().addAll(labelJugadorActual, puntaje, bonusLayout);
 
         HBox header = new HBox();
         header.setId("header");
