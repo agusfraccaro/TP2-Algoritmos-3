@@ -16,11 +16,11 @@
     },
     {
       "tipoPregunta": "GroupChoice",
-      "textoPregunta": "Seleccionar si las siguientes afirmaciones pertenecen\na programación estructurada o a\nprogramación orientada a objetos.",
+      "textoPregunta": "Seleccionar si las siguientes afirmaciones pertenecen a programación \nestructurada o a programación orientada a objetos.",
       "opciones": [
         {
           "textoOpcion": "No admite herencia",
-          "grupoOpcion": "estructurada"
+          "grupoOpcion": "Estructurada"
         },
         {
           "textoOpcion": "Centrada en clases y objetos",
@@ -28,7 +28,7 @@
         },
         {
           "textoOpcion": "Tipo de programación imperativa",
-          "grupoOpcion": "estructurada"
+          "grupoOpcion": "Estructurada"
         },
         {
           "textoOpcion": "Encapsula datos (atributos y métodos) en objetos que están relacionados entre si",
@@ -71,7 +71,7 @@
     },
     {
       "tipoPregunta": "MultipleChoiceClasico",
-      "textoPregunta": "Seleccionar distintas maneras de realizar una \n refactorización del código:",
+      "textoPregunta": "Seleccionar distintas maneras de realizar una refactorización del código:",
       "opciones": [
         {
           "textoOpcion": "Modificar comportamiento observable",

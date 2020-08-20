@@ -4,6 +4,7 @@ import edu.fiuba.algo3.controlador.ControladorEnviarRespuesta;
 import edu.fiuba.algo3.controlador.ControladorMostrarInfoBonus;
 import edu.fiuba.algo3.controlador.ControladorMostrarInfoPreguntas;
 import edu.fiuba.algo3.modelo.kahoot.Kahoot;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,51 +28,49 @@ public class VistaPreguntas {
 
     private void setBotonInfoBonus(HBox bonusLayout){
         Button botonInfo = new Button();
-        botonInfo.setId("botonAyudaBonus");
+        botonInfo.setId("botonAyuda");
         botonInfo.setCursor(Cursor.HAND);
         botonInfo.setOnAction(new ControladorMostrarInfoBonus(stage));
         bonusLayout.getChildren().add(botonInfo);
     }
 
-    private void setBotonInfoPreguntas(VBox preguntasLayout){
+    private Button setBotonInfoPreguntas(){
         Button botonInfo = new Button();
-        botonInfo.setId("botonAyudaBonus");
+        botonInfo.setId("botonAyuda");
         botonInfo.setCursor(Cursor.HAND);
         botonInfo.setOnAction(new ControladorMostrarInfoPreguntas(stage));
-        preguntasLayout.getChildren().add(botonInfo);
+        return botonInfo;
     }
 
     public void mostrarPregunta(){
         cantidadRespuestas %= 2;
         cantidadRespuestas++;
 
-        Pane panelOpciones = FabricaPanelOpciones.getPanelOpciones(kahoot.getPreguntaActual());
-
         Label labelPregunta = new Label(kahoot.getPreguntaActual().getTexto());
         labelPregunta.setId("estiloPregunta");
 
-        VBox preguntaLayout = new VBox();
-        preguntaLayout.setId("layoutPregunta");
-        preguntaLayout.getChildren().add(labelPregunta);
-        setBotonInfoPreguntas(preguntaLayout);
-        preguntaLayout.getChildren().add(panelOpciones);
+        Pane panelOpciones = FabricaPanelOpciones.getPanelOpciones(kahoot.getPreguntaActual());
 
         Button botonResponder = new Button("RESPONDER");
         botonResponder.setId("estiloJuegoGeneral");
-
         ControladorEnviarRespuesta controladorEnviarRespuesta = new ControladorEnviarRespuesta(kahoot, this, stage, cantidadRespuestas, panelOpciones.getChildren());
         botonResponder.setOnAction(controladorEnviarRespuesta);
+
+        HBox contenedorAyudaYResponder = new HBox();
+        contenedorAyudaYResponder.getChildren().addAll(botonResponder, setBotonInfoPreguntas());
+        contenedorAyudaYResponder.setId("estiloContenedoresConAyuda");
+
+        VBox preguntaLayout = new VBox();
+        preguntaLayout.setId("layoutPregunta");
+        preguntaLayout.getChildren().addAll(labelPregunta, panelOpciones, contenedorAyudaYResponder);
 
         Label labelTemporizador = new Label();
         labelTemporizador.setId("labelTiempo");
         Temporizador temporizador = new Temporizador(labelTemporizador, botonResponder);
         temporizador.correrTiempo();
 
-        VBox layoutTemporizador = new VBox();
-        layoutTemporizador.setId("layoutTemporizador");
-        layoutTemporizador.getChildren().addAll(labelTemporizador);
-
         HBox bonusLayout = FabricaBotonBonus.crearBotonBonus(kahoot, controladorEnviarRespuesta);
+        bonusLayout.setId("estiloContenedoresConAyuda");
         setBotonInfoBonus(bonusLayout);
 
         Label labelJugadorActual = new Label("Turno de: " + kahoot.getJugadorActual().getNombre());
@@ -82,13 +81,13 @@ public class VistaPreguntas {
 
         HBox header = new HBox();
         header.setId("header");
-        header.getChildren().addAll(infoJugadorLayout, layoutTemporizador);
+        header.getChildren().addAll(infoJugadorLayout, labelTemporizador);
 
         VBox layoutPrincipal = new VBox();
         layoutPrincipal.setId("layoutPrincipal");
-        layoutPrincipal.getChildren().addAll(header, preguntaLayout, botonResponder);
+        layoutPrincipal.getChildren().addAll(header, preguntaLayout);
 
-        Scene scene = new Scene(layoutPrincipal, 700, 550);
+        Scene scene = new Scene(layoutPrincipal, 790, 550);
         File archivo = new File("src/main/resources/styles/style.css");
         scene.getStylesheets().add("file:///" + archivo.getAbsolutePath().replace("\\", "/")  );
 

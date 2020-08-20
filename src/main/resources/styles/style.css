@@ -8,7 +8,7 @@
 }
 
 #inicio{
-    -fx-background-image: url("../images/fondoInicio.jpg");
+    -fx-background-image: url("../images/fondoInicial.jpeg");
     -fx-background-repeat: stretch;
     -fx-background-size: cover;
     -fx-background-position: center;
@@ -55,6 +55,31 @@
     -fx-font-family: "Baloo Tamma 2", cursive;
     -fx-text-fill: black;
     -fx-font-size: 20px;
+    -fx-text-alignment: center;
+}
+
+#estiloOpciones{
+    -fx-spacing: 16px;
+    -fx-alignment: center;
+}
+
+#estiloOpciones .radio-button, #estiloOpciones .label, #estiloOpcionesOrderedYGroupChoice .label{
+    -fx-font-family: "Baloo Tamma 2", cursive;
+    -fx-background-color: rgba(196, 216, 226, 0.5);;
+    -fx-text-fill: black;
+    -fx-font-size: 15px;
+}
+
+#estiloOpcionesOrderedYGroupChoice{
+    -fx-spacing: 7px;
+    -fx-alignment: center;
+}
+
+#estiloOpcionesOrderedYGroupChoice .text-field{
+    -fx-font-family: "Baloo Tamma 2", cursive;
+    -fx-background-color: rgba(196, 216, 226, 0.5);;
+    -fx-text-fill: black;
+    -fx-max-width: 40px;
 }
 
 #contenedorJugadores{
@@ -71,7 +96,7 @@
 }
 
 #fondoResultados{
-    -fx-background-image: url("../images/fondoInicio.jpg");
+    -fx-background-image: url("../images/fondoFinal.jpeg");
     -fx-background-repeat: stretch;
     -fx-background-size: cover;
     -fx-spacing: 40px;
@@ -84,17 +109,17 @@
     -fx-font-size: 25px;
 }
 
+.button:hover{
+    -fx-background-color: #0B7A97;
+}
+
 #botonBonus{
     -fx-font-family: "Skranji", regular;
     -fx-font-size: 15px;
 }
 
-.button:hover{
-    -fx-background-color: #0B7A97;
-}
-
-#botonAyudaBonus{
-    -fx-graphic: url("../images/ayuda4.png");
+#botonAyuda{
+    -fx-graphic: url("../images/iconoAyuda.png");
     -fx-background-color: Transparent;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
@@ -110,25 +135,26 @@
     -fx-background-radius: 5px;
     -fx-label-padding: 8px;
     -fx-min-width: 50px;
-}
-
-#layoutTemporizador{
-    -fx-spacing: 5px;
     -fx-alignment: top-right;
 }
 
 #layoutInfoJugador{
-    -fx-spacing: 10px;
+    -fx-spacing: 15px;
     -fx-alignment: top-left;
 }
 
 #layoutPregunta{
-    -fx-spacing: 20px;
+    -fx-spacing: 30px;
     -fx-alignment: center;
 }
 
 #header{
-    -fx-spacing: 300px;
+    -fx-spacing: 350px;
+    -fx-padding: 20px;
+    -fx-alignment: center;
+}
+
+#estiloContenedoresConAyuda{
     -fx-alignment: center;
 }
 

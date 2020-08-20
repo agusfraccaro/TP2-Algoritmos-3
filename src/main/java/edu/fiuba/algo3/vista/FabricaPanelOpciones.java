@@ -30,9 +30,9 @@ public class FabricaPanelOpciones {
 
     private static void getPanelMultipleChoice(Pregunta pregunta, ObservableList<Node> boxChildren){
         for (Opcion opcion : pregunta.getOpciones()) {
-            RadioButton optionButton = new RadioButton(opcion.getTexto());
-            optionButton.setUserData(opcion);
-            boxChildren.add(optionButton);
+            RadioButton botonOpcion = new RadioButton(opcion.getTexto());
+            botonOpcion.setUserData(opcion);
+            boxChildren.add(botonOpcion);
         }
     }
 
@@ -42,22 +42,17 @@ public class FabricaPanelOpciones {
 
         for (Opcion opcion : opcionesDesordenadas) {
             HBox hbox = new HBox();
+            hbox.setId("estiloOpcionesOrderedYGroupChoice");
             Label lblTextoOpcion = new Label(opcion.getTexto());
             TextField txtNumeroOpcion = new TextField();
-            txtNumeroOpcion.setMaxWidth(40);
+
             txtNumeroOpcion.textProperty().addListener(new ControladorTextoNumerico(txtNumeroOpcion, opcionesDesordenadas.size()));
             txtNumeroOpcion.setUserData(opcion);
+
             hbox.getChildren().addAll(lblTextoOpcion,txtNumeroOpcion);
-            hbox.setSpacing(5);
-            hbox.setAlignment(Pos.CENTER);
             boxChildren.add(hbox);
         }
     }
-
-    private static boolean validate(String text) {
-        return text.matches("[0-9]*");
-    }
-
 
     private static void getPanelGroupChoice(Pregunta pregunta, ObservableList<Node> boxChildren){
         List<String> grupos = new ArrayList<>();
@@ -67,12 +62,11 @@ public class FabricaPanelOpciones {
 
         for (Opcion opcion : pregunta.getOpciones()) {
             HBox hbox = new HBox();
+            hbox.setId("estiloOpcionesOrderedYGroupChoice");
             Label lblTextoOpcion = new Label(opcion.getTexto());
             ComboBox comboBox = new ComboBox(FXCollections.observableArrayList(grupos));
 
             hbox.getChildren().addAll(lblTextoOpcion,comboBox);
-            hbox.setSpacing(8);
-            hbox.setAlignment(Pos.CENTER);
             boxChildren.add(hbox);
         }
 
@@ -80,8 +74,7 @@ public class FabricaPanelOpciones {
 
     public static Pane getPanelOpciones(Pregunta pregunta) {
         VBox layoutOpciones = new VBox();
-        layoutOpciones.setSpacing(16);
-        layoutOpciones.setAlignment(Pos.CENTER);
+        layoutOpciones.setId("estiloOpciones");
         ObservableList<Node> boxChildren = layoutOpciones.getChildren();
 
         if (esVerdaderoFalso(pregunta)) {

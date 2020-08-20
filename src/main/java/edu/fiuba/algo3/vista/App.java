@@ -20,7 +20,7 @@ public class App extends Application {
         reproductor.setCycleCount(AudioClip.INDEFINITE);
         reproductor.play(0.2);
 
-        stage.getIcons().add(new Image((App.class.getResource("/images/icono.png")).toExternalForm()));
+        stage.getIcons().add(new Image((App.class.getResource("/images/iconoStage.png")).toExternalForm()));
 
         (new VistaRegistroJugadores(kahoot, stage)).mostrarRegistro();
 
